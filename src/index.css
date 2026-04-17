@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './exos-tokens.css';
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #05152a; /* textDefaultPrimary */
+    letter-spacing: 0.025em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* color intentionally unset — let Tailwind text-* utilities control it */
+  }
+
+  label {
+    color: #304258; /* textDefaultSecondary */
+  }
+
+  input[type="radio"] {
+    accent-color: #066dce; /* bgActionPrimary */
+  }
+
+  input[type="checkbox"] {
+    accent-color: #066dce; /* bgActionPrimary */
+  }
+}
+
+@layer utilities {
+  .signature-canvas {
+    touch-action: none;
+  }
+}

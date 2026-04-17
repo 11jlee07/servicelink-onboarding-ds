@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 44" fill="none">
+  <!-- Icon: chain link / two overlapping rings -->
+  <circle cx="16" cy="22" r="9" stroke="#066dce" stroke-width="3.5" fill="none"/>
+  <circle cx="28" cy="22" r="9" stroke="#0a4fa0" stroke-width="3.5" fill="none"/>
+  <!-- WordMark -->
+  <text x="46" y="29" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" fill="#05152a" letter-spacing="-0.3">Service</text>
+  <text x="122" y="29" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="300" fill="#066dce" letter-spacing="-0.3">Link</text>
+</svg>

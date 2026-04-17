@@ -1,0 +1,94 @@
+{
+  "$id": "exos-alerts-registry",
+  "component": "Alerts",
+  "description": "Alerts communicate feedback for user actions or system events. They appear fixed below the top navigation and require manual dismissal.",
+  "rules": {
+    "always": [
+      "Wrap every alert in a <div class=\"alert-wrapper\"> so it positions correctly below the top nav.",
+      "Always add role=\"alert\" on the alert div for screen reader announcements.",
+      "Always include an icon matching the alert variant (icon-check-circle-fill for success, icon-delete-circle-fill for danger, icon-attention-triangle-fill for warning, icon-info-circle-fill for primary).",
+      "Always add aria-hidden=\"true\" on the icon span.",
+      "The dismiss button must use data-bs-dismiss=\"alert\" and match the alert color variant (e.g. btn-success-text for success alerts)."
+    ],
+    "never": [
+      "Do not use alert-hidden class on alerts that should be visible on page load — only add it to alerts that start hidden and are shown programmatically.",
+      "Do not auto-dismiss alerts — always require user action.",
+      "Do not nest alerts inside cards or other components — alerts live at the page level inside alert-wrapper.",
+      "Do not omit the dismiss button — every alert must be closeable."
+    ]
+  },
+  "positioning": {
+    "default": {
+      "class": "alert-wrapper",
+      "description": "Fixed below the primary navigation bar.",
+      "note": "alert-wrapper uses position: fixed and top: $primary-nav-bar-height."
+    },
+    "belowSecondaryNav": {
+      "class": "alert-wrapper beneath-secondary-nav",
+      "description": "Fixed below both primary and secondary navigation bars. Use when a secondary nav is present."
+    }
+  },
+  "states": {
+    "visible": {
+      "note": "Default. No extra class needed."
+    },
+    "hidden": {
+      "class": "alert-hidden",
+      "note": "Add alert-hidden to hide on load. Remove or toggle via JavaScript to show."
+    }
+  },
+  "variants": {
+    "Success": {
+      "description": "Confirms a user action completed successfully.",
+      "alertClass": "alert alert-success",
+      "icon": "icon-check-circle-fill",
+      "dismissButtonClass": "btn btn-success-text btn-dismiss",
+      "colors": { "text": "#1c7c35", "background": "#f6fde5" },
+      "template": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-success\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-check-circle-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Success</strong>\n        <span class=\"text-dark\">{message}</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-success-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>",
+      "example": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-success\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-check-circle-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Success</strong>\n        <span class=\"text-dark\">Your changes have been saved successfully.</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-success-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>"
+    },
+    "Danger": {
+      "description": "Indicates an error or critical failure that requires user attention.",
+      "alertClass": "alert alert-danger",
+      "icon": "icon-delete-circle-fill",
+      "dismissButtonClass": "btn btn-danger-text btn-dismiss",
+      "colors": { "text": "#cc3115", "background": "#fff0f0" },
+      "template": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-danger\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-delete-circle-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Error</strong>\n        <span class=\"text-dark\">{message}</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-danger-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>",
+      "example": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-danger\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-delete-circle-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Error</strong>\n        <span class=\"text-dark\">Order could not be submitted. Please try again.</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-danger-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>"
+    },
+    "Warning": {
+      "description": "Alerts users to a potential issue. The user can proceed but should be aware.",
+      "alertClass": "alert alert-warning",
+      "icon": "icon-attention-triangle-fill",
+      "dismissButtonClass": "btn btn-warning-text btn-dismiss",
+      "colors": { "text": "#f9a824", "background": "#fff4e1" },
+      "template": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-warning\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-attention-triangle-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Warning</strong>\n        <span class=\"text-dark\">{message}</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-warning-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>",
+      "example": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-warning\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-attention-triangle-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Warning</strong>\n        <span class=\"text-dark\">This order is being updated. Please return after some time.</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-warning-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>"
+    },
+    "Primary": {
+      "description": "Non-critical informational message. Use for general notices that do not represent success, failure, or risk.",
+      "alertClass": "alert alert-primary",
+      "icon": "icon-info-circle-fill",
+      "dismissButtonClass": "btn btn-primary-text btn-dismiss",
+      "colors": { "text": "#066dce", "background": "#eff7fe" },
+      "template": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-primary\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-info-circle-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Info</strong>\n        <span class=\"text-dark\">{message}</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-primary-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>",
+      "example": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-primary\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-info-circle-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Info</strong>\n        <span class=\"text-dark\">Profile registration must be approved before placing bids.</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-primary-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>"
+    },
+    "Secondary": {
+      "description": "Neutral status notification. Use for locked states or low-emphasis system messages.",
+      "alertClass": "alert alert-secondary",
+      "icon": "icon-lock-fill",
+      "dismissButtonClass": "btn btn-secondary-text btn-dismiss",
+      "colors": { "text": "#4a5c6c", "background": "#f7f8fa" },
+      "template": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-secondary\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-lock-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Locked</strong>\n        <span class=\"text-dark\">{message}</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-secondary-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>",
+      "example": "<div class=\"alert-wrapper\">\n  <div class=\"alert alert-secondary\" role=\"alert\">\n    <div class=\"d-flex\">\n      <span class=\"icon-lock-fill alert-icon me-2\" aria-hidden=\"true\"></span>\n      <div class=\"d-md-flex align-self-center me-3\">\n        <strong class=\"d-block me-1\">Locked</strong>\n        <span class=\"text-dark\">This record is currently locked for editing.</span>\n      </div>\n      <button type=\"button\" class=\"btn btn-secondary-text btn-dismiss\" data-bs-dismiss=\"alert\">Dismiss</button>\n    </div>\n  </div>\n</div>"
+    }
+  },
+  "iconMap": {
+    "success": "icon-check-circle-fill",
+    "danger": "icon-delete-circle-fill",
+    "warning": "icon-attention-triangle-fill",
+    "primary": "icon-info-circle-fill",
+    "secondary": "icon-lock-fill"
+  }
+}

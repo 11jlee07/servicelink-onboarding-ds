@@ -1,0 +1,141 @@
+{
+  "$id": "exos-typography-registry",
+  "component": "Typography",
+  "description": "Typography expresses hierarchy and brand presence. The scale uses a minimal set of styles to define visual hierarchy. Font family is Helvetica Neue, Helvetica, Arial, sans-serif. Two font weights are available: Regular (400) and Bold (700).",
+  "rules": {
+    "always": [
+      "Apply a type scale class (t-18, t-16, t-14, t-12) to establish size — the HTML tag alone does not set the correct size.",
+      "Use fw-bold or font-weight-bold (700) for bold emphasis. Do not invent other weight values.",
+      "Use semantic HTML elements (h1–h6, p, strong, em) and layer type scale classes on top for visual sizing.",
+      "Combine text color classes (text-primary, text-secondary, text-muted, etc.) with type scale classes to create hierarchy without changing size."
+    ],
+    "never": [
+      "Do not use inline `style` attributes to set font sizes — use the t-{n} utility classes instead.",
+      "Do not use small-bolded-text on anything other than button labels or button-like UI — it is uppercase and bold by design.",
+      "Do not skip heading levels for layout reasons — use a type scale class on the correct semantic element instead.",
+      "Do not use font-weight values other than 400 (normal) or 700 (bold)."
+    ]
+  },
+  "fontWeights": {
+    "bold": { "class": "fw-bold", "aliases": ["font-weight-bold"], "value": 700 }
+  },
+  "typeScale": {
+    "description": "Apply these classes to any semantic HTML element (h1–h6, p, span, div) to set font size, letter spacing, and line height. The HTML tag controls semantics; the class controls appearance.",
+    "t-18": {
+      "size": "18px",
+      "letterSpacing": "0.45px (0.025em)",
+      "lineHeight": "27px",
+      "usage": "Large Header — use to overstate or create maximum emphasis at section level.",
+      "example": "<h2 class=\"t-18 fw-bold\">Section Title</h2>"
+    },
+    "t-16": {
+      "size": "16px",
+      "letterSpacing": "0.4px (0.025em)",
+      "lineHeight": "24px",
+      "usage": "Regular Header — default heading size. Use for card titles, panel headings, and subsection labels.",
+      "example": "<h3 class=\"t-16 fw-bold\">Card Title</h3>"
+    },
+    "t-14": {
+      "size": "14px",
+      "letterSpacing": "0.35px (0.025em)",
+      "lineHeight": "21px",
+      "usage": "Regular Paragraph / Small Header — default body text size. Also used for downplayed headers that should read as labels.",
+      "example": "<p class=\"t-14\">Body copy goes here.</p>"
+    },
+    "t-12": {
+      "size": "12px",
+      "letterSpacing": "0.3px (0.025em)",
+      "lineHeight": "18px",
+      "usage": "Small Paragraph — use for captions, helper text, metadata, and secondary information that should recede.",
+      "example": "<p class=\"t-12 text-muted\">Last updated 3 days ago</p>"
+    },
+    "small-bolded-text": {
+      "size": "10px",
+      "letterSpacing": "1px (0.01em)",
+      "lineHeight": "16px",
+      "fontWeight": 700,
+      "textTransform": "uppercase",
+      "usage": "Button labels and button-like UI text only. Uppercase bold — do not use for general body copy.",
+      "example": "<p class=\"small-bolded-text\">SUBMIT</p>"
+    }
+  },
+  "textColors": {
+    "description": "Combine color classes with type scale classes to create hierarchy. Color classes do not change size.",
+    "text-primary": { "hex": "#066dce", "usage": "Links, interactive text, primary emphasis." },
+    "text-secondary": { "hex": "#4a5c6c", "usage": "Secondary labels, subdued headings." },
+    "text-dark": { "hex": "#0a2845", "usage": "High-contrast body text on light backgrounds." },
+    "text-success": { "hex": "#1c7c35", "usage": "Positive states, success messages." },
+    "text-danger": { "hex": "#cc3115", "usage": "Errors, destructive actions, critical alerts." },
+    "text-warning": { "hex": "#f9a824", "usage": "Warnings, caution states." },
+    "text-muted": { "usage": "Placeholder text, secondary metadata, disabled labels." },
+    "text-white": { "usage": "Text on dark or colored backgrounds." }
+  },
+  "textTransform": {
+    "text-uppercase": "Transforms all characters to uppercase.",
+    "text-lowercase": "Transforms all characters to lowercase.",
+    "text-capitalize": "Capitalizes the first letter of each word."
+  },
+  "textAlignment": {
+    "text-start": "Left-align text (Bootstrap 5 preferred).",
+    "text-center": "Center-align text.",
+    "text-end": "Right-align text (Bootstrap 5 preferred).",
+    "text-justify": "Justify text.",
+    "note": "Responsive variants are available: text-sm-start, text-md-center, text-lg-end, etc."
+  },
+  "textUtilities": {
+    "text-truncate": "Truncates overflowing text with an ellipsis. Requires a fixed width on the element.",
+    "text-nowrap": "Prevents text from wrapping to the next line.",
+    "text-wrap": "Allows text to wrap (white-space: normal).",
+    "text-break": "Breaks long words or URLs that would otherwise overflow.",
+    "text-decoration-none": "Removes underline from links.",
+    "text-decoration-underline": "Forces underline on text.",
+    "text-reset": "Resets text color to inherit from parent."
+  },
+  "semanticElements": {
+    "description": "Use semantic HTML for meaning, then apply type scale classes for visual sizing.",
+    "strong": "Bold emphasis — renders at font-weight 700. Use for critical keywords.",
+    "em": "Italic emphasis. Use sparingly for stress emphasis.",
+    "small": "Renders slightly smaller than surrounding text. Prefer t-12 for precise control.",
+    "mark": "Highlights text with a background color. Use for search result highlights.",
+    "blockquote": "Block-level quotation. Use class `blockquote` for Bootstrap styling.",
+    "code": "Inline code snippet. Renders in monospace font."
+  },
+  "commonPatterns": {
+    "PageTitle": {
+      "description": "Top-level page heading. Large, bold.",
+      "example": "<h1 class=\"t-18 fw-bold\">Page Title</h1>"
+    },
+    "SectionHeading": {
+      "description": "Section divider within a page.",
+      "example": "<h2 class=\"t-16 fw-bold\">Section Heading</h2>"
+    },
+    "CardTitle": {
+      "description": "Title inside a card component.",
+      "example": "<h3 class=\"t-16 fw-bold\">Card Title</h3>"
+    },
+    "SubsectionLabel": {
+      "description": "Small label heading that sits above content groups.",
+      "example": "<h4 class=\"t-14 fw-bold text-secondary\">Label</h4>"
+    },
+    "BodyText": {
+      "description": "Default paragraph body copy.",
+      "example": "<p class=\"t-14\">Body copy goes here.</p>"
+    },
+    "Caption": {
+      "description": "Supporting metadata, timestamps, helper text.",
+      "example": "<p class=\"t-12 text-muted\">Last updated 3 days ago</p>"
+    },
+    "ErrorText": {
+      "description": "Inline validation error message.",
+      "example": "<p class=\"t-12 text-danger\">This field is required.</p>"
+    },
+    "Link": {
+      "description": "Inline text link.",
+      "example": "<a href=\"#\" class=\"text-primary\">Learn more</a>"
+    },
+    "MutedSupportingText": {
+      "description": "De-emphasized secondary information.",
+      "example": "<span class=\"t-12 text-muted\">Optional</span>"
+    }
+  }
+}

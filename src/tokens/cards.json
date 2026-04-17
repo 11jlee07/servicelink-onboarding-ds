@@ -1,0 +1,49 @@
+{
+  "$id": "exos-cards-registry",
+  "component": "Cards",
+  "description": "Cards are content containers used to present a group of information. Every card must use the standard card-header / card-body structure. card-footer is optional and reserved for action buttons.",
+  "rules": {
+    "always": [
+      "Always include a `card-header` and `card-body` inside every `.card` — these provide responsive padding and alignment.",
+      "Use `card-footer` only when action buttons are appropriate — it is optional.",
+      "Use `bg-transparent` on `card-header` and `card-footer` when you do not want the default background color.",
+      "Place `card-title` inside `card-header` — it receives bold 16px styling automatically."
+    ],
+    "never": [
+      "Do not use `card-secondary-navigation` and `card-primary-navigation` together on the same card.",
+      "Do not use `card-search` for cards that do not need a fixed-height scrollable body."
+    ]
+  },
+  "variants": {
+    "Basic": {
+      "description": "A simple information card with a header and body. Use for read-only data display where no actions are needed.",
+      "elements": {
+        "card": "card",
+        "header": "card-header",
+        "body": "card-body",
+        "footer": "card-footer"
+      },
+      "template": "<div class=\"card\">\n  <div class=\"card-header\">\n    <h2 class=\"card-title\">{title}</h2>\n  </div>\n  <div class=\"card-body\">\n    {content}\n  </div>\n  <div class=\"card-footer\">\n    {actions}\n  </div>\n</div>",
+      "examples": {
+        "Information Card": "<div class=\"card\">\n  <div class=\"card-header py-5\">\n    <h2 class=\"card-title\">Patient Details</h2>\n  </div>\n  <div class=\"card-body\">\n    <!-- card content -->\n  </div>\n  <div class=\"card-footer\">\n    <!-- action buttons -->\n  </div>\n</div>"
+      }
+    },
+    "Search": {
+      "description": "Card used for search filter forms. Header holds the card title, body holds the form fields, footer holds Reset and Search action buttons.",
+      "elements": {
+        "card": "card",
+        "header": "card-header bg-transparent pb-0",
+        "body": "card-body",
+        "footer": "card-footer bottom-buttons-footer d-flex justify-content-end bg-transparent pt-0"
+      },
+      "rules": [
+        "Always place Reset and Search buttons in the card-footer, not the card-body.",
+        "Reset button uses `btn btn-secondary-text`, Search button uses `btn btn-primary`."
+      ],
+      "template": "<div class=\"card\">\n  <div class=\"card-header bg-transparent pb-0\">\n    <h2 class=\"card-title mb-0 font-weight-normal\">{title}</h2>\n  </div>\n  <div class=\"card-body\">\n    {formContent}\n  </div>\n  <div class=\"card-footer bottom-buttons-footer d-flex justify-content-end bg-transparent pt-0\">\n    <button type=\"reset\" class=\"btn btn-secondary-text\">Reset</button>\n    <button type=\"submit\" class=\"btn btn-primary\">Search</button>\n  </div>\n</div>",
+      "examples": {
+        "Search Card": "<div class=\"card\">\n  <div class=\"card-header bg-transparent pb-0\">\n    <h2 class=\"card-title mb-0 font-weight-normal\">Search Filters</h2>\n  </div>\n  <div class=\"card-body\">\n    <!-- form fields -->\n  </div>\n  <div class=\"card-footer bottom-buttons-footer d-flex justify-content-end bg-transparent pt-0\">\n    <button type=\"reset\" class=\"btn btn-secondary-text\">Reset</button>\n    <button type=\"submit\" class=\"btn btn-primary\">Search</button>\n  </div>\n</div>"
+      }
+    }
+  }
+}

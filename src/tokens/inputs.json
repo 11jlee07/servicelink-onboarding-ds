@@ -1,0 +1,220 @@
+{
+  "$id": "exos-inputs-registry",
+  "component": "Inputs",
+  "description": "Inputs are used for freeform data entry and option selection. All inputs must be paired with a visible label and wrapped in a form group container.",
+  "rules": {
+    "always": [
+      "Every input must have a unique `id` attribute.",
+      "Every input must be paired with a <label> whose `for` attribute matches the input's `id`.",
+      "Use `required-field` class on the <label> element to show the required asterisks along with the required HTML attribute",
+      "Use `aria-label` and `aria-describedby` on inputs inside input groups so screen readers have context."
+    ],
+    "never": [
+      "Do not use `right-aligned` class on non-numeric inputs.",
+      "Do not place `disabled` or `readonly` on the wrapper div — apply directly to the `<input>` element (and additionally add `input-group-disabled` / `input-group-readonly` on the wrapper only for input-group variants)."
+    ]
+  },
+  "styles": {
+    "Gray": {
+      "description": "Default style. Use on white backgrounds. No extra class needed.",
+      "class": null,
+      "note": "Default — add no style class"
+    },
+    "White": {
+      "description": "Use on colored or primary-tinted backgrounds. Wrap the input's form group div in this class.",
+      "class": "fc-white-bg-wrapper",
+      "note": "Apply fc-white-bg-wrapper on the wrapper div, not on the input itself."
+    }
+  },
+  "states": {
+    "disabled": {
+      "attribute": "disabled",
+      "note": "Add the `disabled` HTML attribute directly to the <input> element. For input groups also add `input-group-disabled` on the parent wrapper div."
+    },
+    "readonly": {
+      "attribute": "readonly",
+      "note": "Add the `readonly` HTML attribute directly to the <input> element. For input groups also add `input-group-readonly` on the parent wrapper div."
+    },
+    "error": {
+      "note": "Apply validation error messaging adjacent to the input. No dedicated error class — use framework validation patterns."
+    }
+  },
+  "variants": {
+    "TextField": {
+      "description": "Standard single-line text input. Use for freeform alphanumeric entry. The base class is always form-control.",
+      "inputTypes": ["text", "email", "password"],
+      "baseClass": "form-control",
+      "sizes": {
+        "sm": { "class": "form-control-sm" },
+        "md": { "class": null, "note": "Default — add no size class" },
+        "lg": { "class": "form-control-lg" }
+      },
+      "modifiers": {
+        "rightAligned": {
+          "class": "right-aligned",
+          "note": "Add to form-control for numeric inputs so values are right-justified."
+        }
+      },
+      "template": "<div>\n  <label for=\"{id}\">{label}</label>\n  <input type=\"{type}\" id=\"{id}\" class=\"form-control{sizeClass}\">\n</div>",
+      "examples": {
+        "Text": "<div>\n  <label for=\"usernameInput\">Username</label>\n  <input type=\"text\" id=\"usernameInput\" class=\"form-control\">\n</div>"
+      }
+    },
+    "Textarea": {
+      "description": "Multi-line text input. Users can drag the bottom-right corner to resize. Use for longer freeform text entry.",
+      "baseClass": "form-control",
+      "wrapper": "form-group fc-white-bg-wrapper",
+      "rules": [
+        "Always wrap the label and textarea inside a div with classes `form-group fc-white-bg-wrapper`."
+      ],
+      "template": "<div class=\"form-group fc-white-bg-wrapper\">\n  <label for=\"{id}\">{label}</label>\n  <textarea id=\"{id}\" class=\"form-control\"></textarea>\n</div>",
+      "examples": {
+        "Default": "<div class=\"form-group fc-white-bg-wrapper\">\n  <label for=\"notesInput\">Notes</label>\n  <textarea id=\"notesInput\" class=\"form-control\"></textarea>\n</div>"
+      }
+    },
+    "DatePicker": {
+      "description": "Single date selection using the native browser date input. Always add max=\"2999-12-31\" to constrain the year to 4 digits.",
+      "baseClass": "custom-date-picker",
+      "rules": [
+        "Always include max=\"2999-12-31\"."      ],
+      "template": "<div>\n  <label for=\"{id}\">{label}</label>\n  <input type=\"date\" id=\"{id}\" class=\"custom-date-picker\" max=\"2999-12-31\">\n</div>",
+      "examples": {
+        "Date Picker": "<div>\n  <label for=\"datePickerInput\">Date</label>\n  <input type=\"date\" id=\"datePickerInput\" class=\"custom-date-picker\" max=\"2999-12-31\">\n</div>",
+        "DateTime Picker": "<div>\n  <label for=\"dateTimePickerInput\">Date &amp; Time</label>\n  <input type=\"datetime-local\" id=\"dateTimePickerInput\" class=\"custom-date-picker\" max=\"2999-12-31\">\n</div>"
+      }
+    },
+    "TimePicker": {
+      "description": "Native browser time input.",
+      "baseClass": "custom-time-picker",
+      "template": "<div>\n  <label for=\"{id}\">{label}</label>\n  <input type=\"time\" id=\"{id}\" class=\"custom-time-picker\">\n</div>",
+      "examples": {
+        "Time Picker": "<div>\n  <label for=\"timePickerInput\">Time</label>\n  <input type=\"time\" id=\"timePickerInput\" class=\"custom-time-picker\">\n</div>"
+      }
+    },
+    "Select": {
+      "description": "Dropdown for single-option selection from a predefined list. Cannot accept free-form text — use ComboBox for that.",
+      "baseClass": "form-select",
+      "sizes": {
+        "sm": { "class": "form-select-sm" },
+        "md": { "class": null, "note": "Default — add no size class" },
+        "lg": { "class": "form-select-lg" }
+      },
+      "template": "<div>\n  <label for=\"{id}\">{label}</label>\n  <select id=\"{id}\" class=\"form-select\">\n    <option selected>Select</option>\n    <option value=\"1\">Option 1</option>\n  </select>\n</div>",
+      "examples": {
+        "Default": "<div>\n  <label for=\"selectInput\">Category</label>\n  <select id=\"selectInput\" class=\"form-select\">\n    <option selected>Select</option>\n    <option value=\"1\">One</option>\n    <option value=\"2\">Two</option>\n    <option value=\"3\">Three</option>\n  </select>\n</div>",
+      }
+    },
+    "ComboBox": {
+      "description": "Hybrid input that allows either selection from a predefined list OR free-form text entry. Backed by a <datalist>. Use when the user may need to type a value not in the list.",
+      "baseClass": "form-select",
+      "template": "<div>\n  <label for=\"{id}\">{label}</label>\n  <input class=\"form-select\" list=\"{datalistId}\" id=\"{id}\" name=\"{name}\">\n  <datalist id=\"{datalistId}\">\n    <option value=\"Option 1\">\n    <option value=\"Option 2\">\n  </datalist>\n</div>",
+      "examples": {
+        "Combo Box": "<div>\n  <label for=\"iceCreamChoice\">Choose a flavor</label>\n  <input class=\"form-select\" list=\"iceCreamFlavors\" id=\"iceCreamChoice\" name=\"iceCreamChoice\">\n  <datalist id=\"iceCreamFlavors\">\n    <option value=\"Chocolate\">\n    <option value=\"Coconut\">\n    <option value=\"Mint\">\n    <option value=\"Strawberry\">\n    <option value=\"Vanilla\">\n  </datalist>\n</div>"
+      }
+    },
+    "Checkbox": {
+      "description": "For multi-selection or binary on/off choices. Requires a submit button to apply — does not trigger immediate action. Use Switch for immediate actions.",
+      "states": ["enabled", "checked", "disabled", "error"],
+      "wrapper": "form-check",
+      "inputBaseClass": "form-check-input",
+      "labelBaseClass": "form-check-label",
+      "template": "<div class=\"form-check\">\n  <input type=\"checkbox\" id=\"{id}\" class=\"form-check-input\">\n  <label for=\"{id}\" class=\"form-check-label\">{label}</label>\n</div>",
+      "examples": {
+        "Checked": "<div class=\"form-check\">\n  <input type=\"checkbox\" id=\"onCheckbox\" class=\"form-check-input\" checked>\n  <label for=\"onCheckbox\" class=\"form-check-label\">On</label>\n</div>",
+      }
+    },
+    "Radio": {
+      "description": "For single-selection from a group. All radios in a group must share the same `name` attribute.",
+      "states": ["enabled", "selected", "disabled", "error"],
+      "wrapper": "form-check",
+      "inputBaseClass": "form-check-input",
+      "labelBaseClass": "form-check-label",
+      "template": "<div class=\"form-check\">\n  <input type=\"radio\" id=\"{id}\" name=\"{groupName}\" class=\"form-check-input\">\n  <label for=\"{id}\" class=\"form-check-label\">{label}</label>\n</div>",
+      "examples": {
+        "Radio Group": "<div class=\"form-check\">\n  <input type=\"radio\" id=\"radioOne\" name=\"radioExample\" class=\"form-check-input\" checked>\n  <label for=\"radioOne\" class=\"form-check-label\">One</label>\n</div>\n<div class=\"form-check\">\n  <input type=\"radio\" id=\"radioTwo\" name=\"radioExample\" class=\"form-check-input\">\n  <label for=\"radioTwo\" class=\"form-check-label\">Two</label>\n</div>",
+      }
+    },
+    "Switch": {
+      "description": "Toggle for binary on/off actions that take effect immediately — no submit button needed. Do not use for settings that require review before applying.",
+      "states": ["on", "off", "disabled"],
+      "wrapper": "form-check form-switch",
+      "inputBaseClass": "form-check-input",
+      "labelBaseClass": "form-check-label",
+      "template": "<div class=\"form-check form-switch\">\n  <input type=\"checkbox\" class=\"form-check-input\" id=\"{id}\">\n  <label class=\"form-check-label\" for=\"{id}\">{label}</label>\n</div>",
+      "examples": {
+        "On": "<div class=\"form-check form-switch\">\n  <input type=\"checkbox\" class=\"form-check-input\" id=\"customSwitchOn\" checked>\n  <label class=\"form-check-label\" for=\"customSwitchOn\">On</label>\n</div>",
+        "Off": "<div class=\"form-check form-switch\">\n  <input type=\"checkbox\" class=\"form-check-input\" id=\"customSwitchOff\">\n  <label class=\"form-check-label\" for=\"customSwitchOff\">Off</label>\n</div>",
+      }
+    },
+    "ChipsCheckbox": {
+      "description": "Compact visual alternative to checkboxes for multi-selection. Chips display options inline and provide extra emphasis on selected state. Use when options benefit from compact, side-by-side layout.",
+      "parentClass": "custom-chip",
+      "colorVariants": {
+        "default": { "class": "custom-chip", "note": "No color modifier — default chip style." },
+        "primary": { "class": "custom-chip chip-primary" },
+        "success": { "class": "custom-chip chip-success" },
+        "danger": { "class": "custom-chip chip-danger" }
+      },
+      "inputBaseClass": "custom-chip-input",
+      "labelBaseClass": "custom-chip-label",
+      "note": "All icons from the icon library are supported inside the label.",
+      "template": "<div class=\"custom-chip {colorVariant}\">\n  <input type=\"checkbox\" id=\"{id}\" class=\"custom-chip-input\">\n  <label for=\"{id}\" class=\"custom-chip-label\">\n    <span class=\"{iconClass}\" aria-hidden=\"true\"></span>\n    {label}\n  </label>\n</div>",
+      "examples": {
+        "Default": "<div class=\"custom-chip\">\n  <input type=\"checkbox\" id=\"chipsCheckboxProvider\" class=\"custom-chip-input\">\n  <label for=\"chipsCheckboxProvider\" class=\"custom-chip-label\">\n    <span class=\"icon-show\" aria-hidden=\"true\"></span>\n    Provider\n  </label>\n</div>",
+        "Danger": "<div class=\"custom-chip chip-danger\">\n  <input type=\"checkbox\" id=\"chipsCheckboxWarning\" class=\"custom-chip-input\">\n  <label for=\"chipsCheckboxWarning\" class=\"custom-chip-label\">\n    <span class=\"icon-attention-triangle\" aria-hidden=\"true\"></span>\n    Assistance Required\n  </label>\n</div>"
+      }
+    },
+    "ChipsRadio": {
+      "description": "Compact visual alternative to radio buttons for single-selection. All radio chips in a group must share the same `name` attribute.",
+      "parentClass": "custom-chip",
+      "colorVariants": {
+        "default": { "class": "custom-chip" },
+        "primary": { "class": "custom-chip chip-primary" },
+        "success": { "class": "custom-chip chip-success" },
+        "danger": { "class": "custom-chip chip-danger" }
+      },
+      "inputBaseClass": "custom-chip-input",
+      "labelBaseClass": "custom-chip-label",
+      "template": "<div class=\"custom-chip {colorVariant}\">\n  <input type=\"radio\" id=\"{id}\" name=\"{groupName}\" class=\"custom-chip-input\">\n  <label for=\"{id}\" class=\"custom-chip-label\">\n    <span class=\"{iconClass}\" aria-hidden=\"true\"></span>\n    {label}\n  </label>\n</div>",
+      "examples": {
+        "Radio Chip Group": "<div class=\"custom-chip\">\n  <input type=\"radio\" id=\"chipsRadioOption1\" class=\"custom-chip-input\" name=\"chipRadioOptions\">\n  <label for=\"chipsRadioOption1\" class=\"custom-chip-label\">\n    <span class=\"icon-show\" aria-hidden=\"true\"></span>\n    Option 1\n  </label>\n</div>\n<div class=\"custom-chip chip-success\">\n  <input type=\"radio\" id=\"chipsRadioOption2\" class=\"custom-chip-input\" name=\"chipRadioOptions\">\n  <label for=\"chipsRadioOption2\" class=\"custom-chip-label\">\n    <span class=\"icon-add-circle\" aria-hidden=\"true\"></span>\n    Option 2\n  </label>\n</div>\n<div class=\"custom-chip chip-primary\">\n  <input type=\"radio\" id=\"chipsRadioOption3\" class=\"custom-chip-input\" name=\"chipRadioOptions\">\n  <label for=\"chipsRadioOption3\" class=\"custom-chip-label\">\n    <span class=\"icon-bell\" aria-hidden=\"true\"></span>\n    Option 3\n  </label>\n</div>"
+      }
+    },
+    "InputGroup": {
+      "description": "Attaches a non-editable text label (add-on) to the left (prepend) or right (append) side of a text input. Commonly used for currency ($), percentages (%), or domain labels.",
+      "wrapperClass": "input-group",
+      "prependClass": "input-group-prepend",
+      "appendClass": "input-group-append",
+      "addonClass": "input-group-text",
+      "rules": [
+        "The add-on span must have a unique `id`.",
+        "The input must have `aria-label` describing the field and `aria-describedby` pointing to the add-on span's id."
+      ],
+      "states": {
+        "disabled": "Add `disabled` to the input AND `input-group-disabled` class to the input-group wrapper div.",
+        "readonly": "Add `readonly` to the input AND `input-group-readonly` class to the input-group wrapper div."
+      },
+      "template_prepend": "<div>\n  <label for=\"{id}\">{label}</label>\n  <div class=\"input-group\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"{addonId}\">{addonText}</span>\n    </div>\n    <input type=\"text\" class=\"form-control\" aria-label=\"{label}\" aria-describedby=\"{addonId}\" id=\"{id}\">\n  </div>\n</div>",
+      "template_append": "<div>\n  <label for=\"{id}\">{label}</label>\n  <div class=\"input-group\">\n    <input type=\"text\" class=\"form-control\" aria-label=\"{label}\" aria-describedby=\"{addonId}\" id=\"{id}\">\n    <div class=\"input-group-append\">\n      <span class=\"input-group-text\" id=\"{addonId}\">{addonText}</span>\n    </div>\n  </div>\n</div>",
+      "examples": {
+        "Currency (Prepend)": "<div>\n  <label for=\"inputGroupAmount\">Amount</label>\n  <div class=\"input-group\">\n    <div class=\"input-group-prepend\">\n      <span class=\"input-group-text\" id=\"inputGroupAmountAddOn\">$</span>\n    </div>\n    <input type=\"text\" class=\"form-control\" aria-label=\"Amount\" aria-describedby=\"inputGroupAmountAddOn\" id=\"inputGroupAmount\">\n  </div>\n</div>",
+        "Percentage (Append)": "<div>\n  <label for=\"inputGroupPercentage\">Percentage</label>\n  <div class=\"input-group\">\n    <input type=\"text\" class=\"form-control\" aria-label=\"Percentage\" aria-describedby=\"inputGroupPercentageAddOn\" id=\"inputGroupPercentage\">\n    <div class=\"input-group-append\">\n      <span class=\"input-group-text\" id=\"inputGroupPercentageAddOn\">%</span>\n    </div>\n  </div>\n</div>",
+      }
+    },
+    "ButtonAddon": {
+      "description": "An icon button overlaid inside an input. Used when the input requires an associated action (show/hide password, search, calendar toggle). The button floats inside the input using absolute positioning — it does not widen the input.",
+      "wrapperClass": "custom-button-overlay-input-group",
+      "buttonPositionerClass": "btn-positioner",
+      "rules": [
+        "The overlay button must have `aria-label` describing its action.",
+        "The icon inside the button must have `aria-hidden=\"true\"`.",
+        "Use `type=\"button\"` on the button to prevent form submission."
+      ],
+      "template": "<div>\n  <label for=\"{id}\">{label}</label>\n  <div class=\"custom-button-overlay-input-group\">\n    <input type=\"{type}\" id=\"{id}\" class=\"form-control\">\n    <div class=\"btn-positioner\">\n      <button class=\"btn\" type=\"button\" aria-label=\"{actionLabel}\">\n        <span class=\"{iconClass}\" aria-hidden=\"true\"></span>\n      </button>\n    </div>\n  </div>\n</div>",
+      "examples": {
+        "Show/Hide Password": "<div>\n  <label for=\"ssn\">Social Security Number</label>\n  <div class=\"custom-button-overlay-input-group\">\n    <input type=\"password\" id=\"ssn\" class=\"form-control\">\n    <div class=\"btn-positioner\">\n      <button class=\"btn\" type=\"button\" aria-label=\"Show and hide SSN\">\n        <span class=\"icon-show\" aria-hidden=\"true\"></span>\n      </button>\n    </div>\n  </div>\n</div>",
+        "Search": "<div>\n  <label for=\"searchAddon\">Search</label>\n  <div class=\"custom-button-overlay-input-group\">\n    <input type=\"text\" id=\"searchAddon\" class=\"form-control\">\n    <div class=\"btn-positioner\">\n      <button class=\"btn\" type=\"button\" aria-label=\"Search\">\n        <span class=\"icon-search\" aria-hidden=\"true\"></span>\n      </button>\n    </div>\n  </div>\n</div>"
+      }
+    }
+  }
+}

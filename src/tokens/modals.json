@@ -1,0 +1,53 @@
+{
+  "$id": "exos-modals-registry",
+  "component": "Modals",
+  "description": "Modals interrupt the user to present focused content or require a decision. Two presentation styles exist: Popup (centered overlay) and Slide-Out (panel from left or right edge).",
+  "rules": {
+    "always": [
+      "Always include tabindex=\"-1\", aria-labelledby pointing to the modal title id, and aria-hidden=\"true\" on the root modal div.",
+      "Always give the modal title a unique id and reference it in aria-labelledby.",
+      "Always include modal-dialog-scrollable and modal-dialog-centered on the modal-dialog div.",
+      "Always use modal-content > modal-header + modal-body + modal-footer structure.",
+      "Always use bottom-buttons-footer class on modal-footer.",
+      "Always include a close button in the modal-header with aria-label=\"Close\" and data-bs-dismiss=\"modal\".",
+      "The close button icon must always be icon-delete with aria-hidden=\"true\"."
+    ],
+    "never": [
+      "Do not omit the size class (modal-sm, modal-md, modal-lg, modal-xl, modal-xxl) — always be explicit about size.",
+      "Do not use data-toggle or data-dismiss (Bootstrap 4 attributes) — use data-bs-toggle and data-bs-dismiss.",
+      "Do not use sr-only on the close button — use visually-hidden.",
+      "Do not use slide-out modals for simple confirmations — use Popup modals for those.",
+      "Do not stack multiple modals."
+    ]
+  },
+  "trigger": {
+    "description": "Open a modal by setting data-bs-toggle and data-bs-target on any button.",
+    "template": "<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#{modalId}\">{label}</button>",
+    "example": "<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Open Modal</button>"
+  },
+  "closeButton": {
+    "class": "close visually-hidden",
+    "attribute": "data-bs-dismiss=\"modal\"",
+    "template": "<button type=\"button\" class=\"close visually-hidden\" data-bs-dismiss=\"modal\" aria-label=\"Close\">\n  <span class=\"icon-delete\" aria-hidden=\"true\"></span>\n</button>"
+  },
+  "sizes": {
+    "sm": { "class": "modal-sm", "width": "300px", "usage": "Simple confirmations, single-field prompts." },
+    "md": { "class": "modal-md", "width": "480px", "usage": "Default size for most modals and basic forms." },
+    "lg": { "class": "modal-lg", "width": "800px", "usage": "Multi-section content, complex forms, terms of use." },
+    "xl": { "class": "modal-xl", "width": "1140px", "usage": "Data tables, extensive content layouts." },
+    "xxl": { "class": "modal-xxl", "width": "1400px", "usage": "Full-featured workflows, large slide-out panels." }
+  },
+  "variants": {
+    "Popup": {
+      "description": "Centered overlay modal. Use for confirmations, forms, and focused tasks. The default modal type.",
+      "rootClasses": "modal fade",
+      "availableSizes": ["sm", "md", "lg", "xl", "xxl"],
+      "template": "<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#{id}\">{triggerLabel}</button>\n\n<div class=\"modal fade\" id=\"{id}\" tabindex=\"-1\" aria-labelledby=\"{id}Label\" aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-dialog-scrollable modal-dialog-centered {sizeClass}\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"{id}Label\">{title}</h5>\n        <button type=\"button\" class=\"close visually-hidden\" data-bs-dismiss=\"modal\" aria-label=\"Close\">\n          <span class=\"icon-delete\" aria-hidden=\"true\"></span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        {content}\n      </div>\n      <div class=\"modal-footer bottom-buttons-footer\">\n        <button type=\"button\" class=\"btn btn-secondary-text\" data-bs-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">{primaryAction}</button>\n      </div>\n    </div>\n  </div>\n</div>",
+      "examples": {
+        "Default (md)": "<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Open Modal</button>\n\n<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>\n        <button type=\"button\" class=\"close visually-hidden\" data-bs-dismiss=\"modal\" aria-label=\"Close\">\n          <span class=\"icon-delete\" aria-hidden=\"true\"></span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        Content Goes Here\n      </div>\n      <div class=\"modal-footer bottom-buttons-footer\">\n        <button type=\"button\" class=\"btn btn-secondary-text\" data-bs-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">Save</button>\n      </div>\n    </div>\n  </div>\n</div>",
+        "Small (sm)": "<div class=\"modal fade\" id=\"modalSmall\" tabindex=\"-1\" aria-labelledby=\"modalSmallLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"modalSmallLabel\">Confirm</h5>\n        <button type=\"button\" class=\"close visually-hidden\" data-bs-dismiss=\"modal\" aria-label=\"Close\">\n          <span class=\"icon-delete\" aria-hidden=\"true\"></span>\n        </button>\n      </div>\n      <div class=\"modal-body\">Are you sure?</div>\n      <div class=\"modal-footer bottom-buttons-footer\">\n        <button type=\"button\" class=\"btn btn-secondary-text\" data-bs-dismiss=\"modal\">Cancel</button>\n        <button type=\"button\" class=\"btn btn-danger\">Delete</button>\n      </div>\n    </div>\n  </div>\n</div>",
+        "Large (lg)": "<div class=\"modal fade\" id=\"modalLarge\" tabindex=\"-1\" aria-labelledby=\"modalLargeLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"modalLargeLabel\">Modal title</h5>\n        <button type=\"button\" class=\"close visually-hidden\" data-bs-dismiss=\"modal\" aria-label=\"Close\">\n          <span class=\"icon-delete\" aria-hidden=\"true\"></span>\n        </button>\n      </div>\n      <div class=\"modal-body\">Content Goes Here</div>\n      <div class=\"modal-footer bottom-buttons-footer\">\n        <button type=\"button\" class=\"btn btn-secondary-text\" data-bs-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">Save</button>\n      </div>\n    </div>\n  </div>\n</div>"
+      }
+    }
+  }
+}

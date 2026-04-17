@@ -1,0 +1,154 @@
+/* Foundation / EXOS Design System — Colors & Type */
+/* Source of truth: tokens/tokens.json + Foundation Design System.fig */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap');
+
+:root {
+  /* ── SEMANTIC TOKENS (from tokens.json → semanticColor.exosLight) ── */
+
+  /* Text */
+  --textActionPrimary:     #066dce;
+  --textDefaultPrimary:    #05152a;
+  --textDefaultSecondary:  #304258;
+  --textDefaultTertiary:   #687885;
+  --textActionInvert:      #ffffff;
+  --textActionLight:       #e4f2fe;
+  --textActionLighter:     #eff7fe;
+  --textActionDark:        #0559a9;
+  --textDangerPrimary:     #cc3115;
+  --textDangerLight:       #feeae6;
+  --textDangerLighter:     #fff0f0;
+  --textDangerDark:        #9e2610;
+  --textSuccessPrimary:    #1c7c35;
+  --textSuccessLight:      #effde1;
+  --textSuccessLighter:    #f6fde5;
+  --textSuccessDark:       #135223;
+  --textWarningPrimary:    #f9a824;
+  --textWarningLight:      #feeed3;
+  --textWarningLighter:    #fff4e1;
+
+  /* Backgrounds */
+  --bgActionPrimary:    #066dce;
+  --bgActionLight:      #e4f2fe;
+  --bgActionLighter:    #eff7fe;
+  --bgActionDark:       #0559a9;
+  --bgDefaultWhite:     #ffffff;
+  --bgDefaultLight:     #f0f2f5;
+  --bgDefaultLighter:   #f7f8fa;
+  --bgDangerPrimary:    #cc3115;
+  --bgDangerLight:      #feeae6;
+  --bgDangerLighter:    #fff0f0;
+  --bgDangerDark:       #9e2610;
+  --bgSuccessPrimary:   #1c7c35;
+  --bgSuccessLight:     #effde1;
+  --bgSuccessLighter:   #f6fde5;
+  --bgSuccessDark:      #135223;
+  --bgWarningPrimary:   #f9a824;
+  --bgWarningLight:     #feeed3;
+  --bgWarningLighter:   #fff4e1;
+
+  /* Borders */
+  --borderDefaultPrimary:   #66747f;
+  --borderDefaultLight:     #bfcad5;
+  --borderDefaultLighter:   #d8dfe6;
+  --borderActionPrimary:    #066dce;
+  --borderActionLight:      #e4f2fe;
+  --borderActionLighter:    #eff7fe;
+  --borderSuccessPrimary:   #1c7c35;
+  --borderDangerPrimary:    #cc3115;
+  --borderWarningPrimary:   #f9a824;
+
+  /* Icons */
+  --iconActionPrimary:    #066dce;
+  --iconDefaultPrimary:   #05152a;
+  --iconDefaultSecondary: #304258;
+  --iconDefaultTertiary:  #687885;
+  --iconActionInvert:     #ffffff;
+  --iconSuccessPrimary:   #1c7c35;
+  --iconDangerPrimary:    #cc3115;
+  --iconWarningPrimary:   #f9a824;
+
+  /* ── PRIMITIVE ALIASES (kept for back-compat) ── */
+  --text-primary:      var(--textDefaultPrimary);
+  --text-secondary:    var(--textDefaultSecondary);
+  --text-tertiary:     var(--textDefaultTertiary);
+  --blue-80:           var(--bgActionPrimary);
+  --border-gray-lighter: var(--borderDefaultLighter);
+  --border-gray-light:   var(--borderDefaultLight);
+  --border-gray-primary: var(--borderDefaultPrimary);
+  --subtle-gray-10:    var(--bgDefaultLighter);
+  --subtle-gray-20:    var(--bgDefaultLight);
+  --fg-primary:        var(--textDefaultPrimary);
+  --fg-secondary:      var(--textDefaultSecondary);
+  --fg-muted:          var(--textDefaultTertiary);
+  --border-subtle:     var(--borderDefaultLighter);
+  --border-default:    var(--borderDefaultLight);
+  --neutral-50:        var(--bgDefaultLighter);
+
+  /* ── SHADOW ── */
+  --shadow-card: 0 2px 6px rgba(10,54,69,0.12);
+  --shadow-lift: 0 8px 24px rgba(10,54,69,0.25);
+
+  /* ── RADIUS ── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 1000px;
+
+  /* ── FONT STACKS ── */
+  --font-sans:    "Helvetica Neue","Helvetica","Arial",sans-serif;
+  --font-display: "Inter","Helvetica Neue",sans-serif;
+  --font-ibm:     "IBM Plex Sans",sans-serif;
+  --font-mono:    "IBM Plex Mono",ui-monospace,Menlo,monospace;
+
+  /* ── BRAND / SCENE ── */
+  --brand-blue-400: #3B82F4;
+  --brand-blue-600: #066dce;
+  --brand-blue-700: #0559a9;
+  --bg-brand-gradient: linear-gradient(135deg,#139CDB 0%,#0464BF 100%);
+  --bg-illustration-halo: radial-gradient(circle at 40% 40%, rgba(143,141,203,0.35) 0%, rgba(111,147,211,0.25) 55%, rgba(6,109,206,0.12) 100%);
+  --bg-screen: var(--bgDefaultLight);
+  --white: #ffffff;
+}
+
+/* ── BASE ── */
+html,body{font-family:var(--font-sans);color:var(--textDefaultPrimary);background:var(--bgDefaultWhite);-webkit-font-smoothing:antialiased;}
+
+/* ── TYPE SCALE UTILITIES (from typography.json) ── */
+/* t-18: Large Header — 18px / 27px / 0.025em tracking */
+.t-18{font-size:18px!important;line-height:27px!important;letter-spacing:0.45px!important;}
+/* t-16: Regular Header — 16px / 24px */
+.t-16{font-size:16px!important;line-height:24px!important;letter-spacing:0.4px!important;}
+/* t-14: Body — 14px / 21px */
+.t-14{font-size:14px!important;line-height:21px!important;letter-spacing:0.35px!important;}
+/* t-12: Small — 12px / 18px */
+.t-12{font-size:12px!important;line-height:18px!important;letter-spacing:0.3px!important;}
+/* small-bolded-text: 10px uppercase bold (button labels, tags) */
+.small-bolded-text{font-size:10px!important;line-height:16px!important;letter-spacing:1px!important;font-weight:700!important;text-transform:uppercase!important;}
+
+.fw-bold,.font-weight-bold{font-weight:700!important;}
+
+/* ── LAYOUT GAP TOKENS (from layout.json) ── */
+.gap-2{gap:8px!important;}
+.gap-3{gap:16px!important;}
+.gap-4{gap:24px!important;}
+
+/* ── SEMANTIC COLOUR HELPERS ── */
+.text-action  {color:var(--textActionPrimary)!important;}
+.text-primary {color:var(--textDefaultPrimary)!important;}
+.text-secondary{color:var(--textDefaultSecondary)!important;}
+.text-muted   {color:var(--textDefaultTertiary)!important;}
+.text-danger  {color:var(--textDangerPrimary)!important;}
+.text-success {color:var(--textSuccessPrimary)!important;}
+.text-warning {color:var(--textWarningPrimary)!important;}
+.text-invert  {color:var(--textActionInvert)!important;}
+
+/* ── MISC ── */
+code,.code{font-family:var(--font-mono);font-size:12px;background:var(--bgDefaultLighter);padding:2px 6px;border-radius:4px;}
+a{color:var(--textActionPrimary);text-decoration:none;}a:hover{text-decoration:underline;}
+
+/* ── BACK-COMPAT heading aliases ── */
+h1{font-size:18px;line-height:27px;font-weight:700;letter-spacing:0.45px;}
+h2{font-size:16px;line-height:24px;font-weight:700;letter-spacing:0.4px;}
+h3{font-size:14px;line-height:21px;font-weight:700;letter-spacing:0.35px;}
+h4{font-size:12px;line-height:18px;font-weight:700;letter-spacing:0.3px;}

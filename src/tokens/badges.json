@@ -1,0 +1,68 @@
+{
+  "$id": "exos-badges-registry",
+  "component": "Badges",
+  "description": "Badges are small inline labels used for counts, statuses, and categorical indicators. They scale relative to their parent element's font size.",
+  "rules": {
+    "always": [
+      "Always apply the base `badge` class alongside any color modifier class.",
+      "Use <span> for inline badges inside text or other elements.",
+      "Empty badges (no text content) are automatically hidden via CSS — this is intentional."
+    ],
+    "never": [
+      "Do not use badges as standalone block-level elements — they are inline by design.",
+      "Do not apply more than one color modifier class to a single badge.",
+      "Do not use badges to convey critical information alone — always pair with visible text for accessibility."
+    ]
+  },
+  "baseClass": "badge",
+  "variants": {
+    "Default": {
+      "description": "Square-cornered filled badge. Use for counts, numeric indicators, and status labels.",
+      "availableColors": ["primary", "secondary", "success", "danger", "warning", "dark"],
+      "template": "<span class=\"badge badge-{color}\">{content}</span>",
+      "examples": {
+        "Primary": "<span class=\"badge badge-primary\">New</span>",
+        "Secondary": "<span class=\"badge badge-secondary\">Draft</span>",
+        "Success": "<span class=\"badge badge-success\">Active</span>",
+        "Danger": "<span class=\"badge badge-danger\">9</span>",
+        "Warning": "<span class=\"badge badge-warning\">Pending</span>",
+        "Dark": "<span class=\"badge badge-dark\">Archived</span>"
+      }
+    },
+    "Pill": {
+      "description": "Fully rounded badge. Use for tags, compact status chips, or when a softer visual treatment is preferred.",
+      "availableColors": ["primary", "secondary", "success", "danger", "warning", "dark"],
+      "template": "<span class=\"badge badge-pill badge-{color}\">{content}</span>",
+      "examples": {
+        "Primary": "<span class=\"badge badge-pill badge-primary\">New</span>",
+        "Secondary": "<span class=\"badge badge-pill badge-secondary\">Draft</span>",
+        "Success": "<span class=\"badge badge-pill badge-success\">Active</span>",
+        "Danger": "<span class=\"badge badge-pill badge-danger\">9</span>",
+        "Warning": "<span class=\"badge badge-pill badge-warning\">Pending</span>",
+        "Dark": "<span class=\"badge badge-pill badge-dark\">Archived</span>"
+      }
+    }
+  },
+  "colors": {
+    "primary": { "hex": "#066dce", "usage": "Primary actions, new items, informational status." },
+    "secondary": { "hex": "#4a5c6c", "usage": "Neutral or draft status." },
+    "success": { "hex": "#1c7c35", "usage": "Active, approved, completed states." },
+    "danger": { "hex": "#cc3115", "usage": "Errors, unread counts, critical status." },
+    "warning": { "hex": "#f9a824", "usage": "Pending, caution states." },
+    "dark": { "hex": "#0a2845", "usage": "Archived, inactive, or high-contrast label." }
+  },
+  "usageInsideElements": {
+    "InsideButton": {
+      "description": "Badge inside a button to show a count or notification indicator.",
+      "example": "<button type=\"button\" class=\"btn btn-primary\">\n  Notifications\n  <span class=\"badge badge-danger\">9</span>\n</button>"
+    },
+    "InsideHeading": {
+      "description": "Badge inline with a heading to label a section or category.",
+      "example": "<h3 class=\"t-16 fw-bold\">\n  Outline Icons\n  <span class=\"badge badge-pill badge-secondary\">Icons</span>\n</h3>"
+    },
+    "InsideNavLink": {
+      "description": "Badge inside a navigation link to show unread or active count.",
+      "example": "<a class=\"nav-link\" href=\"#\">\n  Messages\n  <span class=\"badge badge-success\">3</span>\n</a>"
+    }
+  }
+}

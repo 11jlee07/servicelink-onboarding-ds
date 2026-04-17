@@ -1,0 +1,161 @@
+{
+  "$id": "exos-buttons-registry",
+  "component": "Button",
+  "description": "Buttons allow users to take action by a single click.",
+  "rules": {
+    "always": [
+      "All buttons must include a `type` attribute (button | submit | reset).",
+      "The base class `btn` is always required on every button variant."
+    ],
+    "never": [
+      "Do not combine two color modifier classes (e.g. btn-primary btn-success is invalid).",
+      "Do not use btn-warning or btn-outline-warning on icon buttons — only 4 colors apply to icon variants.",
+      "Do not omit aria-label on icon-only buttons (btn-icon variants). Screen readers have no visible text to read."
+    ]
+  },
+  "sizes": {
+    "description": "These classes are added on top of existing classes to chage sizing",
+    "sm": { "class": "btn-sm" },
+    "md": { "class": null, "note": "Default — add no size class" },
+    "lg": { "class": "btn-lg"}
+  },
+  "states": {
+    "disabled": {
+      "attribute": "disabled",
+      "note": "Add the disabled HTML attribute directly to the <button> element. Do not use a CSS class for disabled state."
+    }
+  },
+  "variants": {
+    "Contained": {
+      "description": "Filled background button. Highest visual emphasis. Use for the primary call-to-action.",
+      "availableColors": ["primary", "success", "danger"],
+      "availableSizes": ["sm", "md", "lg"],
+      "template": "<button type=\"{type}\" class=\"btn btn-{color}{sizeClass}\">{label}</button>",
+      "classComposition": {
+        "base": "btn",
+        "color": "btn-{color}",
+        "size": "{sizeClass}"
+      },
+      "examples": {
+        "Primary Contained":  "<button type=\"button\" class=\"btn btn-primary\">Continue</button>",
+        "Success Contained":  "<button type=\"button\" class=\"btn btn-success\">Continue</button>",
+        "Danger Contained":  "<button type=\"button\" class=\"btn btn-danger\">Continue</button>"
+      }
+    },
+    "Outlined": {
+      "description": "Bordered, transparent-background button. Medium visual emphasis. Secondary actions alongside a Contained button.",
+      "availableColors": ["primary", "success", "danger"],
+      "availableSizes": ["sm", "md", "lg"],
+      "template": "<button type=\"{type}\" class=\"btn btn-outline-{color} {sizeClass}\">{label}</button>",
+      "classComposition": {
+        "base": "btn",
+        "color": "btn-outline-{color}",
+        "size": "{sizeClass}"
+      },
+      "examples": {
+        "Primary Outlined":  "<button type=\"button\" class=\"btn btn-outline-primary\">Continue</button>",
+        "Success Outlined":  "<button type=\"button\" class=\"btn btn-outline-success\">Submit</button>",
+        "Danger Outlined":   "<button type=\"button\" class=\"btn btn-outline-danger\">Delete</button>"
+      }
+    },
+    "Text": {
+      "description": "No border, no background. Lowest visual emphasis. Tertiary actions or inline contextual actions.",
+      "availableColors": ["primary", "success", "danger", "secondary"],
+      "availableSizes": ["sm", "md", "lg"],
+      "template": "<button type=\"{type}\" class=\"btn btn-{color}-text {sizeClass}\">{label}</button>",
+      "classComposition": {
+        "base": "btn",
+        "color": "btn-{color}-text",
+        "size": "{sizeClass}"
+      },
+      "examples": {
+        "Primary Text":   "<button type=\"button\" class=\"btn btn-primary-text\">Continue</button>",
+        "Success Text":   "<button type=\"button\" class=\"btn btn-success-text\">Submit</button>",
+        "Danger Text":    "<button type=\"button\" class=\"btn btn-danger-text\">Delete</button>",
+        "Secondary Text": "<button type=\"button\" class=\"btn btn-secondary-text\">Cancel</button>"
+      }
+    },
+    "IconContained": {
+      "description": "Circular filled icon-only button. Highest emphasis for icon buttons. Use when no text label is needed but action is visually clear.",
+      "availableColors": ["primary", "success", "danger", "secondary"],
+      "availableSizes": ["sm", "md", "lg"],
+      "accessibility": {
+        "required": "aria-label",
+        "note": "aria-label must describe the action (e.g. 'Delete', 'Add item'). The icon span must have aria-hidden='true'."
+      },
+      "template": "<button type=\"{type}\" class=\"btn btn-icon btn-{color}{sizeClass}\" aria-label=\"{accessibleLabel}\">\n  <span class=\"{iconClass}\" aria-hidden=\"true\"></span>\n</button>",
+      "classComposition": {
+        "base": "btn",
+        "baseIcon": "btn-icon",
+        "color": "btn-{color}",
+        "size": "{sizeClass}"
+      },
+      "examples": {
+        "Primary Icon":  "<button type=\"button\" class=\"btn btn-icon btn-primary\" aria-label=\"Next\">\n  <span class=\"icon-chevron-right\" aria-hidden=\"true\"></span>\n</button>",
+        "Success Icon":  "<button type=\"button\" class=\"btn btn-icon btn-success\" aria-label=\"Add\">\n  <span class=\"icon-add\" aria-hidden=\"true\"></span>\n</button>",
+        "Danger Icon":   "<button type=\"button\" class=\"btn btn-icon btn-danger\" aria-label=\"Delete\">\n  <span class=\"icon-delete\" aria-hidden=\"true\"></span>\n</button>",
+        "Secondary Icon":"<button type=\"button\" class=\"btn btn-icon btn-secondary\" aria-label=\"More options\">\n  <span class=\"icon-ellipsis\" aria-hidden=\"true\"></span>\n</button>",
+      }
+    },
+    "IconLight": {
+      "description": "Circular icon button with a light-tinted background matching the color. Medium emphasis. Use when icon buttons need to be softer or sit on white/light surfaces.",
+      "availableColors": ["primary", "success", "danger", "secondary"],
+      "unavailableColors": ["warning"],
+      "availableSizes": ["sm", "md", "lg"],
+      "accessibility": {
+        "required": "aria-label",
+        "note": "aria-label must describe the action. The icon span must have aria-hidden='true'."
+      },
+      "template": "<button type=\"{type}\" class=\"btn btn-icon btn-icon-{color}-lighter{sizeClass}\" aria-label=\"{accessibleLabel}\">\n  <span class=\"{iconClass}\" aria-hidden=\"true\"></span>\n</button>",
+      "classComposition": {
+        "base": "btn",
+        "baseIcon": "btn-icon",
+        "color": "btn-icon-{color}-lighter",
+        "size": "{sizeClass}"
+      },
+      "examples": {
+        "Primary Icon Light":  "<button type=\"button\" class=\"btn btn-icon btn-icon-primary-lighter\" aria-label=\"Next\">\n  <span class=\"icon-chevron-right\" aria-hidden=\"true\"></span>\n</button>",
+        "Success Icon Light":  "<button type=\"button\" class=\"btn btn-icon btn-icon-success-lighter\" aria-label=\"Add\">\n  <span class=\"icon-add\" aria-hidden=\"true\"></span>\n</button>",
+        "Danger Icon Light":   "<button type=\"button\" class=\"btn btn-icon btn-icon-danger-lighter\" aria-label=\"Delete\">\n  <span class=\"icon-delete\" aria-hidden=\"true\"></span>\n</button>",
+        "Secondary Icon Light":"<button type=\"button\" class=\"btn btn-icon btn-icon-secondary-lighter\" aria-label=\"More options\">\n  <span class=\"icon-ellipsis\" aria-hidden=\"true\"></span>\n</button>",
+      }
+    },
+    "IconOnly": {
+      "description": "Circular icon button with no background or border. Lowest icon button emphasis. Use for subtle actions inline with content.",
+      "availableColors": ["primary", "success", "danger", "secondary"],
+      "unavailableColors": ["warning"],
+      "availableSizes": ["sm", "md", "lg"],
+      "accessibility": {
+        "required": "aria-label",
+        "note": "aria-label must describe the action. The icon span must have aria-hidden='true'."
+      },
+      "template": "<button type=\"{type}\" class=\"btn btn-icon btn-icon-{color}-text{sizeClass}\" aria-label=\"{accessibleLabel}\">\n  <span class=\"{iconClass}\" aria-hidden=\"true\"></span>\n</button>",
+      "classComposition": {
+        "base": "btn",
+        "baseIcon": "btn-icon",
+        "color": "btn-icon-{color}-text",
+        "size": "{sizeClass}"
+      },
+      "examples": {
+        "Primary Icon Only":  "<button type=\"button\" class=\"btn btn-icon btn-icon-primary-text\" aria-label=\"Next\">\n  <span class=\"icon-chevron-right\" aria-hidden=\"true\"></span>\n</button>",
+        "Success Icon Only":  "<button type=\"button\" class=\"btn btn-icon btn-icon-success-text\" aria-label=\"Add\">\n  <span class=\"icon-add\" aria-hidden=\"true\"></span>\n</button>",
+        "Danger Icon Only":   "<button type=\"button\" class=\"btn btn-icon btn-icon-danger-text\" aria-label=\"Delete\">\n  <span class=\"icon-delete\" aria-hidden=\"true\"></span>\n</button>",
+        "Secondary Icon Only":"<button type=\"button\" class=\"btn btn-icon btn-icon-secondary-text\" aria-label=\"More options\">\n  <span class=\"icon-ellipsis\" aria-hidden=\"true\"></span>\n</button>",
+      }
+    },
+    "CrossCard": {
+      "description": "Full-width button that acts as both an interactive button and a page section divider. Light blue background. Only one color and style exists for this variant.",
+      "availableColors": ["primary"],
+      "availableSizes": ["md"],
+      "note": "This button is always full-width. Do not apply size modifiers.",
+      "template": "<button type=\"{type}\" class=\"btn btn-cross-card-primary-lighter\">{label}</button>",
+      "classComposition": {
+        "base": "btn",
+        "color": "btn-cross-card-primary-lighter"
+      },
+      "examples": {
+        "Cross Card":  "<button type=\"button\" class=\"btn btn-cross-card-primary-lighter\">View all results</button>"
+      }
+    }
+  }
+}

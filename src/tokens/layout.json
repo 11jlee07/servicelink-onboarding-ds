@@ -1,0 +1,385 @@
+{
+  "$id": "exos-layout-registry",
+  "component": "Layout",
+  "description": "Layout patterns built exclusively with Bootstrap flexbox utilities. Use flex for all alignment and spacing needs. Every layout pattern maps directly to Figma auto-layout properties so Figma MCP output translates without interpretation.",
+  "rules": {
+    "always": [
+      "Use a layout pattern from this registry for any alignment, spacing, or arrangement need.",
+      "Always pair a layout pattern with a gap token — never leave sibling elements without explicit spacing.",
+      "Apply layout classes directly to the wrapper element — do not add extra wrapper divs just for spacing.",
+      "When reading from Figma MCP, map layoutMode + primaryAxisAlignItems + counterAxisAlignItems to a pattern, then map itemSpacing to a gap token."
+    ],
+    "never": [
+      "Do not use CSS Grid for component-level layouts — flexbox only. Grid is reserved for future page-level layouts.",
+      "Do not use margin between siblings to create spacing — use gap tokens on the parent instead.",
+      "Do not use inline styles for alignment or spacing.",
+      "Do not combine two layout pattern classes on the same element.",
+      "Do not use gap values outside the three gap tokens (gap-2, gap-3, gap-4)."
+    ]
+  },
+  "gapTokens": {
+    "description": "Three gap sizes only. Always use these — never use gap-1, gap-5, or arbitrary spacing values between siblings.",
+    "gap-tight": {
+      "class": "gap-2",
+      "pixels": "8px",
+      "usage": "Tightly related items: icon + label, badge inside a heading, chips in a group.",
+      "keywords": ["tight", "close together", "8px", "8 px", "8"],
+      "figmaItemSpacing": "1–10"
+    },
+    "gap-default": {
+      "class": "gap-3",
+      "pixels": "16px",
+      "usage": "Default spacing between most siblings: buttons in a group, fields in a form row, cards side by side.",
+      "keywords": ["default gap", "normal gap", "16px", "16 px", "16"],
+      "figmaItemSpacing": "11–20"
+    },
+    "gap-loose": {
+      "class": "gap-4",
+      "pixels": "24px",
+      "usage": "Sections that need breathing room: major content blocks, large card groups.",
+      "keywords": ["loose", "breathing room", "spaced out", "24px", "24 px", "24"],
+      "figmaItemSpacing": "21+"
+    }
+  },
+  "patterns": {
+    "row": {
+      "description": "Horizontal layouts. Items sit side by side in a line. Maps to Figma layoutMode: HORIZONTAL.",
+      "note": "Variants are named row-{justify}-{align}. When align is omitted it defaults to 'center'. Use a -top, -bottom, -stretch, or -baseline suffix when children have different heights.",
+      "variants": {
+
+        "row-start": {
+          "description": "Items left-aligned, vertically centered. Default row layout.",
+          "classes": "d-flex align-items-center justify-content-start",
+          "alignItems": "center",
+          "justifyContent": "start",
+          "usage": "Navigation items, left-aligned toolbars, icon + label pairs, inline form elements.",
+          "keywords": ["in a row", "side by side", "horizontal", "inline", "left aligned", "in a line"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex align-items-center justify-content-start gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-start-top": {
+          "description": "Items left-aligned, top-aligned. Use when children have different heights and you want them anchored to the top.",
+          "classes": "d-flex align-items-start justify-content-start",
+          "alignItems": "start",
+          "justifyContent": "start",
+          "usage": "Mixed-height cards side by side, icon columns where text wraps, label + multi-line value rows.",
+          "keywords": ["in a row top aligned", "left aligned top", "top of container row", "row anchored top", "row items flush top"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "MIN" },
+          "example": "<div class=\"d-flex align-items-start justify-content-start gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-start-bottom": {
+          "description": "Items left-aligned, bottom-aligned. Use when children should sit on the same baseline at the bottom.",
+          "classes": "d-flex align-items-end justify-content-start",
+          "alignItems": "end",
+          "justifyContent": "start",
+          "usage": "Form rows where a taller input sits next to a short label that should align to the bottom.",
+          "keywords": ["in a row bottom aligned", "left aligned bottom", "bottom of container row", "row anchored bottom", "flush bottom row"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "MAX" },
+          "example": "<div class=\"d-flex align-items-end justify-content-start gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-baseline": {
+          "description": "Items aligned so their text baselines line up across the row regardless of font size or height.",
+          "classes": "d-flex align-items-baseline justify-content-start",
+          "alignItems": "baseline",
+          "justifyContent": "start",
+          "usage": "Heading + metadata text at different sizes in the same row, currency value next to unit label.",
+          "keywords": ["baseline aligned", "text baseline", "align text in row", "same baseline", "align by text"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "BASELINE" },
+          "example": "<div class=\"d-flex align-items-baseline justify-content-start gap-2\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-center": {
+          "description": "Items centered horizontally and vertically.",
+          "classes": "d-flex align-items-center justify-content-center",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "usage": "Centered button groups, empty state actions, hero call-to-action rows.",
+          "keywords": ["centered", "center aligned", "middle", "centered in a row"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "CENTER", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex align-items-center justify-content-center gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-center-top": {
+          "description": "Items centered horizontally, top-aligned.",
+          "classes": "d-flex align-items-start justify-content-center",
+          "alignItems": "start",
+          "justifyContent": "center",
+          "usage": "Centered icon groups where icons have different heights, centered toolbar with mixed components.",
+          "keywords": ["centered row top aligned", "center top", "middle top aligned"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "CENTER", "counterAxisAlignItems": "MIN" },
+          "example": "<div class=\"d-flex align-items-start justify-content-center gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-end": {
+          "description": "Items right-aligned, vertically centered.",
+          "classes": "d-flex align-items-center justify-content-end",
+          "alignItems": "center",
+          "justifyContent": "end",
+          "usage": "Footer action buttons, right-aligned toolbars, dismiss or close actions.",
+          "keywords": ["right aligned", "pushed to the right", "end aligned", "right side"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "MAX", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex align-items-center justify-content-end gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-end-top": {
+          "description": "Items right-aligned, top-aligned.",
+          "classes": "d-flex align-items-start justify-content-end",
+          "alignItems": "start",
+          "justifyContent": "end",
+          "usage": "Right-aligned action buttons where buttons have different heights, top-right corner controls.",
+          "keywords": ["right aligned top", "top right", "right aligned anchored top", "end top"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "MAX", "counterAxisAlignItems": "MIN" },
+          "example": "<div class=\"d-flex align-items-start justify-content-end gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-between": {
+          "description": "First item pushed left, last item pushed right, vertically centered. Classic split layout.",
+          "classes": "d-flex align-items-center justify-content-between",
+          "alignItems": "center",
+          "justifyContent": "between",
+          "usage": "Card headers (title left, actions right), nav bars, list rows with label and value on opposite sides.",
+          "keywords": ["space between", "title and actions", "label and value opposite", "split", "one left one right", "title left buttons right"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "SPACE_BETWEEN", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex align-items-center justify-content-between gap-3\">\n  <!-- left content -->\n  <!-- right content -->\n</div>"
+        },
+
+        "row-between-top": {
+          "description": "First item pushed left, last item pushed right, both top-aligned. Use when split children have different heights.",
+          "classes": "d-flex align-items-start justify-content-between",
+          "alignItems": "start",
+          "justifyContent": "between",
+          "usage": "Card header where title is multiline and the action badge/button is short — both should anchor at the top.",
+          "keywords": ["space between top aligned", "split top", "title and actions top", "one left one right top aligned"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "SPACE_BETWEEN", "counterAxisAlignItems": "MIN" },
+          "example": "<div class=\"d-flex align-items-start justify-content-between gap-3\">\n  <!-- left content -->\n  <!-- right content -->\n</div>"
+        },
+
+        "row-between-stretch": {
+          "description": "First item pushed left, last item pushed right, both stretched to full row height.",
+          "classes": "d-flex align-items-stretch justify-content-between",
+          "alignItems": "stretch",
+          "justifyContent": "between",
+          "usage": "Split layout where both sides must fill the same height — e.g. a bordered left section and right section.",
+          "keywords": ["split stretch", "space between equal height", "split full height", "between stretched"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "SPACE_BETWEEN", "counterAxisAlignItems": "STRETCH" },
+          "example": "<div class=\"d-flex align-items-stretch justify-content-between gap-3\">\n  <!-- left content -->\n  <!-- right content -->\n</div>"
+        },
+
+        "row-around": {
+          "description": "Equal space distributed around each item (half-space at the edges, full space between items).",
+          "classes": "d-flex align-items-center justify-content-around",
+          "alignItems": "center",
+          "justifyContent": "around",
+          "usage": "Stat blocks in a row, icon grid rows where items should be loosely distributed.",
+          "keywords": ["space around", "equal space around", "distributed around", "spaced around"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "SPACE_AROUND", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex align-items-center justify-content-around gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-evenly": {
+          "description": "Perfectly equal space between every item and at both edges.",
+          "classes": "d-flex align-items-center justify-content-evenly",
+          "alignItems": "center",
+          "justifyContent": "evenly",
+          "usage": "Tab bars, step indicators, evenly distributed nav items.",
+          "keywords": ["evenly spaced", "equal spacing", "evenly distributed", "equal gaps everywhere", "uniform spacing"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "SPACE_EVENLY", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex align-items-center justify-content-evenly gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-wrap": {
+          "description": "Items sit in a row but wrap to the next line when they run out of space.",
+          "classes": "d-flex flex-wrap align-items-center",
+          "alignItems": "center",
+          "justifyContent": "start",
+          "usage": "Chip groups, badge collections, tag lists, filter pill rows.",
+          "keywords": ["wrap", "wrapping row", "chips in a row", "tags", "pills", "badge group"],
+          "figma": { "layoutMode": "HORIZONTAL", "layoutWrap": "WRAP", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex flex-wrap align-items-center gap-2\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-wrap-top": {
+          "description": "Wrapping row where each row of wrapped items aligns to the top.",
+          "classes": "d-flex flex-wrap align-items-start",
+          "alignItems": "start",
+          "justifyContent": "start",
+          "usage": "Mixed-height chips or badges that wrap, form field groups that wrap to a second row.",
+          "keywords": ["wrapping row top aligned", "wrap top", "chips wrap top"],
+          "figma": { "layoutMode": "HORIZONTAL", "layoutWrap": "WRAP", "counterAxisAlignItems": "MIN" },
+          "example": "<div class=\"d-flex flex-wrap align-items-start gap-2\">\n  <!-- children -->\n</div>"
+        },
+
+        "row-stretch": {
+          "description": "Items left-aligned, each stretched to the full height of the row.",
+          "classes": "d-flex align-items-stretch justify-content-start",
+          "alignItems": "stretch",
+          "justifyContent": "start",
+          "usage": "Cards in a row that must share equal height, input groups, button + input combos.",
+          "keywords": ["equal height", "stretched", "full height", "same height in a row"],
+          "figma": { "layoutMode": "HORIZONTAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "STRETCH" },
+          "example": "<div class=\"d-flex align-items-stretch justify-content-start gap-3\">\n  <!-- children -->\n</div>"
+        }
+
+      }
+    },
+    "column": {
+      "description": "Vertical layouts. Items stack on top of each other. Maps to Figma layoutMode: VERTICAL.",
+      "note": "Variants are named col-{cross-axis-align} by default with justify-content-start implied. Use col-bottom, col-center-vertical, col-around, or col-evenly to control how the stack distributes vertically inside its container.",
+      "variants": {
+
+        "col-start": {
+          "description": "Items stacked top to bottom, left-aligned.",
+          "classes": "d-flex flex-column align-items-start",
+          "alignItems": "start",
+          "justifyContent": "start",
+          "usage": "Form field stacks (label above input), left-aligned content groups, sidebar items.",
+          "keywords": ["stacked", "column", "top to bottom", "stacked left", "vertical list", "above and below"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "MIN" },
+          "example": "<div class=\"d-flex flex-column align-items-start gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-center": {
+          "description": "Items stacked top to bottom, centered horizontally.",
+          "classes": "d-flex flex-column align-items-center",
+          "alignItems": "center",
+          "justifyContent": "start",
+          "usage": "Centered empty states, icon + label + action stacked in the middle of the page.",
+          "keywords": ["stacked centered", "centered column", "center stacked", "stacked in the middle"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex flex-column align-items-center gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-end": {
+          "description": "Items stacked top to bottom, right-aligned.",
+          "classes": "d-flex flex-column align-items-end",
+          "alignItems": "end",
+          "justifyContent": "start",
+          "usage": "Right-aligned stacked actions, right-side metadata blocks.",
+          "keywords": ["stacked right", "right aligned stack", "column right aligned"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "MAX" },
+          "example": "<div class=\"d-flex flex-column align-items-end gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-stretch": {
+          "description": "Items stacked top to bottom, each stretching to full width of the container. Default column layout.",
+          "classes": "d-flex flex-column",
+          "alignItems": "stretch",
+          "justifyContent": "start",
+          "usage": "Card body content, full-width form fields stacked, page section stacks.",
+          "keywords": ["full width stack", "stacked full width", "column full width", "block stacked"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "MIN", "counterAxisAlignItems": "STRETCH" },
+          "example": "<div class=\"d-flex flex-column gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-center-vertical": {
+          "description": "Items centered vertically inside the container, stretching to full width. Use when the column must fill its parent height and the stack should sit in the middle.",
+          "classes": "d-flex flex-column justify-content-center",
+          "alignItems": "stretch",
+          "justifyContent": "center",
+          "usage": "Vertically centered content inside a fixed-height panel, loading state centered in a card.",
+          "keywords": ["vertically centered", "centered vertically in container", "middle of container stacked", "column centered vertical", "vertical middle"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "counterAxisAlignItems": "STRETCH" },
+          "example": "<div class=\"d-flex flex-column justify-content-center gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-center-vertical-center": {
+          "description": "Items centered on both axes — vertically and horizontally — inside the container.",
+          "classes": "d-flex flex-column justify-content-center align-items-center",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "usage": "Empty state with icon + message centered inside a card, splash content fully centered.",
+          "keywords": ["centered both axes column", "fully centered stacked", "center center column", "dead center stacked"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "counterAxisAlignItems": "CENTER" },
+          "example": "<div class=\"d-flex flex-column justify-content-center align-items-center gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-bottom": {
+          "description": "Items pushed to the bottom of the container, stretching to full width.",
+          "classes": "d-flex flex-column justify-content-end",
+          "alignItems": "stretch",
+          "justifyContent": "end",
+          "usage": "Footer content pinned to the bottom of a fixed-height panel, action buttons anchored to the bottom of a sidebar.",
+          "keywords": ["pushed to bottom", "pinned to bottom", "items at the bottom", "bottom of container", "column bottom"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "MAX", "counterAxisAlignItems": "STRETCH" },
+          "example": "<div class=\"d-flex flex-column justify-content-end gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-between": {
+          "description": "First item at the top, last item at the bottom, filling the available vertical space.",
+          "classes": "d-flex flex-column justify-content-between",
+          "alignItems": "stretch",
+          "justifyContent": "between",
+          "usage": "Cards with fixed height where header sits at top and footer actions sit at bottom.",
+          "keywords": ["top and bottom", "push to bottom", "header top footer bottom", "space between vertical"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "SPACE_BETWEEN", "counterAxisAlignItems": "STRETCH" },
+          "example": "<div class=\"d-flex flex-column justify-content-between gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-around": {
+          "description": "Equal space distributed around each stacked item vertically.",
+          "classes": "d-flex flex-column justify-content-around",
+          "alignItems": "stretch",
+          "justifyContent": "around",
+          "usage": "Vertically distributed steps or milestone rows inside a fixed-height container.",
+          "keywords": ["space around vertical", "equal vertical space around", "distributed vertically around", "column space around"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "SPACE_AROUND", "counterAxisAlignItems": "STRETCH" },
+          "example": "<div class=\"d-flex flex-column justify-content-around gap-3\">\n  <!-- children -->\n</div>"
+        },
+
+        "col-evenly": {
+          "description": "Perfectly equal vertical space between every item and at top and bottom edges.",
+          "classes": "d-flex flex-column justify-content-evenly",
+          "alignItems": "stretch",
+          "justifyContent": "evenly",
+          "usage": "Evenly distributed menu items in a fixed-height sidebar, step indicators in a vertical stepper.",
+          "keywords": ["evenly spaced vertical", "equal vertical spacing", "uniform vertical gaps", "column evenly"],
+          "figma": { "layoutMode": "VERTICAL", "primaryAxisAlignItems": "SPACE_EVENLY", "counterAxisAlignItems": "STRETCH" },
+          "example": "<div class=\"d-flex flex-column justify-content-evenly gap-3\">\n  <!-- children -->\n</div>"
+        }
+
+      }
+    }
+  },
+  "figmaMappingGuide": {
+    "description": "When reading Figma MCP output, use this to convert auto-layout properties directly to a layout pattern + gap token. No interpretation needed.",
+    "steps": [
+      "1. Read layoutMode from the Figma frame (HORIZONTAL or VERTICAL).",
+      "2. Read primaryAxisAlignItems (MIN, CENTER, MAX, SPACE_BETWEEN, SPACE_AROUND, SPACE_EVENLY).",
+      "3. Read counterAxisAlignItems (MIN, CENTER, MAX, STRETCH, BASELINE).",
+      "4. Match to a pattern variant using the table below.",
+      "5. Read itemSpacing and map to gap token: 1–10 → gap-tight (gap-2), 11–20 → gap-default (gap-3), 21+ → gap-loose (gap-4).",
+      "6. If layoutWrap is WRAP, prefer the row-wrap or row-wrap-top variant regardless of primaryAxisAlignItems."
+    ],
+    "quickReference": {
+      "HORIZONTAL + MIN + CENTER":          "row-start",
+      "HORIZONTAL + MIN + MIN":             "row-start-top",
+      "HORIZONTAL + MIN + MAX":             "row-start-bottom",
+      "HORIZONTAL + MIN + BASELINE":        "row-baseline",
+      "HORIZONTAL + MIN + STRETCH":         "row-stretch",
+      "HORIZONTAL + CENTER + CENTER":       "row-center",
+      "HORIZONTAL + CENTER + MIN":          "row-center-top",
+      "HORIZONTAL + MAX + CENTER":          "row-end",
+      "HORIZONTAL + MAX + MIN":             "row-end-top",
+      "HORIZONTAL + SPACE_BETWEEN + CENTER":"row-between",
+      "HORIZONTAL + SPACE_BETWEEN + MIN":   "row-between-top",
+      "HORIZONTAL + SPACE_BETWEEN + STRETCH":"row-between-stretch",
+      "HORIZONTAL + SPACE_AROUND + CENTER": "row-around",
+      "HORIZONTAL + SPACE_EVENLY + CENTER": "row-evenly",
+      "HORIZONTAL + WRAP + CENTER":         "row-wrap",
+      "HORIZONTAL + WRAP + MIN":            "row-wrap-top",
+      "VERTICAL + MIN + MIN":               "col-start",
+      "VERTICAL + MIN + CENTER":            "col-center",
+      "VERTICAL + MIN + MAX":               "col-end",
+      "VERTICAL + MIN + STRETCH":           "col-stretch",
+      "VERTICAL + CENTER + STRETCH":        "col-center-vertical",
+      "VERTICAL + CENTER + CENTER":         "col-center-vertical-center",
+      "VERTICAL + MAX + STRETCH":           "col-bottom",
+      "VERTICAL + SPACE_BETWEEN + STRETCH": "col-between",
+      "VERTICAL + SPACE_AROUND + STRETCH":  "col-around",
+      "VERTICAL + SPACE_EVENLY + STRETCH":  "col-evenly"
+    }
+  }
+}
