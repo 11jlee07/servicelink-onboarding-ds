@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle, ChevronRight, FileSearch, Home, PenLine, UserCheck, Scale, Wrench } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import { isValidEmail } from '../utils/validation';
+import { ExosIllustration, ExosHalo, ExosIcon } from './shared/ExosIcon';
 
 /* ─── ServiceLink logo ───────────────────────────────────────────── */
 const Logo = ({ inverted = false }) => (
@@ -123,30 +124,11 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
             </div>
           </div>
 
-          {/* Right — phone/app mockup placeholder */}
+          {/* Right — EXOS illustration */}
           <div className="hidden lg:flex justify-center">
-            <ImgBlock
-              gradient="bg-gradient-to-br from-blue-700/60 to-blue-900/80 border border-blue-600/30"
-              className="w-72 h-[420px] flex flex-col items-center justify-center gap-4 shadow-2xl"
-            >
-              <div className="w-40 h-72 bg-white/10 border border-white/20 rounded-3xl flex flex-col overflow-hidden shadow-xl">
-                <div className="bg-blue-500/50 h-8 flex items-center px-4 gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-white/40" />
-                  <div className="w-2 h-2 rounded-full bg-white/40" />
-                </div>
-                <div className="flex-1 p-3 space-y-2">
-                  {[80, 60, 90, 50, 70].map((w, i) => (
-                    <div key={i} className="h-2 bg-white/20 rounded-full" style={{ width: `${w}%` }} />
-                  ))}
-                  <div className="mt-4 bg-blue-400/40 rounded-lg p-2 space-y-1">
-                    {[100, 75, 90].map((w, i) => (
-                      <div key={i} className="h-1.5 bg-white/30 rounded-full" style={{ width: `${w}%` }} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className="text-blue-200 text-xs font-medium tracking-wide">ServiceLink Vendor Portal</p>
-            </ImgBlock>
+            <ExosHalo size={320}>
+              <ExosIllustration name="house-search" size={200} />
+            </ExosHalo>
           </div>
         </div>
       </section>
@@ -159,14 +141,14 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: CheckCircle, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Instant verification', body: 'Real-time license check via ASC.gov so you start faster.' },
-              { icon: FileSearch, color: 'text-blue-600', bg: 'bg-blue-50', title: 'Digital process', body: 'No printing, no mailing. Everything is handled online.' },
-              { icon: Home, color: 'text-indigo-600', bg: 'bg-indigo-50', title: 'High-volume orders', body: 'Access thousands of assignments across your service area.' },
-              { icon: CheckCircle, color: 'text-amber-600', bg: 'bg-amber-50', title: 'Fast payment', body: 'Net-30 payments direct to your account on completed jobs.' },
-            ].map(({ icon: Icon, color, bg, title, body }, i) => (
+              { icon: 'check-circle-fill', bg: 'bg-emerald-50', title: 'Instant verification', body: 'Real-time license check via ASC.gov so you start faster.' },
+              { icon: 'document-fill', bg: 'bg-blue-50', title: 'Digital process', body: 'No printing, no mailing. Everything is handled online.' },
+              { icon: 'home-fill', bg: 'bg-slate-100', title: 'High-volume orders', body: 'Access thousands of assignments across your service area.' },
+              { icon: 'dollar-circle-fill', bg: 'bg-amber-50', title: 'Fast payment', body: 'Net-30 payments direct to your account on completed jobs.' },
+            ].map(({ icon, bg, title, body }, i) => (
               <div key={i} className="text-center">
-                <div className={`w-12 h-12 ${bg} rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                  <Icon className={`w-6 h-6 ${color}`} />
+                <div className={`w-12 h-12 ${bg} rounded-exos flex items-center justify-center mx-auto mb-4`}>
+                  <ExosIcon name={icon} size={24} />
                 </div>
                 <h3 className="font-semibold text-slate-900 text-sm mb-1.5">{title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{body}</p>
@@ -179,17 +161,11 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
       {/* ── BROKER PANEL ─────────────────────────────────────────── */}
       <section className="bg-slate-50 py-16">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <ImgBlock
-            gradient="bg-gradient-to-br from-blue-100 to-blue-200"
-            className="h-72 flex items-center justify-center"
-          >
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-500/20 border-4 border-blue-400/40 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <Home className="w-9 h-9 text-blue-600" />
-              </div>
-              <p className="text-blue-700 font-semibold text-sm">Appraisal Services</p>
-            </div>
-          </ImgBlock>
+          <div className="h-72 flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+            <ExosHalo size={220}>
+              <ExosIllustration name="house-stamp" size={130} />
+            </ExosHalo>
+          </div>
           <div>
             <p className="text-blue-600 font-semibold text-xs uppercase tracking-widest mb-2">Appraisers</p>
             <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4">Join our broker panel</h2>
@@ -238,34 +214,22 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               Join the network <ArrowRight className="w-4 h-4" />
             </PrimaryBtn>
           </div>
-          <ImgBlock
-            gradient="bg-gradient-to-br from-blue-800/60 to-slate-800/80 border border-blue-700/30"
-            className="h-72 hidden lg:flex items-center justify-center"
-          >
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-500/20 border-4 border-blue-400/30 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <PenLine className="w-9 h-9 text-blue-300" />
-              </div>
-              <p className="text-blue-300 font-semibold text-sm">Signing Services</p>
-            </div>
-          </ImgBlock>
+          <div className="h-72 hidden lg:flex items-center justify-center bg-gradient-to-br from-blue-900/60 to-slate-800/80 rounded-2xl">
+            <ExosHalo size={220}>
+              <ExosIllustration name="mail-open-instant" size={130} />
+            </ExosHalo>
+          </div>
         </div>
       </section>
 
       {/* ── ABSTRACTORS ──────────────────────────────────────────── */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <ImgBlock
-            gradient="bg-gradient-to-br from-indigo-50 to-blue-100"
-            className="h-72 flex items-center justify-center order-2 lg:order-1"
-          >
-            <div className="text-center">
-              <div className="w-20 h-20 bg-indigo-100 border-4 border-indigo-200 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <FileSearch className="w-9 h-9 text-indigo-600" />
-              </div>
-              <p className="text-indigo-700 font-semibold text-sm">Title &amp; Abstracting</p>
-            </div>
-          </ImgBlock>
+          <div className="h-72 flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 rounded-2xl order-2 lg:order-1">
+            <ExosHalo size={220}>
+              <ExosIllustration name="house-map-pin" size={130} />
+            </ExosHalo>
+          </div>
           <div className="order-1 lg:order-2">
             <p className="text-blue-600 font-semibold text-xs uppercase tracking-widest mb-2">Abstractors</p>
             <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4">
@@ -314,17 +278,11 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               Get started <ArrowRight className="w-4 h-4" />
             </PrimaryBtn>
           </div>
-          <ImgBlock
-            gradient="bg-gradient-to-br from-emerald-50 to-teal-100"
-            className="h-72 hidden lg:flex items-center justify-center"
-          >
-            <div className="text-center">
-              <div className="w-20 h-20 bg-emerald-100 border-4 border-emerald-200 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <Wrench className="w-9 h-9 text-emerald-600" />
-              </div>
-              <p className="text-emerald-700 font-semibold text-sm">Property Services</p>
-            </div>
-          </ImgBlock>
+          <div className="h-72 hidden lg:flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 rounded-2xl">
+            <ExosHalo size={220}>
+              <ExosIllustration name="house-pin-2" size={130} />
+            </ExosHalo>
+          </div>
         </div>
       </section>
 
@@ -332,7 +290,9 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
       <section className="bg-white py-14 border-t border-slate-100">
         <div className="max-w-lg mx-auto px-6 text-center">
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-            <UserCheck className="w-10 h-10 text-blue-600 mx-auto mb-4" />
+            <div className="flex justify-center mb-4">
+              <ExosIllustration name="medal" size={56} />
+            </div>
             <h3 className="text-xl font-bold text-slate-900 mb-2">Already a vendor partner?</h3>
             <p className="text-slate-500 text-sm mb-5">Sign in to your existing ServiceLink vendor portal account.</p>
             <OutlineBtn onClick={() => {}}>
