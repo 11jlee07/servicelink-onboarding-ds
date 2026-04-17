@@ -43,7 +43,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
         <div className="flex items-center justify-between mb-8">
           <div>
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 2 of 6 · W-9</p>
@@ -62,14 +62,14 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
               <p className="text-sm text-slate-500 mb-4">This is optional for sole proprietors.</p>
 
               <div className="space-y-3">
-                <label className={`flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+                <label className={`flex items-center gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
                   ${hasBusinessName === false ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}>
                   <input type="radio" name="hn" checked={hasBusinessName === false}
                     onChange={() => { setHasBusinessName(false); update('businessName', ''); }} />
                   <span className="font-medium text-slate-900 text-sm">No business name — operating as an individual</span>
                 </label>
 
-                <label className={`flex items-start gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+                <label className={`flex items-start gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
                   ${hasBusinessName === true ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}>
                   <input type="radio" name="hn" checked={hasBusinessName === true}
                     onChange={() => setHasBusinessName(true)} className="mt-0.5" />
@@ -81,7 +81,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
                         onChange={(e) => update('businessName', e.target.value)}
                         onClick={(e) => e.stopPropagation()}
                         autoFocus
-                        className="w-full border border-slate-200 rounded-lg py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" />
+                        className="w-full border border-slate-200 rounded-exos py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" />
                     )}
                   </div>
                 </label>
@@ -103,7 +103,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
                   { type: 'ssn', label: 'Social Security Number (SSN)', placeholder: '123-45-6789', maxLen: 11 },
                   { type: 'ein', label: 'Employer ID Number (EIN)', placeholder: '12-3456789', maxLen: 10 },
                 ].map(({ type, label, placeholder, maxLen }) => (
-                  <label key={type} className={`flex items-start gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+                  <label key={type} className={`flex items-start gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
                     ${state.w9Data.taxIdType === type ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}>
                     <input type="radio" name="taxIdType" value={type}
                       checked={state.w9Data.taxIdType === type}
@@ -116,7 +116,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
                           onChange={handleTaxIdInput}
                           onClick={(e) => e.stopPropagation()}
                           autoFocus
-                          className="w-full border border-slate-200 rounded-lg py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                          className="w-full border border-slate-200 rounded-exos py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                           maxLength={maxLen} />
                       )}
                     </div>
@@ -131,11 +131,11 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
 
         <div className="flex gap-3 mt-8">
           <button type="button" onClick={handleBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors">
+            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
             ← Back
           </button>
           <button type="button" onClick={handleNext} disabled={!isValid()}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors">
+            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
             {q < TOTAL ? 'Continue →' : 'Review W-9 →'}
           </button>
         </div>

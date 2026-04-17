@@ -48,7 +48,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
 
   return (
     <div className="max-w-md mx-auto px-4 py-12">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
         <h1 className="text-2xl font-bold text-slate-900 mb-1">Create Your Account</h1>
         <p className="text-slate-500 text-sm mb-8">Secure your application with a password or SSO.</p>
 
@@ -59,7 +59,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
               Email Address
             </label>
             {emailLocked ? (
-              <div className="flex items-center justify-between px-4 py-3 bg-emerald-50 border border-emerald-200 rounded-xl">
+              <div className="flex items-center justify-between px-4 py-3 bg-emerald-50 border border-emerald-200 rounded-exos-sm ">
                 <span className="flex items-center gap-2 text-sm text-slate-800">
                   <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   {email}
@@ -79,7 +79,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onBlur={() => setTouched((p) => ({ ...p, email: true }))}
-                className={`w-full border rounded-xl py-3 px-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all
+                className={`w-full border rounded-exos-sm py-3 px-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all
                   ${touched.email && !isValidEmail(email) ? 'border-red-300 bg-red-50' : 'border-slate-200'}`}
                 autoFocus
               />
@@ -102,7 +102,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 onBlur={() => setTouched((p) => ({ ...p, password: true }))}
                 placeholder="Minimum 8 characters"
-                className="w-full border border-slate-200 rounded-xl py-3 pl-4 pr-12 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                className="w-full border border-slate-200 rounded-exos-sm py-3 pl-4 pr-12 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               />
               <button
                 type="button"
@@ -143,7 +143,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
           <button
             type="submit"
             disabled={!isFormValid}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold py-3 rounded-xl transition-colors"
+            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold py-3 rounded-exos transition-colors"
           >
             Continue with Email →
           </button>
@@ -164,7 +164,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
           <button
             type="button"
             onClick={() => handleSSO('google')}
-            className="w-full flex items-center justify-center gap-3 border-2 border-slate-200 hover:border-slate-300 rounded-xl py-2.5 text-sm font-medium text-slate-700 transition-colors"
+            className="w-full flex items-center justify-center gap-3 border-2 border-slate-200 hover:border-slate-300 rounded-exos py-2.5 text-sm font-medium text-slate-700 transition-colors"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -178,7 +178,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
           <button
             type="button"
             onClick={() => handleSSO('microsoft')}
-            className="w-full flex items-center justify-center gap-3 border-2 border-slate-200 hover:border-slate-300 rounded-xl py-2.5 text-sm font-medium text-slate-700 transition-colors"
+            className="w-full flex items-center justify-center gap-3 border-2 border-slate-200 hover:border-slate-300 rounded-exos py-2.5 text-sm font-medium text-slate-700 transition-colors"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path fill="#F25022" d="M11 11H1V1h10z" />

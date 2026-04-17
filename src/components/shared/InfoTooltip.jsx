@@ -21,7 +21,7 @@ const InfoTooltip = ({ text }) => {
       {show && (
         <div
           role="tooltip"
-          className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-60 p-3 bg-slate-900 text-white text-xs rounded-xl shadow-xl z-50 leading-relaxed"
+          className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-60 p-3 bg-slate-900 text-white text-xs rounded-exos shadow-xl z-50 leading-relaxed"
         >
           {text}
           <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-slate-900" />

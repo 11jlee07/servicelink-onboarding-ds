@@ -59,10 +59,10 @@ const ProductSetupLanding = ({ state, onQuick, onCustom, onBack }) => {
           <button
             type="button"
             onClick={onQuick}
-            className="group flex flex-col gap-4 p-6 bg-white/95 backdrop-blur-sm border-2 border-transparent hover:border-blue-400 rounded-2xl text-left transition-all hover:shadow-2xl"
+            className="group flex flex-col gap-4 p-6 bg-white/95 backdrop-blur-sm border-2 border-transparent hover:border-blue-400 rounded-exos text-left transition-all hover:shadow-2xl"
           >
             <div className="flex items-center justify-between">
-              <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-xl flex items-center justify-center transition-colors">
+              <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-exos flex items-center justify-center transition-colors">
                 <Zap className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
               </div>
               <span className="flex items-center gap-1 text-xs text-slate-400 font-medium">
@@ -83,7 +83,7 @@ const ProductSetupLanding = ({ state, onQuick, onCustom, onBack }) => {
                 </li>
               ))}
             </ul>
-            <div className="flex items-start gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 mt-auto">
+            <div className="flex items-start gap-2 bg-slate-50 border border-slate-200 rounded-exos-sm px-3 py-2.5 mt-auto">
               <Info className="w-3.5 h-3.5 text-slate-400 flex-shrink-0 mt-0.5" />
               <p className="text-xs text-slate-500 leading-relaxed">
                 Need 44 products or per-area pricing?{' '}
@@ -99,10 +99,10 @@ const ProductSetupLanding = ({ state, onQuick, onCustom, onBack }) => {
           <button
             type="button"
             onClick={onCustom}
-            className="group flex flex-col gap-4 p-6 bg-white/95 backdrop-blur-sm border-2 border-transparent hover:border-blue-400 rounded-2xl text-left transition-all hover:shadow-2xl"
+            className="group flex flex-col gap-4 p-6 bg-white/95 backdrop-blur-sm border-2 border-transparent hover:border-blue-400 rounded-exos text-left transition-all hover:shadow-2xl"
           >
             <div className="flex items-center justify-between">
-              <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-xl flex items-center justify-center transition-colors">
+              <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-exos flex items-center justify-center transition-colors">
                 <SlidersHorizontal className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
               </div>
               <span className="flex items-center gap-1 text-xs text-slate-400 font-medium">

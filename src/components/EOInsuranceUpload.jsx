@@ -85,7 +85,7 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 4 of 6</p>
@@ -98,7 +98,7 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
         </p>
 
         {/* Requirements */}
-        <div className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-xl">
+        <div className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-exos-sm ">
           <div className="flex items-center gap-2 mb-3">
             <ShieldCheck className="w-4 h-4 text-blue-600" />
             <span className="text-sm font-semibold text-slate-800">Required coverage</span>
@@ -116,9 +116,9 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
             onDrop={handleDrop}
             onDragOver={(e) => e.preventDefault()}
             onClick={() => document.getElementById('eoFile').click()}
-            className="border-2 border-dashed border-slate-300 hover:border-blue-400 rounded-2xl p-12 text-center cursor-pointer transition-colors group mb-8"
+            className="border-2 border-dashed border-slate-300 hover:border-blue-400 rounded-exos p-12 text-center cursor-pointer transition-colors group mb-8"
           >
-            <div className="w-16 h-16 bg-slate-100 group-hover:bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors">
+            <div className="w-16 h-16 bg-slate-100 group-hover:bg-blue-50 rounded-exos flex items-center justify-center mx-auto mb-4 transition-colors">
               <Upload className="w-7 h-7 text-slate-400 group-hover:text-blue-500 transition-colors" />
             </div>
             <p className="text-slate-700 font-medium mb-1">Drop your E&amp;O certificate here or click to browse</p>
@@ -132,11 +132,11 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
         {file && (
           <div className="space-y-5">
             {/* File card */}
-            <div className={`flex items-center justify-between p-4 border rounded-xl transition-colors ${
+            <div className={`flex items-center justify-between p-4 border rounded-exos-sm transition-colors ${
               parseState === 'confirmed' ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-200'
             }`}>
               <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                <div className={`w-10 h-10 rounded-exos flex items-center justify-center flex-shrink-0 ${
                   parseState === 'confirmed' ? 'bg-emerald-100' : 'bg-slate-100'
                 }`}>
                   <FileText className={`w-5 h-5 ${parseState === 'confirmed' ? 'text-emerald-600' : 'text-slate-500'}`} />
@@ -171,7 +171,7 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
                 {FIELDS.map((_, i) => (
                   <div key={i} className="space-y-1.5">
                     <div className="h-3 w-28 bg-slate-100 rounded animate-pulse" />
-                    <div className="h-10 bg-slate-100 rounded-xl animate-pulse" style={{ animationDelay: `${i * 80}ms` }} />
+                    <div className="h-10 bg-slate-100 rounded-exos animate-pulse" style={{ animationDelay: `${i * 80}ms` }} />
                   </div>
                 ))}
               </div>
@@ -215,7 +215,7 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
                         onChange={(e) => handleFieldChange(field.key, e.target.value)}
                         placeholder={field.placeholder}
                         disabled={parseState === 'confirmed'}
-                        className={`w-full border rounded-xl py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
+                        className={`w-full border rounded-exos-sm py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
                           parseState === 'confirmed'
                             ? 'border-slate-200 bg-slate-50 text-slate-600 cursor-default'
                             : 'border-blue-200 bg-blue-50/30 text-slate-900'
@@ -230,12 +230,12 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
                   <div className="pt-1 flex gap-2">
                     <button type="button"
                       onClick={() => document.getElementById('eoFileChange').click()}
-                      className="px-4 py-2.5 border-2 border-slate-200 hover:border-slate-300 rounded-xl text-sm font-medium text-slate-600 transition-colors">
+                      className="px-4 py-2.5 border-2 border-slate-200 hover:border-slate-300 rounded-exos text-sm font-medium text-slate-600 transition-colors">
                       Upload different file
                     </button>
                     <button type="button" onClick={handleConfirm}
                       disabled={!allFilled}
-                      className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl text-sm transition-colors">
+                      className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos text-sm transition-colors">
                       Confirm details →
                     </button>
                   </div>
@@ -258,12 +258,12 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
 
         <div className="flex gap-3 mt-8">
           <button type="button" onClick={onBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors">
+            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
             ← Back
           </button>
           <button type="button" onClick={onNext}
             disabled={parseState !== 'confirmed'}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors">
+            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
             Continue →
           </button>
         </div>

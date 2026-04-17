@@ -26,11 +26,11 @@ function mockAscLookup(firstName, lastName) {
 }
 
 const inputCls =
-  'w-full border border-slate-200 rounded-xl py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500';
+  'w-full border border-slate-200 rounded-exos-sm py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500';
 
 /* ─── License detail card ────────────────────────────────────────── */
 const LicenseCard = ({ data }) => (
-  <div className="rounded-2xl border border-slate-200 overflow-hidden">
+  <div className="rounded-exos border border-slate-200 overflow-hidden">
     <div className="px-5 py-4 bg-slate-50 border-b border-slate-100 flex items-center gap-2.5">
       <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
       <span className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
@@ -221,7 +221,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
 
         <div className="mb-6">
           <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 3 of 6</p>
@@ -232,7 +232,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
         {stage === 'looking' && (
           <div className="py-14 flex flex-col items-center gap-4">
             <div className="relative">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-exos bg-blue-50 flex items-center justify-center">
                 <ShieldCheck className="w-8 h-8 text-blue-600" />
               </div>
               <Loader className="w-5 h-5 text-blue-500 animate-spin absolute -bottom-1 -right-1" />
@@ -260,14 +260,14 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
               <button
                 type="button"
                 onClick={handleConfirm}
-                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-exos transition-colors flex items-center justify-center gap-2"
               >
                 <CheckCircle className="w-4 h-4" /> Yes, that's my license
               </button>
               <button
                 type="button"
                 onClick={handleDispute}
-                className="w-full py-3 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-medium rounded-xl transition-colors"
+                className="w-full py-3 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-medium rounded-exos transition-colors"
               >
                 No, this isn't mine
               </button>
@@ -284,7 +284,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
                 What happens if the system can't find my license?
               </button>
               {showFallbackHint && (
-                <div className="mt-2.5 p-3.5 bg-slate-50 rounded-xl text-xs text-slate-500 leading-relaxed">
+                <div className="mt-2.5 p-3.5 bg-slate-50 rounded-exos text-xs text-slate-500 leading-relaxed">
                   No problem. If we can't find your license automatically, you'll be able to
                   upload a photo or PDF of your license, or enter your details manually.
                   We'll verify everything before your application is submitted.
@@ -309,9 +309,9 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
                 <button
                   type="button"
                   onClick={() => cameraInputRef.current?.click()}
-                  className="w-full flex items-center gap-4 p-4 border-2 border-slate-200 hover:border-blue-400 rounded-2xl text-left transition-all group"
+                  className="w-full flex items-center gap-4 p-4 border-2 border-slate-200 hover:border-blue-400 rounded-exos text-left transition-all group"
                 >
-                  <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
+                  <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-exos flex items-center justify-center flex-shrink-0 transition-colors">
                     <Camera className="w-5 h-5 text-slate-500 group-hover:text-blue-600 transition-colors" />
                   </div>
                   <div>
@@ -325,9 +325,9 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="w-full flex items-center gap-4 p-4 border-2 border-slate-200 hover:border-blue-400 rounded-2xl text-left transition-all group"
+                className="w-full flex items-center gap-4 p-4 border-2 border-slate-200 hover:border-blue-400 rounded-exos text-left transition-all group"
               >
-                <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
+                <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-exos flex items-center justify-center flex-shrink-0 transition-colors">
                   <Upload className="w-5 h-5 text-slate-500 group-hover:text-blue-600 transition-colors" />
                 </div>
                 <div>
@@ -342,9 +342,9 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
               <button
                 type="button"
                 onClick={handleManual}
-                className="w-full flex items-center gap-4 p-4 border-2 border-slate-200 hover:border-blue-400 rounded-2xl text-left transition-all group"
+                className="w-full flex items-center gap-4 p-4 border-2 border-slate-200 hover:border-blue-400 rounded-exos text-left transition-all group"
               >
-                <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors">
+                <div className="w-11 h-11 bg-slate-100 group-hover:bg-blue-50 rounded-exos flex items-center justify-center flex-shrink-0 transition-colors">
                   <FileText className="w-5 h-5 text-slate-500 group-hover:text-blue-600 transition-colors" />
                 </div>
                 <div>
@@ -401,12 +401,12 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
               <button
                 type="button"
                 onClick={() => setStage('fallback')}
-                className="px-6 py-3 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors"
+                className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors"
               >
                 ← Back
               </button>
               {verifying ? (
-                <div className="flex-1 py-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-center gap-2 text-sm text-slate-500">
+                <div className="flex-1 py-3 bg-slate-50 border border-slate-200 rounded-exos-sm flex items-center justify-center gap-2 text-sm text-slate-500">
                   <Loader className="w-4 h-4 animate-spin" /> Verifying...
                 </div>
               ) : (
@@ -414,7 +414,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
                   type="button"
                   onClick={handleVerify}
                   disabled={!manualFilled}
-                  className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors"
+                  className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors"
                 >
                   Verify with ASC.gov →
                 </button>
@@ -427,7 +427,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
         {stage === 'done' && (
           <div className="space-y-5">
             {verifyResult === 'success' && (
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-exos-sm flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-emerald-900 text-sm">License verified</p>
@@ -439,7 +439,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
             )}
 
             {verifyResult === 'failure' && (
-              <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3">
+              <div className="p-4 bg-amber-50 border border-amber-200 rounded-exos-sm flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-amber-900 text-sm">Couldn't verify automatically</p>
@@ -457,14 +457,14 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
               <button
                 type="button"
                 onClick={onBack}
-                className="px-6 py-3 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors"
+                className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors"
               >
                 ← Back
               </button>
               <button
                 type="button"
                 onClick={onNext}
-                className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors"
+                className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-exos transition-colors"
               >
                 Continue →
               </button>

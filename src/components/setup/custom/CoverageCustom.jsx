@@ -66,7 +66,7 @@ const CoverageCustom = ({ value, onChange }) => {
           value={stateSearch}
           onChange={(e) => setStateSearch(e.target.value)}
           placeholder="Search states..."
-          className="w-full mb-3 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full mb-3 border border-slate-200 rounded-exos-sm px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         {/* State grid */}
@@ -78,7 +78,7 @@ const CoverageCustom = ({ value, onChange }) => {
                 key={code}
                 type="button"
                 onClick={() => toggleState(code)}
-                className={`flex items-center justify-between px-3 py-2 rounded-xl border-2 text-sm font-medium transition-all ${
+                className={`flex items-center justify-between px-3 py-2 rounded-exos border-2 text-sm font-medium transition-all ${
                   selected
                     ? 'border-blue-500 bg-blue-50 text-blue-800'
                     : 'border-slate-200 text-slate-600 hover:border-slate-300'
@@ -113,7 +113,7 @@ const CoverageCustom = ({ value, onChange }) => {
               const selectedCounties = Array.isArray(coverageVal) ? coverageVal : [];
 
               return (
-                <div key={code} className="border border-slate-200 rounded-xl overflow-hidden">
+                <div key={code} className="border border-slate-200 rounded-exos-sm overflow-hidden">
                   {/* State row */}
                   <div className="flex items-center gap-3 px-4 py-3 bg-slate-50">
                     <button
@@ -129,7 +129,7 @@ const CoverageCustom = ({ value, onChange }) => {
                     {counties ? (
                       <div className="flex items-center gap-3">
                         {/* All / Specific toggle */}
-                        <div className="flex rounded-lg border border-slate-200 overflow-hidden text-xs">
+                        <div className="flex rounded-exos border border-slate-200 overflow-hidden text-xs">
                           <button
                             type="button"
                             onClick={() => setCountyMode(code, 'all')}
@@ -179,7 +179,7 @@ const CoverageCustom = ({ value, onChange }) => {
                           return (
                             <label
                               key={county}
-                              className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer"
+                              className="flex items-center gap-2 py-1.5 px-2 rounded-exos hover:bg-slate-50 cursor-pointer"
                             >
                               <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors ${checked ? 'bg-blue-600 border-blue-600' : 'border-slate-300'}`}>
                                 {checked && <Check className="w-2.5 h-2.5 text-white" />}

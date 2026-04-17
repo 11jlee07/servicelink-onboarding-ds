@@ -69,7 +69,7 @@ const ProductSelection = ({ selected, onChange }) => {
         const isSingle = products.length === 1;
 
         return (
-          <div key={group.id} className="border border-slate-200 rounded-2xl overflow-hidden">
+          <div key={group.id} className="border border-slate-200 rounded-exos overflow-hidden">
             {/* Group header */}
             <div className="flex items-center gap-3 px-5 py-4 bg-slate-50 border-b border-slate-200">
               <IndeterminateCheckbox
@@ -118,7 +118,7 @@ const ProductSelection = ({ selected, onChange }) => {
                           return (
                             <label
                               key={product}
-                              className="flex items-center gap-3 py-1.5 px-2 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors"
+                              className="flex items-center gap-3 py-1.5 px-2 rounded-exos hover:bg-slate-50 cursor-pointer transition-colors"
                             >
                               <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
                                 checked ? 'bg-blue-600 border-blue-600' : 'border-slate-300'

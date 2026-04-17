@@ -16,7 +16,7 @@ const FeeInput = ({ label, value, onChange }) => (
         value={value}
         onChange={(e) => onChange(fmt(e.target.value))}
         placeholder="0"
-        className="w-full border border-slate-200 rounded-xl py-2.5 pl-8 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full border border-slate-200 rounded-exos-sm py-2.5 pl-8 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-label={label ? `Fee for ${label}` : 'Fee'}
       />
     </div>
@@ -54,7 +54,7 @@ const BulkField = ({ products, fees, onBulk, onSingle }) => {
       </label>
 
       {!applyAll && (
-        <div className="rounded-xl border border-slate-200 overflow-hidden mt-1">
+        <div className="rounded-exos border border-slate-200 overflow-hidden mt-1">
           {products.map((p) => (
             <div key={p} className="flex items-center gap-3 px-4 py-2.5 border-b border-slate-100 last:border-b-0 bg-white">
               <span className="text-sm text-slate-700 flex-1">{p}</span>
@@ -66,7 +66,7 @@ const BulkField = ({ products, fees, onBulk, onSingle }) => {
                   value={fees[p] || ''}
                   onChange={(e) => onSingle(p, fmt(e.target.value))}
                   placeholder="0"
-                  className="w-full border border-slate-200 rounded-lg py-1.5 pl-7 pr-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-slate-200 rounded-exos py-1.5 pl-7 pr-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -83,7 +83,7 @@ const FeeCategory = ({ title, products, children, productFees }) => {
   const priced = products.filter((p) => productFees[p] && productFees[p] !== '0').length;
 
   return (
-    <div className="border border-slate-200 rounded-2xl overflow-hidden">
+    <div className="border border-slate-200 rounded-exos overflow-hidden">
       <div className="px-5 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
         <div>
           <p className="font-bold text-slate-900 text-sm">{title}</p>
@@ -109,7 +109,7 @@ const FeeCategory = ({ title, products, children, productFees }) => {
           {open ? 'Hide' : 'Show'} products ({products.length})
         </button>
         {open && (
-          <div className="rounded-xl border border-slate-100 overflow-hidden">
+          <div className="rounded-exos border border-slate-100 overflow-hidden">
             {products.map((p) => (
               <div key={p} className="flex items-center justify-between px-4 py-2.5 border-b border-slate-100 last:border-b-0">
                 <span className="text-sm text-slate-700">{p}</span>

@@ -40,7 +40,7 @@ const Header = ({ progressStep, onStepClick }) => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3 sm:gap-6">
         {/* Logo */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-blue-600 rounded-exos flex items-center justify-center">
             <span className="text-white font-bold text-xs tracking-tight">SL</span>
           </div>
           <span className="font-bold text-slate-900 text-base hidden sm:block">ServiceLink</span>

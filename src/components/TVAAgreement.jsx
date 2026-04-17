@@ -26,7 +26,7 @@ const TVAAgreement = ({ state, setState, onNext, onBack }) => {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 6 of 6</p>
@@ -40,7 +40,7 @@ const TVAAgreement = ({ state, setState, onNext, onBack }) => {
 
         {/* Scroll reminder */}
         {!scrolledToBottom && (
-          <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-xl text-sm text-blue-900 flex items-center gap-2">
+          <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-exos-sm text-sm text-blue-900 flex items-center gap-2">
             <ChevronDown className="w-4 h-4 text-blue-500 animate-bounce" />
             Scroll to the bottom to review the full agreement
           </div>
@@ -50,7 +50,7 @@ const TVAAgreement = ({ state, setState, onNext, onBack }) => {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="border-2 border-slate-200 rounded-xl p-6 h-96 overflow-y-auto bg-white mb-6"
+          className="border-2 border-slate-200 rounded-exos p-6 h-96 overflow-y-auto bg-white mb-6"
         >
           <h2 className="text-xl font-bold text-slate-900 mb-1">TRADE VENDOR AGREEMENT</h2>
           <p className="text-xs text-slate-400 mb-6">ServiceLink Field Services, LLC · Effective {today}</p>
@@ -117,7 +117,7 @@ const TVAAgreement = ({ state, setState, onNext, onBack }) => {
         </div>
 
         {/* Acceptance checkbox */}
-        <div className={`p-5 border-2 rounded-xl transition-all mb-6 ${agreed ? 'border-blue-600 bg-blue-50' : 'border-slate-200'}`}>
+        <div className={`p-5 border-2 rounded-exos transition-all mb-6 ${agreed ? 'border-blue-600 bg-blue-50' : 'border-slate-200'}`}>
           <label className="flex items-start gap-3 cursor-pointer">
             <input
               type="checkbox"
@@ -139,11 +139,11 @@ const TVAAgreement = ({ state, setState, onNext, onBack }) => {
 
         <div className="flex gap-3">
           <button type="button" onClick={onBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors">
+            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
             ← Back
           </button>
           <button type="button" onClick={handleSubmit} disabled={!agreed}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors">
+            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
             Submit →
           </button>
         </div>

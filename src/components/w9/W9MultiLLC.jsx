@@ -32,7 +32,7 @@ const W9MultiLLC = ({ state, setState, onNext, onBack }) => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
         <div className="flex items-center justify-between mb-8">
           <div>
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 2 of 6 · W-9</p>
@@ -52,7 +52,7 @@ const W9MultiLLC = ({ state, setState, onNext, onBack }) => {
               <input type="text" placeholder='e.g., "Smith & Jones Appraisal LLC"'
                 value={state.w9Data.businessName}
                 onChange={(e) => update('businessName', e.target.value)}
-                className="w-full border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                className="w-full border border-slate-200 rounded-exos-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div className="border-t border-slate-100" />
@@ -68,7 +68,7 @@ const W9MultiLLC = ({ state, setState, onNext, onBack }) => {
                   { value: 'c_corp', label: 'C Corporation', tip: 'Filed Form 8832 to be taxed as a C-corp.' },
                   { value: 's_corp', label: 'S Corporation', tip: 'Filed Form 2553 to be taxed as an S-corp.' },
                 ].map(({ value, label, tip }) => (
-                  <label key={value} className={`flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+                  <label key={value} className={`flex items-center gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
                     ${state.w9Data.taxClassification === value ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}>
                     <input type="radio" name="taxClass" value={value}
                       checked={state.w9Data.taxClassification === value}
@@ -78,7 +78,7 @@ const W9MultiLLC = ({ state, setState, onNext, onBack }) => {
                   </label>
                 ))}
 
-                <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-sm text-blue-900 flex gap-2">
+                <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-exos-sm text-sm text-blue-900 flex gap-2">
                   <Info className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
                   <span><strong>Not sure?</strong> If you didn't file Form 8832 or 2553, choose <em>Partnership</em>.</span>
                 </div>
@@ -96,7 +96,7 @@ const W9MultiLLC = ({ state, setState, onNext, onBack }) => {
                 <ChevronDown className={`w-4 h-4 transition-transform ${showForeignInfo ? 'rotate-180' : ''}`} />
               </button>
               {showForeignInfo && (
-                <div className="mb-4 p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-700">
+                <div className="mb-4 p-3 bg-slate-50 border border-slate-200 rounded-exos-sm text-sm text-slate-700">
                   LLCs with foreign members have additional IRS reporting requirements under IRC Section 1446.
                 </div>
               )}
@@ -105,7 +105,7 @@ const W9MultiLLC = ({ state, setState, onNext, onBack }) => {
                   { value: false, label: 'No — all members are U.S. residents' },
                   { value: true, label: 'Yes — we have foreign members' },
                 ].map(({ value, label }) => (
-                  <label key={String(value)} className={`flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+                  <label key={String(value)} className={`flex items-center gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
                     ${state.w9Data.foreignMembers === value ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}>
                     <input type="radio" name="foreign"
                       checked={state.w9Data.foreignMembers === value}
@@ -128,7 +128,7 @@ const W9MultiLLC = ({ state, setState, onNext, onBack }) => {
                   update('taxId', formatEIN(e.target.value));
                   update('taxIdType', 'ein');
                 }}
-                className="w-full border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-slate-200 rounded-exos-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 maxLength={10} />
             </div>
           </div>
@@ -138,11 +138,11 @@ const W9MultiLLC = ({ state, setState, onNext, onBack }) => {
 
         <div className="flex gap-3 mt-8">
           <button type="button" onClick={handleBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors">
+            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
             ← Back
           </button>
           <button type="button" onClick={handleNext} disabled={!isValid()}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors">
+            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
             {q < TOTAL ? 'Continue →' : 'Review W-9 →'}
           </button>
         </div>

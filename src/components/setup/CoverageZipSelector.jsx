@@ -568,7 +568,7 @@ const CoverageZipSelector = ({ baseZip, selectedZips, onChange }) => {
 
   if (!baseZip || !baseInfo) {
     return (
-      <div className="p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800">
+      <div className="p-5 bg-amber-50 border border-amber-200 rounded-exos-sm text-sm text-amber-800">
         Complete your office address in Step 1 to see nearby ZIP code suggestions.
       </div>
     );
@@ -614,7 +614,7 @@ const CoverageZipSelector = ({ baseZip, selectedZips, onChange }) => {
           </div>
 
           {/* Nearby ZIP checklist */}
-          <div className="border border-slate-200 rounded-xl overflow-hidden">
+          <div className="border border-slate-200 rounded-exos-sm overflow-hidden">
             <div className="overflow-y-auto" style={{ maxHeight: '17.5rem' }}>
             {visibleZips.map((item) => {
               const checked = selectedZips.includes(item.zip);
@@ -674,10 +674,10 @@ const CoverageZipSelector = ({ baseZip, selectedZips, onChange }) => {
                 onFocus={() => setShowDropdown(true)}
                 onBlur={() => setTimeout(() => setShowDropdown(false), 150)}
                 placeholder="e.g. Austin, Chicago, Miami"
-                className="w-full border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-slate-200 rounded-exos-sm pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               {showDropdown && filteredMetros.length > 0 && (
-                <div className="absolute z-10 top-full mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden">
+                <div className="absolute z-10 top-full mt-1 w-full bg-white border border-slate-200 rounded-exos-sm shadow-lg overflow-hidden">
                   {filteredMetros.map((m) => (
                     <button
                       key={`${m.city}-${m.state}`}
@@ -694,7 +694,7 @@ const CoverageZipSelector = ({ baseZip, selectedZips, onChange }) => {
             </div>
 
             {activeMetro && metroZips.length > 0 && (
-              <div className="border border-slate-200 rounded-xl overflow-hidden">
+              <div className="border border-slate-200 rounded-exos-sm overflow-hidden">
                 <div className="px-4 py-2.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-700">
                     ZIPs near {activeMetro.city}, {activeMetro.state}
@@ -775,13 +775,13 @@ const CoverageZipSelector = ({ baseZip, selectedZips, onChange }) => {
         </div>
 
         {/* ── Right: Map ── */}
-        <div className="rounded-2xl overflow-hidden border border-slate-200 h-[420px] lg:h-auto relative">
+        <div className="rounded-exos overflow-hidden border border-slate-200 h-[420px] lg:h-auto relative">
           {/* Pencil / draw mode toggle */}
           <button
             type="button"
             onClick={() => setDrawMode((p) => !p)}
             title={drawMode ? 'Cancel draw' : 'Draw to select ZIPs'}
-            className={`absolute top-3 right-3 z-[1000] w-9 h-9 rounded-lg flex items-center justify-center shadow-md border transition-colors ${
+            className={`absolute top-3 right-3 z-[1000] w-9 h-9 rounded-exos flex items-center justify-center shadow-md border transition-colors ${
               drawMode
                 ? 'bg-blue-600 border-blue-600 text-white'
                 : 'bg-white border-slate-200 text-slate-600 hover:border-blue-400 hover:text-blue-600'
@@ -797,7 +797,7 @@ const CoverageZipSelector = ({ baseZip, selectedZips, onChange }) => {
           )}
 
           {!drawMode && hoveredZip && (
-            <div className="absolute top-3 left-3 z-[1000] bg-white border border-slate-200 shadow-md rounded-lg px-3 py-2 text-sm pointer-events-none">
+            <div className="absolute top-3 left-3 z-[1000] bg-white border border-slate-200 shadow-md rounded-exos px-3 py-2 text-sm pointer-events-none">
               <span className="font-mono font-bold text-blue-700">{hoveredZip.zip}</span>
               <span className="text-slate-500 ml-2">
                 {hoveredZip.city}, {hoveredZip.state} · {hoveredZip.distMi} mi

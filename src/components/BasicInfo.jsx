@@ -106,14 +106,14 @@ const BasicInfo = ({ state, setState, onNext }) => {
   };
 
   const inputCls = (hasError) =>
-    `w-full border rounded-xl py-3 px-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all
+    `w-full border rounded-exos-sm py-3 px-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all
     ${hasError ? 'border-red-300 bg-red-50' : 'border-slate-200 bg-white'}`;
 
   const cityLabel = address.city ? address.city : 'Your Area';
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
         <div className="flex items-center justify-between mb-8">
           <div>
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 1 of 6</p>
@@ -215,7 +215,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
                 <select
                   value={address.stateCode}
                   onChange={(e) => handleAddressField('stateCode', e.target.value)}
-                  className="border border-slate-200 rounded-xl py-3 px-3 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 sm:col-span-2 text-base"
+                  className="border border-slate-200 rounded-exos-sm py-3 px-3 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 sm:col-span-2 text-base"
                 >
                   <option value="">State</option>
                   {US_STATES.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -246,7 +246,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
           {/* Animated market reveal card */}
           {(address.validated || validatingAddress) && (
             <div
-              className="overflow-hidden rounded-2xl border border-blue-100 shadow-sm"
+              className="overflow-hidden rounded-exos border border-blue-100 shadow-sm"
               style={{
                 opacity: cardVisible ? 1 : 0,
                 transform: cardVisible ? 'translateY(0)' : 'translateY(8px)',
@@ -296,7 +296,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
                     ].map((job, i) => (
                       <div
                         key={i}
-                        className="bg-slate-50 border border-slate-200 rounded-xl p-3"
+                        className="bg-slate-50 border border-slate-200 rounded-exos-sm p-3"
                         style={{
                           opacity: showDetails ? 1 : 0,
                           transition: `opacity 350ms ease ${120 + i * 80}ms`,
@@ -323,7 +323,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
           <button
             type="submit"
             disabled={!isFormValid}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold py-3 rounded-xl transition-colors mt-2"
+            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold py-3 rounded-exos transition-colors mt-2"
           >
             Continue →
           </button>

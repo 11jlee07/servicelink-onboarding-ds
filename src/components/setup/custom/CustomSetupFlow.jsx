@@ -80,7 +80,7 @@ const AreaPanel = ({ area, allZips, globalFees, selectedProducts, onUpdateArea, 
         <p className="text-xs text-slate-400">{area.zips.length} ZIP{area.zips.length !== 1 ? 's' : ''} covered</p>
 
         {/* Tabs */}
-        <div className="flex gap-1 mt-3 bg-slate-100 rounded-lg p-0.5">
+        <div className="flex gap-1 mt-3 bg-slate-100 rounded-exos p-0.5">
           {['zips', 'products'].map((t) => (
             <button
               key={t}
@@ -150,7 +150,7 @@ const AreaPanel = ({ area, allZips, globalFees, selectedProducts, onUpdateArea, 
                             value={area.fees[p] ?? globalFees[p] ?? ''}
                             onChange={(e) => setFee(p, e.target.value)}
                             placeholder={globalFees[p] || '0'}
-                            className="w-full border border-slate-200 rounded-lg py-1.5 pl-6 pr-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border border-slate-200 rounded-exos py-1.5 pl-6 pr-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
                         </div>
                       </div>
@@ -168,7 +168,7 @@ const AreaPanel = ({ area, allZips, globalFees, selectedProducts, onUpdateArea, 
         <button
           type="button"
           onClick={() => onDelete(area.id)}
-          className="w-full py-2 text-xs font-medium text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+          className="w-full py-2 text-xs font-medium text-red-400 hover:text-red-600 hover:bg-red-50 rounded-exos transition-colors"
         >
           Delete this area
         </button>
@@ -521,7 +521,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
       <div className="fixed inset-0">
         <div className="absolute inset-0 bg-slate-200" />
         <div className="absolute inset-0 flex items-center justify-center p-6 z-10">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden">
+          <div className="bg-white rounded-exos shadow-2xl w-full max-w-2xl overflow-hidden">
             <div className="px-6 pt-6 pb-4 border-b border-slate-100">
               <div className="flex items-center gap-3 mb-1">
                 <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
@@ -539,11 +539,11 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             </div>
             <div className="px-6 pb-5 pt-3 border-t border-slate-100 flex gap-3">
               <button type="button" onClick={onBack}
-                className="px-5 py-2.5 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
+                className="px-5 py-2.5 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
                 ← Back
               </button>
               <button type="button" onClick={() => setStage('fees')} disabled={!canContinue}
-                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors text-sm">
+                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors text-sm">
                 Continue to Fees →
               </button>
             </div>
@@ -565,7 +565,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
       <div className="fixed inset-0">
         <div className="absolute inset-0 bg-slate-200" />
         <div className="absolute inset-0 flex items-center justify-center p-6 z-10">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden">
+          <div className="bg-white rounded-exos shadow-2xl w-full max-w-2xl overflow-hidden">
             <div className="px-6 pt-6 pb-4 border-b border-slate-100">
               <div className="flex items-center gap-3 mb-1">
                 <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
@@ -583,11 +583,11 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             </div>
             <div className="px-6 pb-5 pt-3 border-t border-slate-100 flex gap-3">
               <button type="button" onClick={() => setStage('products')}
-                className="px-5 py-2.5 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
+                className="px-5 py-2.5 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
                 ← Back
               </button>
               <button type="button" onClick={() => setStage('map')} disabled={!canContinue}
-                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors text-sm">
+                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors text-sm">
                 Continue to Coverage Map →
               </button>
             </div>
@@ -609,10 +609,10 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
       <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-3 pointer-events-none">
         <div className="pointer-events-auto flex items-center gap-3">
           <button type="button" onClick={() => setStage('fees')}
-            className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-slate-900 text-sm font-medium px-3 py-1.5 rounded-lg shadow-sm transition-colors">
+            className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-slate-900 text-sm font-medium px-3 py-1.5 rounded-exos shadow-sm transition-colors">
             ← Back
           </button>
-          <div className="bg-white/90 backdrop-blur-sm border border-slate-200 rounded-lg px-3 py-1.5 shadow-sm">
+          <div className="bg-white/90 backdrop-blur-sm border border-slate-200 rounded-exos px-3 py-1.5 shadow-sm">
             <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Custom Setup</span>
             <span className="text-slate-300 mx-2">·</span>
             <span className="text-xs text-slate-500">Coverage Areas</span>
@@ -622,7 +622,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
         <div className="pointer-events-auto flex items-center gap-2">
           {areas.length > 0 && !drawMode && (
             <button type="button" onClick={handleFinish} disabled={!canFinish}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white text-sm font-semibold px-4 py-2 rounded-lg shadow-sm transition-colors">
+              className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white text-sm font-semibold px-4 py-2 rounded-exos shadow-sm transition-colors">
               Save & Finish →
             </button>
           )}
@@ -631,13 +631,13 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
               <button
                 type="button"
                 onClick={() => setShowAddDropdown((v) => !v)}
-                className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 text-sm font-semibold px-4 py-2 rounded-lg shadow-sm transition-colors flex items-center gap-2"
+                className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 text-sm font-semibold px-4 py-2 rounded-exos shadow-sm transition-colors flex items-center gap-2"
               >
                 <Plus className="w-4 h-4" /> Add Coverage Area
                 <ChevronRight className={`w-3.5 h-3.5 transition-transform ${showAddDropdown ? 'rotate-90' : 'rotate-0'}`} />
               </button>
               {showAddDropdown && (
-                <div className="absolute right-0 top-full mt-1.5 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden w-52 z-30">
+                <div className="absolute right-0 top-full mt-1.5 bg-white rounded-exos shadow-xl border border-slate-200 overflow-hidden w-52 z-30">
                   <button
                     type="button"
                     onClick={() => { setDrawMode('radius'); setShowAddDropdown(false); }}
@@ -670,7 +670,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
 
       {/* Radius tool */}
       {drawMode === 'radius' && (
-        <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 w-80">
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 z-20 bg-white rounded-exos shadow-xl border border-slate-200 p-4 w-80">
           <p className="text-sm font-semibold text-slate-900 mb-3 text-center">Set Radius</p>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -688,7 +688,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             Click the map to reposition the circle
           </p>
           <button type="button" onClick={confirmRadius} disabled={!pendingCenter}
-            className="w-full mt-3 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl text-sm transition-colors">
+            className="w-full mt-3 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos text-sm transition-colors">
             Confirm Coverage Area
           </button>
           <button type="button" onClick={() => { setDrawMode(null); setPendingCenter(null); mapRef.current?.getSource('pending-area')?.setData({ type: 'FeatureCollection', features: [] }); }}
@@ -708,7 +708,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
       {/* Override prompt */}
       {overridePrompt && (
         <div className="absolute inset-0 z-30 flex items-center justify-center p-6 bg-black/30">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm">
+          <div className="bg-white rounded-exos shadow-2xl p-6 w-full max-w-sm">
             <div className="flex items-start gap-3 mb-4">
               <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
               <div>
@@ -720,11 +720,11 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             </div>
             <div className="space-y-2">
               <button type="button" onClick={() => commitArea(overridePrompt.newArea, [])}
-                className="w-full py-2.5 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-medium rounded-xl text-sm transition-colors">
+                className="w-full py-2.5 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-medium rounded-exos text-sm transition-colors">
                 Keep original assignments
               </button>
               <button type="button" onClick={() => commitArea(overridePrompt.newArea, overridePrompt.overlaps)}
-                className="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl text-sm transition-colors">
+                className="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-exos text-sm transition-colors">
                 Override — assign to this area
               </button>
             </div>
@@ -740,7 +740,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
               key={area.id}
               type="button"
               onClick={() => setActiveAreaId(activeAreaId === area.id ? null : area.id)}
-              className={`pointer-events-auto flex-shrink-0 flex items-center gap-2.5 px-3.5 py-2.5 bg-white/95 backdrop-blur-sm rounded-xl shadow-md border-2 transition-all ${
+              className={`pointer-events-auto flex-shrink-0 flex items-center gap-2.5 px-3.5 py-2.5 bg-white/95 backdrop-blur-sm rounded-exos shadow-md border-2 transition-all ${
                 activeAreaId === area.id ? 'border-blue-500' : 'border-transparent hover:border-slate-300'
               }`}
             >
@@ -764,7 +764,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
       {/* Empty state hint */}
       {areas.length === 0 && !drawMode && (
         <div className="absolute bottom-1/2 translate-y-1/2 left-1/2 -translate-x-1/2 z-10 text-center pointer-events-none">
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 px-6 py-5">
+          <div className="bg-white/90 backdrop-blur-sm rounded-exos shadow-lg border border-slate-200 px-6 py-5">
             <MapPin className="w-8 h-8 text-slate-300 mx-auto mb-2" />
             <p className="text-sm font-semibold text-slate-700">No coverage areas yet</p>
             <p className="text-xs text-slate-400 mt-0.5">Click "Add Coverage Area" to get started</p>

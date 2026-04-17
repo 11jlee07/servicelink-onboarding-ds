@@ -53,7 +53,7 @@ const StructureCard = ({ id, title, icon, tooltip, selected, onSelect }) => {
     <button
       type="button"
       onClick={() => onSelect(id)}
-      className={`relative p-5 border-2 rounded-2xl text-left transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-blue-400
+      className={`relative p-5 border-2 rounded-exos text-left transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-blue-400
         ${selected
           ? 'border-blue-600 bg-blue-50 shadow-sm'
           : 'border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50'
@@ -69,7 +69,7 @@ const StructureCard = ({ id, title, icon, tooltip, selected, onSelect }) => {
       >
         <Info className="w-4 h-4 text-slate-400" />
         {showTooltip && (
-          <div className="absolute right-0 top-6 w-52 p-2.5 bg-slate-900 text-white text-xs rounded-xl shadow-xl z-20 leading-relaxed">
+          <div className="absolute right-0 top-6 w-52 p-2.5 bg-slate-900 text-white text-xs rounded-exos shadow-xl z-20 leading-relaxed">
             {tooltip}
           </div>
         )}
@@ -120,7 +120,7 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
         <div className="flex items-center justify-between mb-8">
           <div>
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 2 of 6 · W-9</p>
@@ -150,7 +150,7 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
               value={otherDescription}
               onChange={(e) => setOtherDescription(e.target.value)}
               placeholder="e.g., Joint Venture, Cooperative"
-              className="w-full border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-exos-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         )}
@@ -159,7 +159,7 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
           <button
             type="button"
             onClick={onBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors"
+            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors"
           >
             ← Back
           </button>
@@ -167,7 +167,7 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
             type="button"
             onClick={handleContinue}
             disabled={!isValid}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors"
+            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors"
           >
             Continue →
           </button>

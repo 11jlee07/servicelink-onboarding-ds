@@ -29,7 +29,7 @@ const TaxIdQuestion = ({ w9Data, onChange, einOnly = false }) => {
           placeholder="12-3456789"
           value={taxId}
           onChange={(e) => onChange('taxId', formatEIN(e.target.value))}
-          className="w-full border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full border border-slate-200 rounded-exos-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
           maxLength={10}
         />
         <p className="text-xs text-slate-400 mt-1.5">Format: XX-XXXXXXX</p>
@@ -45,7 +45,7 @@ const TaxIdQuestion = ({ w9Data, onChange, einOnly = false }) => {
       </p>
 
       <label
-        className={`flex items-start gap-3 p-4 border-2 rounded-xl mb-3 cursor-pointer transition-all
+        className={`flex items-start gap-3 p-4 border-2 rounded-exos mb-3 cursor-pointer transition-all
           ${taxIdType === 'ssn' ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}
       >
         <input
@@ -65,7 +65,7 @@ const TaxIdQuestion = ({ w9Data, onChange, einOnly = false }) => {
               placeholder="123-45-6789"
               value={taxId}
               onChange={handleChange}
-              className="w-full border border-slate-200 rounded-lg py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              className="w-full border border-slate-200 rounded-exos py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
               maxLength={11}
               onClick={(e) => e.stopPropagation()}
             />
@@ -74,7 +74,7 @@ const TaxIdQuestion = ({ w9Data, onChange, einOnly = false }) => {
       </label>
 
       <label
-        className={`flex items-start gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+        className={`flex items-start gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
           ${taxIdType === 'ein' ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}
       >
         <input
@@ -94,7 +94,7 @@ const TaxIdQuestion = ({ w9Data, onChange, einOnly = false }) => {
               placeholder="12-3456789"
               value={taxId}
               onChange={handleChange}
-              className="w-full border border-slate-200 rounded-lg py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              className="w-full border border-slate-200 rounded-exos py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
               maxLength={10}
               onClick={(e) => e.stopPropagation()}
             />

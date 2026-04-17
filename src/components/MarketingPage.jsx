@@ -27,7 +27,7 @@ const PrimaryBtn = ({ children, onClick, className = '' }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors text-sm ${className}`}
+    className={`inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-exos transition-colors text-sm ${className}`}
   >
     {children}
   </button>
@@ -37,7 +37,7 @@ const OutlineBtn = ({ children, onClick, dark = false }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex items-center gap-2 border-2 font-semibold px-6 py-3 rounded-lg transition-colors text-sm
+    className={`inline-flex items-center gap-2 border-2 font-semibold px-6 py-3 rounded-exos transition-colors text-sm
       ${dark
         ? 'border-white/40 text-white hover:bg-white/10'
         : 'border-blue-600 text-blue-600 hover:bg-blue-50'
@@ -49,7 +49,7 @@ const OutlineBtn = ({ children, onClick, dark = false }) => (
 
 /* ─── Image placeholder ──────────────────────────────────────────── */
 const ImgBlock = ({ gradient, className = '', children }) => (
-  <div className={`rounded-2xl overflow-hidden ${gradient} ${className}`}>
+  <div className={`rounded-exos overflow-hidden ${gradient} ${className}`}>
     {children}
   </div>
 );
@@ -85,7 +85,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
   };
 
   const inputCls = (hasError) =>
-    `w-full border rounded-lg py-3 px-4 text-slate-900 placeholder-slate-400 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm
+    `w-full border rounded-exos py-3 px-4 text-slate-900 placeholder-slate-400 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm
     ${hasError ? 'border-red-300 bg-red-50' : 'border-slate-300'}`;
 
   return (
@@ -161,7 +161,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
       {/* ── BROKER PANEL ─────────────────────────────────────────── */}
       <section className="bg-slate-50 py-16">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="h-72 flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+          <div className="h-72 flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 rounded-exos">
             <ExosHalo size={220}>
               <ExosIllustration name="house-stamp" size={130} />
             </ExosHalo>
@@ -214,7 +214,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               Join the network <ArrowRight className="w-4 h-4" />
             </PrimaryBtn>
           </div>
-          <div className="h-72 hidden lg:flex items-center justify-center bg-gradient-to-br from-blue-900/60 to-slate-800/80 rounded-2xl">
+          <div className="h-72 hidden lg:flex items-center justify-center bg-gradient-to-br from-blue-900/60 to-slate-800/80 rounded-exos">
             <ExosHalo size={220}>
               <ExosIllustration name="mail-open-instant" size={130} />
             </ExosHalo>
@@ -225,7 +225,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
       {/* ── ABSTRACTORS ──────────────────────────────────────────── */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="h-72 flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 rounded-2xl order-2 lg:order-1">
+          <div className="h-72 flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 rounded-exos order-2 lg:order-1">
             <ExosHalo size={220}>
               <ExosIllustration name="house-map-pin" size={130} />
             </ExosHalo>
@@ -278,7 +278,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               Get started <ArrowRight className="w-4 h-4" />
             </PrimaryBtn>
           </div>
-          <div className="h-72 hidden lg:flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 rounded-2xl">
+          <div className="h-72 hidden lg:flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 rounded-exos">
             <ExosHalo size={220}>
               <ExosIllustration name="house-pin-2" size={130} />
             </ExosHalo>
@@ -289,7 +289,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
       {/* ── ALREADY A VENDOR ─────────────────────────────────────── */}
       <section className="bg-white py-14 border-t border-slate-100">
         <div className="max-w-lg mx-auto px-6 text-center">
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+          <div className="bg-slate-50 border border-slate-200 rounded-exos p-6">
             <div className="flex justify-center mb-4">
               <ExosIllustration name="medal" size={56} />
             </div>
@@ -319,7 +319,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
 
           {/* Right — form card */}
           <div>
-            <div className="bg-white rounded-2xl shadow-2xl p-6">
+            <div className="bg-white rounded-exos shadow-2xl p-6">
               <h3 className="text-xl font-bold text-slate-900 mb-1">Start your application</h3>
               <p className="text-slate-500 text-sm mb-6">Takes about 10 minutes to complete.</p>
 
@@ -368,7 +368,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2 mt-2 text-sm"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 rounded-exos transition-colors flex items-center justify-center gap-2 mt-2 text-sm"
                 >
                   Get Started <ArrowRight className="w-4 h-4" />
                 </button>

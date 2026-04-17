@@ -95,7 +95,7 @@ const AreaPanel = ({ area, allZips, globalFees, selectedProducts, onUpdateArea, 
           </button>
         </div>
         <p className="text-xs text-slate-400">{area.zips.length} ZIP{area.zips.length !== 1 ? 's' : ''} covered</p>
-        <div className="flex gap-1 mt-2.5 bg-slate-100 rounded-lg p-0.5">
+        <div className="flex gap-1 mt-2.5 bg-slate-100 rounded-exos p-0.5">
           {['zips', 'products'].map((t) => (
             <button key={t} type="button" onClick={() => setTab(t)}
               className={`flex-1 py-1.5 text-xs font-semibold rounded-md transition-colors ${
@@ -162,7 +162,7 @@ const AreaPanel = ({ area, allZips, globalFees, selectedProducts, onUpdateArea, 
                     {products.map((p) => {
                       const enabled = !disabled.has(p);
                       return (
-                        <div key={p} className={`rounded-lg transition-opacity ${enabled ? '' : 'opacity-40'}`}>
+                        <div key={p} className={`rounded-exos transition-opacity ${enabled ? '' : 'opacity-40'}`}>
                           <div className="flex items-center gap-2.5 py-1.5">
                             <button type="button" onClick={() => toggleProduct(p)}
                               className={`w-4 h-4 rounded flex-shrink-0 border-2 flex items-center justify-center transition-colors ${
@@ -183,7 +183,7 @@ const AreaPanel = ({ area, allZips, globalFees, selectedProducts, onUpdateArea, 
                                   value={area.fees[p] ?? globalFees[p] ?? ''}
                                   onChange={(e) => setFee(p, e.target.value)}
                                   placeholder={globalFees[p] || '0'}
-                                  className="w-full border border-slate-200 rounded-lg py-1 pl-5 pr-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                  className="w-full border border-slate-200 rounded-exos py-1 pl-5 pr-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500" />
                               </div>
                             )}
                           </div>
@@ -201,11 +201,11 @@ const AreaPanel = ({ area, allZips, globalFees, selectedProducts, onUpdateArea, 
       {/* Footer */}
       <div className="px-4 py-3 border-t border-slate-100 flex-shrink-0 space-y-1">
         <button type="button" onClick={onClose}
-          className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-colors">
+          className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-exos transition-colors">
           Save Area
         </button>
         <button type="button" onClick={() => onDelete(area.id)}
-          className="w-full py-2 text-xs font-medium text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+          className="w-full py-2 text-xs font-medium text-red-400 hover:text-red-600 hover:bg-red-50 rounded-exos transition-colors">
           Delete this area
         </button>
       </div>
@@ -692,9 +692,9 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
             <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 w-full max-w-2xl">
               {/* Quick Setup */}
               <button type="button" onClick={onQuick}
-                className="group flex flex-col gap-3 sm:gap-4 p-4 sm:p-6 bg-white/95 backdrop-blur-sm border-2 border-transparent hover:border-blue-400 rounded-2xl text-left transition-all hover:shadow-2xl">
+                className="group flex flex-col gap-3 sm:gap-4 p-4 sm:p-6 bg-white/95 backdrop-blur-sm border-2 border-transparent hover:border-blue-400 rounded-exos text-left transition-all hover:shadow-2xl">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-100 group-hover:bg-blue-50 rounded-xl flex items-center justify-center transition-colors">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-100 group-hover:bg-blue-50 rounded-exos flex items-center justify-center transition-colors">
                     <Zap className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
                   </div>
                   <span className="flex items-center gap-1 text-xs text-slate-400 font-medium">
@@ -715,7 +715,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
                   ))}
                 </ul>
                 {/* Hide info box on mobile to save space */}
-                <div className="hidden sm:flex items-start gap-2 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 mt-auto">
+                <div className="hidden sm:flex items-start gap-2 bg-slate-50 border border-slate-200 rounded-exos-sm px-3 py-2.5 mt-auto">
                   <Info className="w-3.5 h-3.5 text-slate-400 flex-shrink-0 mt-0.5" />
                   <p className="text-xs text-slate-500 leading-relaxed">
                     Need 44 products or per-area pricing?{' '}
@@ -729,9 +729,9 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
 
               {/* Custom Setup */}
               <button type="button" onClick={() => setMode('products')}
-                className="group flex flex-col gap-3 sm:gap-4 p-4 sm:p-6 bg-white/95 backdrop-blur-sm border-2 border-transparent hover:border-blue-400 rounded-2xl text-left transition-all hover:shadow-2xl">
+                className="group flex flex-col gap-3 sm:gap-4 p-4 sm:p-6 bg-white/95 backdrop-blur-sm border-2 border-transparent hover:border-blue-400 rounded-exos text-left transition-all hover:shadow-2xl">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-100 group-hover:bg-blue-50 rounded-xl flex items-center justify-center transition-colors">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-100 group-hover:bg-blue-50 rounded-exos flex items-center justify-center transition-colors">
                     <SlidersHorizontal className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
                   </div>
                   <span className="flex items-center gap-1 text-xs text-slate-400 font-medium">
@@ -764,7 +764,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
       {mode === 'products' && (
         <div className="fixed inset-0 z-20 bg-slate-900/40 flex items-end sm:items-center justify-center sm:p-6">
           <div
-            className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-2xl flex flex-col"
+            className="bg-white rounded-t-2xl sm:rounded-exos shadow-2xl w-full sm:max-w-2xl flex flex-col"
             style={{ maxHeight: '88vh' }}
           >
             <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b border-slate-100 flex-shrink-0">
@@ -785,11 +785,11 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
             </div>
             <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-3 border-t border-slate-100 flex gap-2 sm:gap-3 flex-shrink-0">
               <button type="button" onClick={() => setMode('landing')}
-                className="px-3 sm:px-5 py-2.5 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
+                className="px-3 sm:px-5 py-2.5 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
                 ← Back
               </button>
               <button type="button" onClick={() => setMode('fees')} disabled={selectedProducts.size === 0}
-                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors text-sm">
+                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors text-sm">
                 Continue to Fees →
               </button>
             </div>
@@ -801,7 +801,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
       {mode === 'fees' && (
         <div className="fixed inset-0 z-20 bg-slate-900/40 flex items-end sm:items-center justify-center sm:p-6">
           <div
-            className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-2xl flex flex-col"
+            className="bg-white rounded-t-2xl sm:rounded-exos shadow-2xl w-full sm:max-w-2xl flex flex-col"
             style={{ maxHeight: '88vh' }}
           >
             <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b border-slate-100 flex-shrink-0">
@@ -822,12 +822,12 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
             </div>
             <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-3 border-t border-slate-100 flex gap-2 sm:gap-3 flex-shrink-0">
               <button type="button" onClick={() => setMode('products')}
-                className="px-3 sm:px-5 py-2.5 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
+                className="px-3 sm:px-5 py-2.5 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
                 ← Back
               </button>
               <button type="button" onClick={() => setMode('map')}
                 disabled={[...selectedProducts].some((p) => !globalFees[p])}
-                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors text-sm">
+                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors text-sm">
                 Continue to Coverage Map →
               </button>
             </div>
@@ -843,11 +843,11 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
             {/* Left */}
             <div className="pointer-events-auto flex items-center gap-2 sm:gap-3">
               <button type="button" onClick={() => setMode('fees')}
-                className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-slate-900 text-xs sm:text-sm font-medium px-2.5 sm:px-3 py-1.5 rounded-lg shadow-sm transition-colors">
+                className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-slate-900 text-xs sm:text-sm font-medium px-2.5 sm:px-3 py-1.5 rounded-exos shadow-sm transition-colors">
                 ← Back
               </button>
               {/* Breadcrumb — desktop only */}
-              <div className="hidden sm:block bg-white/90 backdrop-blur-sm border border-slate-200 rounded-lg px-3 py-1.5 shadow-sm">
+              <div className="hidden sm:block bg-white/90 backdrop-blur-sm border border-slate-200 rounded-exos px-3 py-1.5 shadow-sm">
                 <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Custom Setup</span>
                 <span className="text-slate-300 mx-2">·</span>
                 <span className="text-xs text-slate-500">Draw Coverage Areas</span>
@@ -858,7 +858,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
             <div className="pointer-events-auto flex items-center gap-2">
               {areas.length > 0 && !drawMode && (
                 <button type="button" onClick={handleFinish} disabled={!canFinish}
-                  className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg shadow-sm transition-colors whitespace-nowrap">
+                  className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-exos shadow-sm transition-colors whitespace-nowrap">
                   <span className="hidden sm:inline">Save & Finish →</span>
                   <span className="sm:hidden">Save →</span>
                 </button>
@@ -866,14 +866,14 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
               {!drawMode && (
                 <div className="relative">
                   <button type="button" onClick={() => setShowAddDropdown((v) => !v)}
-                    className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg shadow-sm transition-colors flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+                    className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-exos shadow-sm transition-colors flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
                     <Plus className="w-4 h-4 flex-shrink-0" />
                     <span className="hidden sm:inline">Add Coverage Area</span>
                     <span className="sm:hidden">Add Area</span>
                     <ChevronRight className={`w-3.5 h-3.5 flex-shrink-0 transition-transform ${showAddDropdown ? 'rotate-90' : ''}`} />
                   </button>
                   {showAddDropdown && (
-                    <div className="absolute right-0 top-full mt-1.5 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden w-48 sm:w-52 z-30">
+                    <div className="absolute right-0 top-full mt-1.5 bg-white rounded-exos shadow-xl border border-slate-200 overflow-hidden w-48 sm:w-52 z-30">
                       <button type="button"
                         onClick={() => { setDrawMode('radius'); setShowAddDropdown(false); }}
                         className="w-full flex items-center gap-3 px-4 py-3 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">
@@ -902,7 +902,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
 
           {/* Radius panel — full-width on mobile, centered fixed-width on desktop */}
           {drawMode === 'radius' && (
-            <div className="absolute top-14 sm:top-16 left-3 right-3 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-80 z-20 bg-white rounded-2xl shadow-xl border border-slate-200 p-4">
+            <div className="absolute top-14 sm:top-16 left-3 right-3 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-80 z-20 bg-white rounded-exos shadow-xl border border-slate-200 p-4">
               <p className="text-sm font-semibold text-slate-900 mb-3 text-center">Set Radius</p>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -916,7 +916,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
               </div>
               <p className="text-center text-xs text-slate-400 mt-3">Tap the map to reposition</p>
               <button type="button" onClick={confirmRadius} disabled={!pendingCenter}
-                className="w-full mt-3 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl text-sm transition-colors">
+                className="w-full mt-3 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos text-sm transition-colors">
                 Confirm Coverage Area
               </button>
               <button type="button" onClick={() => { setDrawMode(null); setPendingCenter(null); mapRef.current?.getSource('pending-area')?.setData({ type: 'FeatureCollection', features: [] }); }}
@@ -936,7 +936,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
           {/* Overlap prompt */}
           {overridePrompt && (
             <div className="absolute inset-0 z-30 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-black/30">
-              <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl p-5 sm:p-6 w-full sm:max-w-sm">
+              <div className="bg-white rounded-t-2xl sm:rounded-exos shadow-2xl p-5 sm:p-6 w-full sm:max-w-sm">
                 <div className="flex justify-center mb-3 sm:hidden">
                   <div className="w-10 h-1 rounded-full bg-slate-200" />
                 </div>
@@ -951,11 +951,11 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
                 </div>
                 <div className="space-y-2">
                   <button type="button" onClick={() => commitArea(overridePrompt.newArea, [])}
-                    className="w-full py-2.5 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-medium rounded-xl text-sm transition-colors">
+                    className="w-full py-2.5 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-medium rounded-exos text-sm transition-colors">
                     Keep original assignments
                   </button>
                   <button type="button" onClick={() => commitArea(overridePrompt.newArea, overridePrompt.overlaps)}
-                    className="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl text-sm transition-colors">
+                    className="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-exos text-sm transition-colors">
                     Override — assign to this area
                   </button>
                 </div>
@@ -966,7 +966,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
           {/* Empty state */}
           {areas.length === 0 && !drawMode && (
             <div className="absolute bottom-1/2 translate-y-1/2 left-1/2 -translate-x-1/2 z-10 pointer-events-none w-64 sm:w-auto">
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 px-5 py-4 sm:px-6 sm:py-5 text-center">
+              <div className="bg-white/90 backdrop-blur-sm rounded-exos shadow-lg border border-slate-200 px-5 py-4 sm:px-6 sm:py-5 text-center">
                 <MapPin className="w-7 h-7 sm:w-8 sm:h-8 text-slate-300 mx-auto mb-2" />
                 <p className="text-sm font-semibold text-slate-700">No coverage areas yet</p>
                 <p className="text-xs text-slate-400 mt-0.5">Tap "Add Area" to get started</p>
@@ -980,7 +980,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
               {areas.map((area) => (
                 <button key={area.id} type="button"
                   onClick={() => setActiveAreaId(activeAreaId === area.id ? null : area.id)}
-                  className={`pointer-events-auto flex-shrink-0 flex items-center gap-2 sm:gap-2.5 px-3 sm:px-3.5 py-2 sm:py-2.5 bg-white/95 backdrop-blur-sm rounded-xl shadow-md border-2 transition-all ${
+                  className={`pointer-events-auto flex-shrink-0 flex items-center gap-2 sm:gap-2.5 px-3 sm:px-3.5 py-2 sm:py-2.5 bg-white/95 backdrop-blur-sm rounded-exos shadow-md border-2 transition-all ${
                     activeAreaId === area.id ? 'border-blue-500' : 'border-transparent hover:border-slate-300'}`}>
                   <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: area.color }} />
                   <div className="text-left">

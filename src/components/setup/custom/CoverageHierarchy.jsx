@@ -65,13 +65,13 @@ const ZipEditor = ({ zips, onAdd, onRemove }) => {
           onKeyDown={(e) => e.key === 'Enter' && add()}
           placeholder="Enter ZIP"
           maxLength={5}
-          className="flex-1 border border-slate-200 rounded-lg px-3 py-1.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 border border-slate-200 rounded-exos px-3 py-1.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
           type="button"
           onClick={add}
           disabled={input.length !== 5}
-          className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white text-xs font-semibold rounded-lg transition-colors"
+          className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white text-xs font-semibold rounded-exos transition-colors"
         >
           <Plus className="w-3.5 h-3.5" /> Add
         </button>
@@ -171,7 +171,7 @@ const StateCard = ({ code, val, onRemove, onSetEntire, onSetCounties, onToggleCo
   const summary = summarize(val);
 
   return (
-    <div className="border border-slate-200 rounded-2xl overflow-hidden bg-white">
+    <div className="border border-slate-200 rounded-exos overflow-hidden bg-white">
       {/* State header row */}
       <div className="flex items-center gap-3 px-4 py-3.5 bg-slate-50">
         <button
@@ -195,7 +195,7 @@ const StateCard = ({ code, val, onRemove, onSetEntire, onSetCounties, onToggleCo
         {/* Entire state / Customize counties */}
         {counties ? (
           <div className="flex items-center gap-2 flex-shrink-0">
-            <div className="flex rounded-lg border border-slate-200 overflow-hidden text-xs">
+            <div className="flex rounded-exos border border-slate-200 overflow-hidden text-xs">
               <button
                 type="button"
                 onClick={() => { onSetEntire(); setExpanded(false); }}
@@ -379,7 +379,7 @@ const CoverageHierarchy = ({ value, onChange }) => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search states..."
-              className="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
+              className="w-full border border-slate-200 rounded-exos-sm px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
             />
             <div className="grid grid-cols-4 sm:grid-cols-5 gap-1.5 max-h-40 overflow-y-auto pr-1">
               {filtered.map(({ code, name }) => {
@@ -390,7 +390,7 @@ const CoverageHierarchy = ({ value, onChange }) => {
                     type="button"
                     onClick={() => (selected ? removeState(code) : addState(code))}
                     title={name}
-                    className={`flex items-center justify-between px-2.5 py-1.5 rounded-xl border-2 text-xs font-semibold transition-all ${
+                    className={`flex items-center justify-between px-2.5 py-1.5 rounded-exos border-2 text-xs font-semibold transition-all ${
                       selected
                         ? 'border-blue-500 bg-blue-50 text-blue-800'
                         : 'border-slate-200 text-slate-600 hover:border-slate-300'
@@ -428,7 +428,7 @@ const CoverageHierarchy = ({ value, onChange }) => {
         </div>
 
         {/* ── Right: Map overview ── */}
-        <div className="rounded-2xl overflow-hidden border border-slate-200 h-[420px] sticky top-4">
+        <div className="rounded-exos overflow-hidden border border-slate-200 h-[420px] sticky top-4">
           {selectedCodes.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-slate-400 bg-slate-50 gap-2">
               <MapPin className="w-8 h-8 opacity-40" />

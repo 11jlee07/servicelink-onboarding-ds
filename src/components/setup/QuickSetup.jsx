@@ -33,7 +33,7 @@ const formatCurrency = (val) => {
 
 /* ── Section wrapper ──────────────────────────────────────────────── */
 const Section = ({ number, icon: Icon, title, children }) => (
-  <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+  <div className="bg-white rounded-exos border border-slate-200 overflow-hidden">
     <div className="flex items-center gap-3 px-6 py-4 border-b border-slate-100">
       <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
         <span className="text-white text-xs font-bold">{number}</span>
@@ -153,7 +153,7 @@ const QuickSetup = ({ state, setState, onBack, onDone }) => {
           <button
             type="button"
             onClick={toggleFha}
-            className={`w-full flex items-center justify-between p-4 border-2 rounded-xl mb-4 text-left transition-all ${
+            className={`w-full flex items-center justify-between p-4 border-2 rounded-exos mb-4 text-left transition-all ${
               fhaEnabled
                 ? 'border-blue-500 bg-blue-50'
                 : 'border-slate-200 hover:border-slate-300'
@@ -183,14 +183,14 @@ const QuickSetup = ({ state, setState, onBack, onDone }) => {
           </button>
 
           {showProducts && (
-            <div className="mt-3 space-y-1.5 border border-slate-100 rounded-xl p-3 bg-slate-50">
+            <div className="mt-3 space-y-1.5 border border-slate-100 rounded-exos-sm p-3 bg-slate-50">
               {allProducts.map((product) => {
                 const checked = selectedProducts.has(product.id);
                 const isFha = FHA_PRODUCTS.some((f) => f.id === product.id);
                 return (
                   <label
                     key={product.id}
-                    className="flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-white cursor-pointer transition-colors"
+                    className="flex items-center gap-3 py-2 px-2 rounded-exos hover:bg-white cursor-pointer transition-colors"
                   >
                     <div
                       className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 border-2 transition-colors ${
@@ -234,7 +234,7 @@ const QuickSetup = ({ state, setState, onBack, onDone }) => {
                     value={fees[key]}
                     onChange={(e) => setFees((prev) => ({ ...prev, [key]: formatCurrency(e.target.value) }))}
                     placeholder={placeholder}
-                    className="w-full border border-slate-200 rounded-xl py-3 pl-8 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-slate-200 rounded-exos-sm py-3 pl-8 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     aria-label={`Fee for ${label}`}
                   />
                 </div>
@@ -252,7 +252,7 @@ const QuickSetup = ({ state, setState, onBack, onDone }) => {
           type="button"
           onClick={handleSave}
           disabled={!canSave}
-          className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors"
+          className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors"
         >
           Save & Finish →
         </button>

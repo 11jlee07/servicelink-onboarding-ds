@@ -18,7 +18,7 @@ const SubmissionConfirmation = ({ state, onSetupClick }) => {
       </div>
 
       {/* Status card */}
-      <div className="bg-white rounded-2xl shadow-card border border-slate-200 p-6 mb-6">
+      <div className="bg-white rounded-exos shadow-card border border-slate-200 p-6 mb-6">
         <h2 className="font-semibold text-slate-900 mb-4">What's happening now</h2>
         <div className="space-y-4">
           {[
@@ -50,7 +50,7 @@ const SubmissionConfirmation = ({ state, onSetupClick }) => {
       </div>
 
       {/* While you wait */}
-      <div className="bg-white rounded-2xl shadow-card border border-slate-200 p-6 mb-6">
+      <div className="bg-white rounded-exos shadow-card border border-slate-200 p-6 mb-6">
         <h2 className="font-semibold text-slate-900 mb-4">While you wait, you can:</h2>
         <div className="space-y-3">
           {[

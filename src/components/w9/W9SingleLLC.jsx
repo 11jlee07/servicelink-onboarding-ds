@@ -49,7 +49,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+      <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
         <div className="flex items-center justify-between mb-8">
           <div>
             <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 2 of 6 · W-9</p>
@@ -69,7 +69,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
               <input type="text" placeholder='e.g., "Smith Appraisal LLC"'
                 value={state.w9Data.businessName}
                 onChange={(e) => update('businessName', e.target.value)}
-                className="w-full border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                className="w-full border border-slate-200 rounded-exos-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div className="border-t border-slate-100" />
@@ -85,7 +85,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
                   { value: 'c_corp', label: 'C Corporation', tip: 'Filed Form 8832 to be taxed as a C-corp.' },
                   { value: 's_corp', label: 'S Corporation', tip: 'Filed Form 2553 to be taxed as an S-corp.' },
                 ].map(({ value, label, tip }) => (
-                  <label key={value} className={`flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+                  <label key={value} className={`flex items-center gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
                     ${state.w9Data.taxClassification === value ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}>
                     <input type="radio" name="taxClass" value={value}
                       checked={state.w9Data.taxClassification === value}
@@ -95,7 +95,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
                   </label>
                 ))}
 
-                <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-sm text-blue-900 flex gap-2">
+                <div className="p-3.5 bg-blue-50 border border-blue-200 rounded-exos-sm text-sm text-blue-900 flex gap-2">
                   <Info className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
                   <span><strong>Not sure?</strong> If you didn't file special tax forms, choose <em>Disregarded entity</em>.</span>
                 </div>
@@ -116,7 +116,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
                       <input type="text" inputMode="numeric" placeholder="12-3456789"
                         value={state.w9Data.taxId}
                         onChange={handleTaxIdInput}
-                        className="w-full border border-slate-200 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full border border-slate-200 rounded-exos-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         maxLength={10} />
                     </>
                   ) : (
@@ -127,7 +127,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
                           { type: 'ssn', label: 'Social Security Number (SSN)', placeholder: '123-45-6789', maxLen: 11 },
                           { type: 'ein', label: 'Employer ID Number (EIN)', placeholder: '12-3456789', maxLen: 10 },
                         ].map(({ type, label, placeholder, maxLen }) => (
-                          <label key={type} className={`flex items-start gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+                          <label key={type} className={`flex items-start gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
                             ${state.w9Data.taxIdType === type ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}>
                             <input type="radio" name="taxIdType" value={type}
                               checked={state.w9Data.taxIdType === type}
@@ -141,7 +141,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
                                   onChange={handleTaxIdInput}
                                   onClick={(e) => e.stopPropagation()}
                                   autoFocus
-                                  className="w-full border border-slate-200 rounded-lg py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                                  className="w-full border border-slate-200 rounded-exos py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                                   maxLength={maxLen} />
                               )}
                             </div>
@@ -160,11 +160,11 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
 
         <div className="flex gap-3 mt-8">
           <button type="button" onClick={handleBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-xl font-medium text-slate-700 hover:border-slate-300 transition-colors">
+            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
             ← Back
           </button>
           <button type="button" onClick={handleNext} disabled={!isValid()}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-xl transition-colors">
+            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
             {q < TOTAL ? 'Continue →' : 'Review W-9 →'}
           </button>
         </div>

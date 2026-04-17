@@ -26,7 +26,7 @@ const MailingAddressQuestion = ({ basicInfo, w9Data, onChange }) => {
 
       {/* Option: same as office */}
       <label
-        className={`flex items-start gap-3 p-4 border-2 rounded-xl mb-3 cursor-pointer transition-all
+        className={`flex items-start gap-3 p-4 border-2 rounded-exos mb-3 cursor-pointer transition-all
           ${useOffice ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}
       >
         <input
@@ -50,7 +50,7 @@ const MailingAddressQuestion = ({ basicInfo, w9Data, onChange }) => {
 
       {/* Option: different address */}
       <label
-        className={`flex items-start gap-3 p-4 border-2 rounded-xl cursor-pointer transition-all
+        className={`flex items-start gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
           ${!useOffice ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}
       >
         <input
@@ -69,7 +69,7 @@ const MailingAddressQuestion = ({ basicInfo, w9Data, onChange }) => {
                 placeholder="Street Address"
                 value={mailingAddress.street || ''}
                 onChange={(e) => setField('street', e.target.value)}
-                className="w-full border border-slate-200 rounded-lg py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                className="w-full border border-slate-200 rounded-exos py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                 onClick={(e) => e.stopPropagation()}
               />
               <div className="grid grid-cols-5 gap-2">
@@ -78,13 +78,13 @@ const MailingAddressQuestion = ({ basicInfo, w9Data, onChange }) => {
                   placeholder="City"
                   value={mailingAddress.city || ''}
                   onChange={(e) => setField('city', e.target.value)}
-                  className="border border-slate-200 rounded-lg py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white col-span-2"
+                  className="border border-slate-200 rounded-exos py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white col-span-2"
                   onClick={(e) => e.stopPropagation()}
                 />
                 <select
                   value={mailingAddress.state || ''}
                   onChange={(e) => setField('state', e.target.value)}
-                  className="border border-slate-200 rounded-lg py-2.5 px-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white col-span-1"
+                  className="border border-slate-200 rounded-exos py-2.5 px-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white col-span-1"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <option value="">ST</option>
@@ -96,7 +96,7 @@ const MailingAddressQuestion = ({ basicInfo, w9Data, onChange }) => {
                   placeholder="ZIP"
                   value={mailingAddress.zip || ''}
                   onChange={(e) => setField('zip', e.target.value.replace(/\D/g, '').slice(0, 5))}
-                  className="border border-slate-200 rounded-lg py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white col-span-2"
+                  className="border border-slate-200 rounded-exos py-2.5 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white col-span-2"
                   maxLength={5}
                   onClick={(e) => e.stopPropagation()}
                 />
