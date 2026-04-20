@@ -124,11 +124,9 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
             </div>
           </div>
 
-          {/* Right — EXOS illustration */}
-          <div className="hidden lg:flex justify-center">
-            <ExosHalo size={320}>
-              <ExosIllustration name="house-search" size={200} />
-            </ExosHalo>
+          {/* Right — hero photo */}
+          <div className="hidden lg:block">
+            <img src="/level up your business (photo 1).webp" alt="" className="w-full h-80 object-cover rounded-exos" />
           </div>
         </div>
       </section>
@@ -161,10 +159,8 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
       {/* ── BROKER PANEL ─────────────────────────────────────────── */}
       <section className="bg-slate-50 py-16">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="h-72 flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 rounded-exos">
-            <ExosHalo size={220}>
-              <ExosIllustration name="house-stamp" size={130} />
-            </ExosHalo>
+          <div className="h-72 rounded-exos overflow-hidden">
+            <img src="/join our broker panel (photo 2).webp" alt="" className="w-full h-full object-cover" />
           </div>
           <div>
             <p className="text-blue-600 font-semibold text-xs uppercase tracking-widest mb-2">Appraisers</p>
@@ -214,10 +210,8 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               Join the network <ArrowRight className="w-4 h-4" />
             </PrimaryBtn>
           </div>
-          <div className="h-72 hidden lg:flex items-center justify-center bg-gradient-to-br from-blue-900/60 to-slate-800/80 rounded-exos">
-            <ExosHalo size={220}>
-              <ExosIllustration name="mail-open-instant" size={130} />
-            </ExosHalo>
+          <div className="h-72 hidden lg:block rounded-exos overflow-hidden">
+            <img src="/join the nation's most powerful (photo 3).webp" alt="" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
@@ -225,10 +219,8 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
       {/* ── ABSTRACTORS ──────────────────────────────────────────── */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="h-72 flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 rounded-exos order-2 lg:order-1">
-            <ExosHalo size={220}>
-              <ExosIllustration name="house-map-pin" size={130} />
-            </ExosHalo>
+          <div className="h-72 rounded-exos overflow-hidden order-2 lg:order-1">
+            <img src="/We're expanding our network (photo 4).webp" alt="" className="w-full h-full object-cover" />
           </div>
           <div className="order-1 lg:order-2">
             <p className="text-blue-600 font-semibold text-xs uppercase tracking-widest mb-2">Abstractors</p>
@@ -278,10 +270,8 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               Get started <ArrowRight className="w-4 h-4" />
             </PrimaryBtn>
           </div>
-          <div className="h-72 hidden lg:flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 rounded-exos">
-            <ExosHalo size={220}>
-              <ExosIllustration name="house-pin-2" size={130} />
-            </ExosHalo>
+          <div className="h-72 hidden lg:block rounded-exos overflow-hidden">
+            <img src="/Join our national field services (photo 5).webp" alt="" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
