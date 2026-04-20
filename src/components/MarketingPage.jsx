@@ -6,10 +6,10 @@ import { ExosIllustration, ExosHalo, ExosIcon } from './shared/ExosIcon';
 /* ─── ServiceLink logo ───────────────────────────────────────────── */
 const Logo = ({ inverted = false }) => (
   <img
-    src={inverted ? '/servicelink-logo-white.svg' : '/servicelink-logo.svg'}
+    src="/logo.png"
     alt="ServiceLink"
     height={36}
-    className="h-9 w-auto object-contain"
+    className={`h-9 w-auto object-contain ${inverted ? 'brightness-0 invert' : ''}`}
   />
 );
 
