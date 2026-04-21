@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { CheckCircle, MapPin, Loader, TrendingUp, Briefcase, ScanLine } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { CheckCircle, Loader, ScanLine } from 'lucide-react';
 import { formatPhone, isValidPhone } from '../utils/validation';
 import { validateAddress } from '../utils/mockApi';
 
@@ -14,12 +14,6 @@ const BasicInfo = ({ state, setState, onNext }) => {
   const [address, setAddress] = useState(state.basicInfo.address || { street: '', city: '', stateCode: '', zip: '', validated: false });
   const [validatingAddress, setValidatingAddress] = useState(false);
   const [touched, setTouched] = useState({});
-
-  // Reveal animation state
-  const [displayCount, setDisplayCount] = useState(0);
-  const [showDetails, setShowDetails] = useState(false);
-  const [cardVisible, setCardVisible] = useState(false);
-  const countTimerRef = useRef(null);
 
   // Auto-populate name from marketing data
   useEffect(() => {
@@ -53,39 +47,6 @@ const BasicInfo = ({ state, setState, onNext }) => {
     }
   }, [address.zip, address.street, address.city, address.stateCode]);
 
-  // Animate the market reveal when validated flips true
-  useEffect(() => {
-    if (!address.validated) {
-      setDisplayCount(0);
-      setShowDetails(false);
-      setCardVisible(false);
-      if (countTimerRef.current) clearInterval(countTimerRef.current);
-      return;
-    }
-
-    // Slight delay so card fade-in starts first
-    const fadeTimer = setTimeout(() => setCardVisible(true), 50);
-
-    const target = 47;
-    const duration = 900;
-    const steps = 45;
-    let current = 0;
-
-    countTimerRef.current = setInterval(() => {
-      current += 1;
-      setDisplayCount(Math.round((current / steps) * target));
-      if (current >= steps) {
-        clearInterval(countTimerRef.current);
-        setDisplayCount(target);
-        setTimeout(() => setShowDetails(true), 120);
-      }
-    }, duration / steps);
-
-    return () => {
-      clearTimeout(fadeTimer);
-      if (countTimerRef.current) clearInterval(countTimerRef.current);
-    };
-  }, [address.validated]);
 
   const handleAddressField = (field, value) => {
     setAddress((prev) => ({ ...prev, [field]: value, validated: false }));
@@ -108,8 +69,6 @@ const BasicInfo = ({ state, setState, onNext }) => {
   const inputCls = (hasError) =>
     `w-full border rounded-exos-sm py-3 px-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all
     ${hasError ? 'border-red-300 bg-red-50' : 'border-slate-200 bg-white'}`;
-
-  const cityLabel = address.city ? address.city : 'Your Area';
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
@@ -263,82 +222,6 @@ const BasicInfo = ({ state, setState, onNext }) => {
             </div>
           </div>
 
-          {/* Animated market reveal card */}
-          {(address.validated || validatingAddress) && (
-            <div
-              className="overflow-hidden rounded-exos border border-blue-100 shadow-sm"
-              style={{
-                opacity: cardVisible ? 1 : 0,
-                transform: cardVisible ? 'translateY(0)' : 'translateY(8px)',
-                transition: 'opacity 400ms ease, transform 400ms ease',
-              }}
-            >
-              {/* Header band */}
-              <div className="bg-blue-600 px-5 py-4 flex items-center justify-between">
-                <div>
-                  <p className="text-blue-200 text-xs font-medium uppercase tracking-wider mb-0.5">
-                    Market availability
-                  </p>
-                  <p className="text-white font-bold text-lg leading-tight">{cityLabel}</p>
-                </div>
-                <MapPin className="w-6 h-6 text-blue-300" />
-              </div>
-
-              {/* Stats row */}
-              <div className="bg-white px-5 py-5">
-                <div className="flex items-end gap-1 mb-1">
-                  <span className="text-5xl font-bold text-slate-900 tabular-nums leading-none">
-                    {displayCount}
-                  </span>
-                  <span className="text-slate-500 text-sm mb-1 ml-1">open assignments</span>
-                </div>
-
-                <div
-                  style={{
-                    opacity: showDetails ? 1 : 0,
-                    transform: showDetails ? 'translateY(0)' : 'translateY(4px)',
-                    transition: 'opacity 400ms ease, transform 400ms ease',
-                  }}
-                >
-                  <div className="flex items-center gap-1.5 mb-5">
-                    <TrendingUp className="w-4 h-4 text-emerald-600" />
-                    <span className="text-emerald-700 font-semibold text-sm">
-                      $4,200–$8,500<span className="text-emerald-600 font-normal">/month for vendors in this area</span>
-                    </span>
-                  </div>
-
-                  {/* Blurred assignment previews */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {[
-                      { type: 'Residential', fee: '$385', due: '04/22' },
-                      { type: 'FHA Appraisal', fee: '$420', due: '04/23' },
-                      { type: 'Condo Review',  fee: '$310', due: '04/25' },
-                    ].map((job, i) => (
-                      <div
-                        key={i}
-                        className="bg-slate-50 border border-slate-200 rounded-exos-sm p-3"
-                        style={{
-                          opacity: showDetails ? 1 : 0,
-                          transition: `opacity 350ms ease ${120 + i * 80}ms`,
-                        }}
-                      >
-                        <div className="flex items-center gap-1.5 mb-2">
-                          <Briefcase className="w-3 h-3 text-blue-500 flex-shrink-0" />
-                          <p className="text-xs font-semibold text-slate-700 leading-tight">{job.type}</p>
-                        </div>
-                        <div className="space-y-0.5">
-                          <p className="text-xs text-slate-400 blur-sm select-none">123 Oak Street</p>
-                          <p className="text-xs text-slate-500 blur-sm select-none">Fee: {job.fee}</p>
-                          <p className="text-xs text-slate-500 blur-sm select-none">Due: {job.due}</p>
-                        </div>
-                        <p className="text-xs text-blue-600 font-medium mt-2">Finish to unlock →</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
 
           <button
             type="submit"
