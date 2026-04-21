@@ -28,6 +28,20 @@ export const verifyLicense = async (licenseData) => {
   };
 };
 
+export const parseDL = async (file) => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  return {
+    firstName: 'John',
+    lastName: 'Lee',
+    street: '4821 Elm Grove Ln',
+    city: 'Dallas',
+    state: 'TX',
+    zip: '75201',
+    dob: '1990-03-14',
+    dlNumber: 'TX12345678',
+  };
+};
+
 export const parseEOInsurance = async (file) => {
   await new Promise((resolve) => setTimeout(resolve, 2200));
   const now = new Date();

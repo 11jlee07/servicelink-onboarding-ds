@@ -3,6 +3,7 @@ import Header from './components/shared/Header';
 import MarketingPage from './components/MarketingPage';
 import AccountCreation from './components/AccountCreation';
 import BasicInfo from './components/BasicInfo';
+import DLUpload from './components/DLUpload';
 import BusinessStructureSelection from './components/BusinessStructureSelection';
 import W9SoleProp from './components/w9/W9SoleProp';
 import W9SingleLLC from './components/w9/W9SingleLLC';
@@ -54,24 +55,24 @@ const initialState = {
 };
 
 // Screen → progress step mapping (6 steps)
-// Step 1: Basic Info (screen 3)
-// Step 2: W-9 — Business Type + W-9 Info + W-9 Review (screens 4-6)
-// Step 3: License (screen 7)
-// Step 4: Insurance (screen 8)
-// Step 5: Background Check (screen 9)
-// Step 6: Agreement (screen 10)
+// Step 1: Basic Info (screens 3-4)
+// Step 2: W-9 — Business Type + W-9 Info + W-9 Review (screens 5-7)
+// Step 3: License (screen 8)
+// Step 4: Insurance (screen 9)
+// Step 5: Background Check (screen 10)
+// Step 6: Agreement (screen 11)
 const getProgressStep = (screen) => {
-  if (screen === 3) return 1;
-  if (screen >= 4 && screen <= 6) return 2;
-  if (screen === 7) return 3;
-  if (screen === 8) return 4;
-  if (screen === 9) return 5;
-  if (screen === 10) return 6;
+  if (screen >= 3 && screen <= 4) return 1;
+  if (screen >= 5 && screen <= 7) return 2;
+  if (screen === 8) return 3;
+  if (screen === 9) return 4;
+  if (screen === 10) return 5;
+  if (screen === 11) return 6;
   return null;
 };
 
 // Step → screen (navigates to start of each step)
-const STEP_TO_SCREEN = [null, 3, 4, 7, 8, 9, 10];
+const STEP_TO_SCREEN = [null, 3, 5, 8, 9, 10, 11];
 
 const App = () => {
   const [state, setState] = useState(initialState);
@@ -90,11 +91,11 @@ const App = () => {
         address: { street: '123 Main St', city: 'Celina', state: 'TX', zip: '75009', validated: true },
       },
     }));
-    setScreen(12);
+    setScreen(13);
   };
 
   const progressStep = getProgressStep(screen);
-  const showHeader = screen >= 2 && screen <= 10;
+  const showHeader = screen >= 2 && screen <= 11;
 
   const renderScreen = () => {
     const props = { state, setState, onNext: navigateNext, onBack: navigateBack };
@@ -107,8 +108,10 @@ const App = () => {
       case 3:
         return <BasicInfo {...props} />;
       case 4:
+        return <DLUpload {...props} />;
+      case 5:
         return <BusinessStructureSelection {...props} />;
-      case 5: {
+      case 6: {
         switch (state.businessStructure) {
           case 'sole_prop':   return <W9SoleProp {...props} />;
           case 'single_llc':  return <W9SingleLLC {...props} />;
@@ -120,14 +123,14 @@ const App = () => {
           default:            return null;
         }
       }
-      case 6:  return <W9ReviewSign {...props} />;
-      case 7:  return <LicenseUpload {...props} />;
-      case 8:  return <EOInsuranceUpload {...props} />;
-      case 9:  return <BackgroundCheck state={state} onNext={navigateNext} onBack={navigateBack} />;
-      case 10: return <TVAAgreement {...props} />;
-      case 11: return <SubmissionConfirmation state={state} onSetupClick={() => setScreen(12)} />;
-      case 12: return <SetupMapFlow state={state} setState={setState} onQuick={() => setScreen(13)} onBack={() => setScreen(11)} onDone={() => setScreen(11)} />;
-      case 13: return <QuickSetup state={state} setState={setState} onBack={() => setScreen(12)} onDone={() => setScreen(11)} />;
+      case 7:  return <W9ReviewSign {...props} />;
+      case 8:  return <LicenseUpload {...props} />;
+      case 9:  return <EOInsuranceUpload {...props} />;
+      case 10: return <BackgroundCheck state={state} onNext={navigateNext} onBack={navigateBack} />;
+      case 11: return <TVAAgreement {...props} />;
+      case 12: return <SubmissionConfirmation state={state} onSetupClick={() => setScreen(13)} />;
+      case 13: return <SetupMapFlow state={state} setState={setState} onQuick={() => setScreen(14)} onBack={() => setScreen(12)} onDone={() => setScreen(12)} />;
+      case 14: return <QuickSetup state={state} setState={setState} onBack={() => setScreen(13)} onDone={() => setScreen(12)} />;
       default: return null;
     }
   };
