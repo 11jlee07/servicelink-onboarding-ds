@@ -97,7 +97,6 @@ const BasicInfo = ({ state, setState, onNext }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setTouched({ firstName: true, lastName: true, phone: true, address: true });
-    if (!isFormValid) return;
     setState((prev) => ({
       ...prev,
       basicInfo: { firstName, lastName, phone, address: { ...address, state: address.stateCode } },
@@ -322,8 +321,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
 
           <button
             type="submit"
-            disabled={!isFormValid}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold py-3 rounded-exos transition-colors mt-2"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-exos transition-colors mt-2"
           >
             Continue →
           </button>
