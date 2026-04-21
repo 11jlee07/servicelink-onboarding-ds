@@ -97,6 +97,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setTouched({ firstName: true, lastName: true, phone: true, address: true });
+    if (!isFormValid) return;
     setState((prev) => ({
       ...prev,
       basicInfo: { firstName, lastName, phone, address: { ...address, state: address.stateCode } },
@@ -205,30 +206,39 @@ const BasicInfo = ({ state, setState, onNext }) => {
               Office Address
             </label>
             <div className="space-y-3">
-              <input
-                type="text"
-                value={address.street}
-                onChange={(e) => handleAddressField('street', e.target.value)}
-                placeholder="Street Address"
-                className={inputCls(false)}
-              />
-              {/* City + State row (always side-by-side) */}
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+              <div>
                 <input
                   type="text"
-                  value={address.city}
-                  onChange={(e) => handleAddressField('city', e.target.value)}
-                  placeholder="City"
-                  className={inputCls(false) + ' sm:col-span-3'}
+                  value={address.street}
+                  onChange={(e) => handleAddressField('street', e.target.value)}
+                  placeholder="Street Address"
+                  className={inputCls(touched.address && !address.street)}
                 />
-                <select
-                  value={address.stateCode}
-                  onChange={(e) => handleAddressField('stateCode', e.target.value)}
-                  className="border border-slate-200 rounded-exos-sm py-3 px-3 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 sm:col-span-2 text-base"
-                >
-                  <option value="">State</option>
-                  {US_STATES.map((s) => <option key={s} value={s}>{s}</option>)}
-                </select>
+                {touched.address && !address.street && <p className="text-red-500 text-xs mt-1">Street address is required</p>}
+              </div>
+              {/* City + State row (always side-by-side) */}
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                <div className="sm:col-span-3">
+                  <input
+                    type="text"
+                    value={address.city}
+                    onChange={(e) => handleAddressField('city', e.target.value)}
+                    placeholder="City"
+                    className={inputCls(touched.address && !address.city) + ' w-full'}
+                  />
+                  {touched.address && !address.city && <p className="text-red-500 text-xs mt-1">Required</p>}
+                </div>
+                <div className="sm:col-span-2">
+                  <select
+                    value={address.stateCode}
+                    onChange={(e) => handleAddressField('stateCode', e.target.value)}
+                    className={`w-full border rounded-exos-sm py-3 px-3 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-base ${touched.address && !address.stateCode ? 'border-red-300 bg-red-50' : 'border-slate-200'}`}
+                  >
+                    <option value="">State</option>
+                    {US_STATES.map((s) => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                  {touched.address && !address.stateCode && <p className="text-red-500 text-xs mt-1">Required</p>}
+                </div>
               </div>
 
               {/* ZIP — own row on mobile */}
@@ -239,7 +249,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
                   onChange={(e) => handleAddressField('zip', e.target.value.replace(/\D/g, '').slice(0, 5))}
                   placeholder="ZIP Code"
                   inputMode="numeric"
-                  className={inputCls(false) + ' w-full' + (validatingAddress ? ' pr-10' : '')}
+                  className={inputCls(touched.address && !address.zip) + ' w-full' + (validatingAddress ? ' pr-10' : '')}
                   maxLength={5}
                 />
                 {validatingAddress && (
@@ -249,6 +259,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
                   <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
                 )}
               </div>
+              {touched.address && !address.zip && <p className="text-red-500 text-xs mt-1">ZIP code is required</p>}
             </div>
           </div>
 
