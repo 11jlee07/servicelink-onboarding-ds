@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Loader, ScanLine } from 'lucide-react';
+import { Loader, ScanLine, CheckCircle } from 'lucide-react';
 import { formatPhone, isValidPhone } from '../utils/validation';
 import { validateAddress } from '../utils/mockApi';
 
