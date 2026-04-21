@@ -27,20 +27,22 @@ const StructureCard = ({ id, title, illustration, tooltip, selected, onSelect })
         }`}
       aria-pressed={selected}
     >
-      {/* Info icon */}
-      <div
-        className="absolute top-3 left-3"
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <Info className="w-4 h-4 text-slate-400" />
-        {showTooltip && (
-          <div className="absolute left-0 top-6 w-48 p-2.5 bg-slate-900 text-white text-xs rounded-exos shadow-xl z-20 leading-relaxed">
-            {tooltip}
-          </div>
-        )}
-      </div>
+      {/* Info icon — top right, hidden when selected (checkmark takes over) */}
+      {!selected && (
+        <div
+          className="absolute top-3 right-3"
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Info className="w-4 h-4 text-slate-400" />
+          {showTooltip && (
+            <div className="absolute right-0 top-6 w-48 p-2.5 bg-slate-900 text-white text-xs rounded-exos shadow-xl z-20 leading-relaxed">
+              {tooltip}
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="w-full mb-5">
         <ExosIllustration name={illustration} size={128} className="w-full h-auto" />
