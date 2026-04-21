@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, Loader, ScanLine } from 'lucide-react';
+import { Loader, ScanLine } from 'lucide-react';
 import { formatPhone, isValidPhone } from '../utils/validation';
 import { validateAddress } from '../utils/mockApi';
 
@@ -97,20 +97,15 @@ const BasicInfo = ({ state, setState, onNext }) => {
               <label className="block text-sm font-medium text-slate-700 mb-1.5" htmlFor="firstName">
                 Legal First Name
               </label>
-              <div className="relative">
-                <input
-                  id="firstName"
-                  type="text"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  onBlur={() => setTouched((p) => ({ ...p, firstName: true }))}
-                  className={inputCls(touched.firstName && !firstName) + (firstName ? ' pl-10' : '')}
-                  required
-                />
-                {firstName && (
-                  <CheckCircle className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
-                )}
-              </div>
+              <input
+                id="firstName"
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                onBlur={() => setTouched((p) => ({ ...p, firstName: true }))}
+                className={inputCls(touched.firstName && !firstName)}
+                required
+              />
               {touched.firstName && !firstName && (
                 <p className="text-red-500 text-xs mt-1">Required</p>
               )}
@@ -120,20 +115,15 @@ const BasicInfo = ({ state, setState, onNext }) => {
               <label className="block text-sm font-medium text-slate-700 mb-1.5" htmlFor="lastName">
                 Legal Last Name
               </label>
-              <div className="relative">
-                <input
-                  id="lastName"
-                  type="text"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  onBlur={() => setTouched((p) => ({ ...p, lastName: true }))}
-                  className={inputCls(touched.lastName && !lastName) + (lastName ? ' pl-10' : '')}
-                  required
-                />
-                {lastName && (
-                  <CheckCircle className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
-                )}
-              </div>
+              <input
+                id="lastName"
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                onBlur={() => setTouched((p) => ({ ...p, lastName: true }))}
+                className={inputCls(touched.lastName && !lastName)}
+                required
+              />
               {touched.lastName && !lastName && (
                 <p className="text-red-500 text-xs mt-1">Required</p>
               )}
