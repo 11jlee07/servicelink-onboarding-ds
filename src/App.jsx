@@ -1,4 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
+
+class ErrorBoundary extends Component {
+  constructor(props) { super(props); this.state = { error: null }; }
+  static getDerivedStateFromError(error) { return { error }; }
+  render() {
+    if (this.state.error) {
+      return (
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+          <div className="bg-white rounded-exos border border-red-200 p-6 max-w-lg w-full">
+            <h2 className="text-lg font-bold text-red-700 mb-2">Something went wrong</h2>
+            <pre className="text-xs text-red-600 bg-red-50 rounded p-3 overflow-auto whitespace-pre-wrap">
+              {this.state.error.message}
+              {'\n'}
+              {this.state.error.stack}
+            </pre>
+            <button onClick={() => this.setState({ error: null })} className="mt-4 px-4 py-2 bg-blue-600 text-white text-sm font-bold uppercase rounded-exos">
+              Try again
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 import Header from './components/shared/Header';
 import MarketingPage from './components/MarketingPage';
 import AccountCreation from './components/AccountCreation';
@@ -138,7 +163,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-slate-50">
       {showHeader && <Header progressStep={progressStep} screen={screen} onStepClick={navigateToStep} />}
-      <main>{renderScreen()}</main>
+      <main><ErrorBoundary key={screen}>{renderScreen()}</ErrorBoundary></main>
     </div>
   );
 };
