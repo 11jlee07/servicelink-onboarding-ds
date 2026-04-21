@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Info } from 'lucide-react';
 import { ExosIllustration } from './shared/ExosIcon';
 
 const STRUCTURES = [
@@ -11,33 +12,52 @@ const STRUCTURES = [
   { id: 'other',       title: 'Other',                        illustration: 'Other',              tooltip: "None of the above — I'll describe my entity type" },
 ];
 
-const StructureCard = ({ id, title, illustration, selected, onSelect }) => (
-  <button
-    type="button"
-    onClick={() => onSelect(id)}
-    className={`relative flex flex-col items-center pt-8 pb-5 px-4 border-2 rounded-exos transition-all duration-150 focus:outline-none bg-white
-      ${selected
-        ? 'border-blue-500 shadow-lift'
-        : 'border-slate-200 hover:border-blue-300 hover:shadow-card'
-      }`}
-    aria-pressed={selected}
-  >
-    <div className="w-28 h-28 flex items-center justify-center mb-5">
-      <ExosIllustration name={illustration} size={112} />
-    </div>
-    <h3 className={`font-semibold text-sm text-center leading-snug ${selected ? 'text-blue-600' : 'text-slate-800'}`}>
-      {title}
-    </h3>
+const StructureCard = ({ id, title, illustration, tooltip, selected, onSelect }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
 
-    {selected && (
-      <div className="absolute top-3 right-3 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
-        <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth="2.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
-        </svg>
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(id)}
+      className={`relative flex flex-col items-center pt-8 pb-5 px-4 border-2 rounded-exos transition-all duration-150 focus:outline-none bg-white w-40
+        ${selected
+          ? 'border-blue-500 shadow-lift'
+          : 'border-slate-200 hover:border-blue-300 hover:shadow-card'
+        }`}
+      aria-pressed={selected}
+    >
+      {/* Info icon */}
+      <div
+        className="absolute top-3 left-3"
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Info className="w-4 h-4 text-slate-400" />
+        {showTooltip && (
+          <div className="absolute left-0 top-6 w-48 p-2.5 bg-slate-900 text-white text-xs rounded-exos shadow-xl z-20 leading-relaxed">
+            {tooltip}
+          </div>
+        )}
       </div>
-    )}
-  </button>
-);
+
+      <div className="w-28 h-28 flex items-center justify-center mb-5">
+        <ExosIllustration name={illustration} size={112} />
+      </div>
+      <h3 className={`font-semibold text-sm text-center leading-snug ${selected ? 'text-blue-600' : 'text-slate-800'}`}>
+        {title}
+      </h3>
+
+      {selected && (
+        <div className="absolute top-3 right-3 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+          <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+          </svg>
+        </div>
+      )}
+    </button>
+  );
+};
 
 const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
   const [selected, setSelected] = useState(state.businessStructure || null);
@@ -70,7 +90,7 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
           <p className="text-slate-500 text-sm mt-1">This determines your W-9 tax form requirements.</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+        <div className="flex flex-wrap justify-center gap-4 mb-6">
           {STRUCTURES.map((s) => (
             <StructureCard
               key={s.id}
