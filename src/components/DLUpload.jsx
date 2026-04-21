@@ -73,11 +73,11 @@ const DLUpload = ({ state, setState, onNext, onBack }) => {
           </p>
 
           <div className="space-y-3">
-            {/* Camera — mobile primary */}
+            {/* Camera — mobile only */}
             <button
               type="button"
               onClick={() => cameraInputRef.current?.click()}
-              className="w-full flex items-center gap-4 p-5 border-2 border-blue-400 bg-blue-50/40 hover:bg-blue-50 rounded-exos transition-all"
+              className="md:hidden w-full flex items-center gap-4 p-5 border-2 border-blue-400 bg-blue-50/40 hover:bg-blue-50 rounded-exos transition-all"
             >
               <div className="w-12 h-12 bg-blue-100 rounded-exos flex items-center justify-center flex-shrink-0">
                 <Camera className="w-6 h-6 text-blue-600" />
@@ -96,14 +96,14 @@ const DLUpload = ({ state, setState, onNext, onBack }) => {
               onChange={onFileChange}
             />
 
-            {/* File upload */}
+            {/* File upload — primary on desktop, secondary on mobile */}
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="w-full flex items-center gap-4 p-5 border-2 border-slate-200 hover:border-blue-300 hover:bg-slate-50 rounded-exos transition-all"
+              className="w-full flex items-center gap-4 p-5 border-2 border-blue-400 bg-blue-50/40 hover:bg-blue-50 md:border-blue-400 md:bg-blue-50/40 rounded-exos transition-all md:border-slate-200 md:bg-white md:hover:border-blue-300"
             >
-              <div className="w-12 h-12 bg-slate-100 rounded-exos flex items-center justify-center flex-shrink-0">
-                <Upload className="w-6 h-6 text-slate-500" />
+              <div className="w-12 h-12 bg-blue-100 rounded-exos flex items-center justify-center flex-shrink-0 md:bg-slate-100">
+                <Upload className="w-6 h-6 text-blue-600 md:text-slate-500" />
               </div>
               <div className="text-left">
                 <p className="font-semibold text-slate-900 text-sm">Upload from device</p>
