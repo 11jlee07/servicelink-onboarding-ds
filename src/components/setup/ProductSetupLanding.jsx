@@ -90,8 +90,8 @@ const ProductSetupLanding = ({ state, onQuick, onCustom, onBack }) => {
                 <span className="font-semibold text-slate-700">Custom Setup</span> has that.
               </p>
             </div>
-            <div className="flex items-center gap-1.5 text-slate-700 font-semibold text-sm">
-              Get started <ArrowRight className="w-4 h-4" />
+            <div className="flex items-center gap-1.5 text-slate-700 font-bold uppercase text-sm">
+              Get started
             </div>
           </button>
 
@@ -123,8 +123,8 @@ const ProductSetupLanding = ({ state, onQuick, onCustom, onBack }) => {
                 </li>
               ))}
             </ul>
-            <div className="flex items-center gap-1.5 text-slate-700 font-semibold text-sm mt-auto pt-6">
-              Get started <ArrowRight className="w-4 h-4" />
+            <div className="flex items-center gap-1.5 text-slate-700 font-bold uppercase text-sm mt-auto pt-6">
+              Get started
             </div>
           </button>
         </div>

@@ -1,3 +1,4 @@
+import NavFooter from '../shared/NavFooter';
 import React, { useState } from 'react';
 import MailingAddressQuestion from './MailingAddressQuestion';
 import { formatSSN, formatEIN } from '../../utils/validation';
@@ -66,7 +67,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
                   ${hasBusinessName === false ? 'border-blue-600 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}>
                   <input type="radio" name="hn" checked={hasBusinessName === false}
                     onChange={() => { setHasBusinessName(false); update('businessName', ''); }} />
-                  <span className="font-medium text-slate-900 text-sm">No business name — operating as an individual</span>
+                  <span className="font-normal text-slate-900 text-sm">No business name — operating as an individual</span>
                 </label>
 
                 <label className={`flex items-start gap-3 p-4 border-2 rounded-exos cursor-pointer transition-all
@@ -74,7 +75,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
                   <input type="radio" name="hn" checked={hasBusinessName === true}
                     onChange={() => setHasBusinessName(true)} className="mt-0.5" />
                   <div className="flex-1">
-                    <span className="font-medium text-slate-900 text-sm block mb-2">Yes, I have a business name</span>
+                    <span className="font-normal text-slate-900 text-sm block mb-2">Yes, I have a business name</span>
                     {hasBusinessName === true && (
                       <input type="text" placeholder="Smith Appraisal Services"
                         value={state.w9Data.businessName || ''}
@@ -109,7 +110,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
                       checked={state.w9Data.taxIdType === type}
                       onChange={() => handleTaxIdTypeChange(type)} className="mt-0.5" />
                     <div className="flex-1">
-                      <span className="font-medium text-slate-900 text-sm block mb-2">{label}</span>
+                      <span className="font-normal text-slate-900 text-sm block mb-2">{label}</span>
                       {state.w9Data.taxIdType === type && (
                         <input type="text" inputMode="numeric" placeholder={placeholder}
                           value={state.w9Data.taxId}
@@ -129,16 +130,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
 
         {q === 2 && <MailingAddressQuestion basicInfo={state.basicInfo} w9Data={state.w9Data} onChange={update} />}
 
-        <div className="flex gap-3 mt-8">
-          <button type="button" onClick={handleBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
-            ← Back
-          </button>
-          <button type="button" onClick={handleNext} disabled={!isValid()}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
-            {q < TOTAL ? 'Continue →' : 'Review W-9 →'}
-          </button>
-        </div>
+        <NavFooter onBack={handleBack} onContinue={handleNext} continueLabel={q < TOTAL ? 'Continue →' : 'Review W-9 →'} continueDisabled={!isValid()} />
       </div>
     </div>
   );

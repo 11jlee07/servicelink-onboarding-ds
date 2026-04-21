@@ -685,7 +685,7 @@ const CoverageZipSelector = ({ baseZip, selectedZips, onChange }) => {
                       onMouseDown={() => selectMetro(m)}
                       className="w-full flex items-center justify-between px-4 py-2.5 text-sm hover:bg-blue-50 transition-colors text-left"
                     >
-                      <span className="font-medium text-slate-800">{m.city}</span>
+                      <span className="font-normal text-slate-800">{m.city}</span>
                       <span className="text-xs text-slate-400">{m.state}</span>
                     </button>
                   ))}

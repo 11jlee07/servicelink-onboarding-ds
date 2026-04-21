@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Info, ChevronDown } from 'lucide-react';
+import NavFooter from './shared/NavFooter';
 
 const TVAAgreement = ({ state, setState, onNext, onBack }) => {
   const [agreed, setAgreed] = useState(false);
@@ -137,16 +138,7 @@ const TVAAgreement = ({ state, setState, onNext, onBack }) => {
           </label>
         </div>
 
-        <div className="flex gap-3">
-          <button type="button" onClick={onBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
-            ← Back
-          </button>
-          <button type="button" onClick={handleSubmit} disabled={!agreed}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
-            Submit →
-          </button>
-        </div>
+        <NavFooter onBack={onBack} onContinue={handleSubmit} continueLabel="Submit →" continueDisabled={!agreed} />
       </div>
     </div>
   );

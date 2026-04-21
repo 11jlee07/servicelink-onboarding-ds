@@ -19,7 +19,7 @@ const TaxIdQuestion = ({ w9Data, onChange, einOnly = false }) => {
       <div>
         <h2 className="text-xl font-semibold text-slate-900 mb-1">What's your Employer ID Number (EIN)?</h2>
         <p className="text-slate-500 text-sm mb-6">Your EIN is issued by the IRS to identify your business for tax purposes.</p>
-        <label className="block text-sm font-medium text-slate-700 mb-1.5" htmlFor="ein">
+        <label className="block text-sm font-normal text-slate-700 mb-1.5" htmlFor="ein">
           Employer ID Number (EIN)
         </label>
         <input
@@ -57,7 +57,7 @@ const TaxIdQuestion = ({ w9Data, onChange, einOnly = false }) => {
           className="mt-0.5"
         />
         <div className="flex-1">
-          <span className="font-medium text-slate-900 text-sm block mb-2">Social Security Number (SSN)</span>
+          <span className="font-normal text-slate-900 text-sm block mb-2">Social Security Number (SSN)</span>
           {taxIdType === 'ssn' && (
             <input
               type="text"
@@ -86,7 +86,7 @@ const TaxIdQuestion = ({ w9Data, onChange, einOnly = false }) => {
           className="mt-0.5"
         />
         <div className="flex-1">
-          <span className="font-medium text-slate-900 text-sm block mb-2">Employer ID Number (EIN)</span>
+          <span className="font-normal text-slate-900 text-sm block mb-2">Employer ID Number (EIN)</span>
           {taxIdType === 'ein' && (
             <input
               type="text"

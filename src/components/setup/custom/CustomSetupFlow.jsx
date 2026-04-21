@@ -539,11 +539,11 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             </div>
             <div className="px-6 pb-5 pt-3 border-t border-slate-100 flex gap-3">
               <button type="button" onClick={onBack}
-                className="px-5 py-2.5 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
+                className="px-5 py-2.5 border-2 border-slate-200 rounded-exos font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors text-sm">
                 ← Back
               </button>
               <button type="button" onClick={() => setStage('fees')} disabled={!canContinue}
-                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors text-sm">
+                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos transition-colors text-sm">
                 Continue to Fees →
               </button>
             </div>
@@ -583,11 +583,11 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             </div>
             <div className="px-6 pb-5 pt-3 border-t border-slate-100 flex gap-3">
               <button type="button" onClick={() => setStage('products')}
-                className="px-5 py-2.5 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm">
+                className="px-5 py-2.5 border-2 border-slate-200 rounded-exos font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors text-sm">
                 ← Back
               </button>
               <button type="button" onClick={() => setStage('map')} disabled={!canContinue}
-                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors text-sm">
+                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos transition-colors text-sm">
                 Continue to Coverage Map →
               </button>
             </div>
@@ -688,7 +688,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             Click the map to reposition the circle
           </p>
           <button type="button" onClick={confirmRadius} disabled={!pendingCenter}
-            className="w-full mt-3 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos text-sm transition-colors">
+            className="w-full mt-3 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos text-sm transition-colors">
             Confirm Coverage Area
           </button>
           <button type="button" onClick={() => { setDrawMode(null); setPendingCenter(null); mapRef.current?.getSource('pending-area')?.setData({ type: 'FeatureCollection', features: [] }); }}
@@ -724,7 +724,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
                 Keep original assignments
               </button>
               <button type="button" onClick={() => commitArea(overridePrompt.newArea, overridePrompt.overlaps)}
-                className="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-exos text-sm transition-colors">
+                className="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold uppercase rounded-exos text-sm transition-colors">
                 Override — assign to this area
               </button>
             </div>

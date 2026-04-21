@@ -252,7 +252,7 @@ const QuickSetup = ({ state, setState, onBack, onDone }) => {
           type="button"
           onClick={handleSave}
           disabled={!canSave}
-          className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors"
+          className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos transition-colors"
         >
           Save & Finish →
         </button>

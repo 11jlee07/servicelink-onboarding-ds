@@ -39,7 +39,7 @@ const MailingAddressQuestion = ({ basicInfo, w9Data, onChange }) => {
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
             {useOffice && <CheckCircle className="w-4 h-4 text-emerald-500" />}
-            <span className="font-medium text-slate-900 text-sm">Same as my office address</span>
+            <span className="font-normal text-slate-900 text-sm">Same as my office address</span>
           </div>
           <p className="text-sm text-slate-600">
             {officeAddr.street}<br />
@@ -61,7 +61,7 @@ const MailingAddressQuestion = ({ basicInfo, w9Data, onChange }) => {
           className="mt-0.5"
         />
         <div className="flex-1">
-          <span className="font-medium text-slate-900 text-sm block mb-3">Use a different address</span>
+          <span className="font-normal text-slate-900 text-sm block mb-3">Use a different address</span>
           {!useOffice && (
             <div className="space-y-3">
               <input

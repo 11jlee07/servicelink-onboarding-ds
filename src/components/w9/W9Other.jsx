@@ -1,3 +1,4 @@
+import NavFooter from '../shared/NavFooter';
 import React, { useState } from 'react';
 import TaxIdQuestion from './TaxIdQuestion';
 import MailingAddressQuestion from './MailingAddressQuestion';
@@ -43,7 +44,7 @@ const W9Other = ({ state, setState, onNext, onBack }) => {
           <div className="space-y-6">
             {/* Entity type */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Entity Type</label>
+              <label className="block text-sm font-normal text-slate-700 mb-1.5">Entity Type</label>
               <p className="text-xs text-slate-400 mb-2">Describe how your business is structured.</p>
               <input
                 type="text"
@@ -56,7 +57,7 @@ const W9Other = ({ state, setState, onNext, onBack }) => {
 
             {/* Entity name */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Entity Legal Name</label>
+              <label className="block text-sm font-normal text-slate-700 mb-1.5">Entity Legal Name</label>
               <input
                 type="text"
                 placeholder='e.g., "Smith Appraisal Ventures"'
@@ -73,16 +74,7 @@ const W9Other = ({ state, setState, onNext, onBack }) => {
 
         {q === 2 && <MailingAddressQuestion basicInfo={state.basicInfo} w9Data={state.w9Data} onChange={update} />}
 
-        <div className="flex gap-3 mt-8">
-          <button type="button" onClick={handleBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
-            ← Back
-          </button>
-          <button type="button" onClick={handleNext} disabled={!isValid()}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
-            {q < TOTAL ? 'Continue →' : 'Review W-9 →'}
-          </button>
-        </div>
+        <NavFooter onBack={handleBack} onContinue={handleNext} continueLabel={q < TOTAL ? 'Continue →' : 'Review W-9 →'} continueDisabled={!isValid()} />
       </div>
     </div>
   );

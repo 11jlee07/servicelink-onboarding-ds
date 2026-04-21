@@ -1,3 +1,4 @@
+import NavFooter from '../shared/NavFooter';
 import React, { useState } from 'react';
 import MailingAddressQuestion from './MailingAddressQuestion';
 import InfoTooltip from '../shared/InfoTooltip';
@@ -64,7 +65,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
           <div className="space-y-8">
             {/* LLC Name */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">LLC Legal Name</label>
+              <label className="block text-sm font-normal text-slate-700 mb-1.5">LLC Legal Name</label>
               <p className="text-xs text-slate-400 mb-2">As registered with your state's Secretary of State.</p>
               <input type="text" placeholder='e.g., "Smith Appraisal LLC"'
                 value={state.w9Data.businessName}
@@ -90,7 +91,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
                     <input type="radio" name="taxClass" value={value}
                       checked={state.w9Data.taxClassification === value}
                       onChange={() => handleClassChange(value)} />
-                    <span className="flex-1 font-medium text-slate-900 text-sm">{label}</span>
+                    <span className="flex-1 font-normal text-slate-900 text-sm">{label}</span>
                     <InfoTooltip text={tip} />
                   </label>
                 ))}
@@ -134,7 +135,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
                               onChange={() => { update('taxIdType', type); update('taxId', ''); }}
                               className="mt-0.5" />
                             <div className="flex-1">
-                              <span className="font-medium text-slate-900 text-sm block mb-2">{label}</span>
+                              <span className="font-normal text-slate-900 text-sm block mb-2">{label}</span>
                               {state.w9Data.taxIdType === type && (
                                 <input type="text" inputMode="numeric" placeholder={placeholder}
                                   value={state.w9Data.taxId}
@@ -158,16 +159,7 @@ const W9SingleLLC = ({ state, setState, onNext, onBack }) => {
 
         {q === 2 && <MailingAddressQuestion basicInfo={state.basicInfo} w9Data={state.w9Data} onChange={update} />}
 
-        <div className="flex gap-3 mt-8">
-          <button type="button" onClick={handleBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
-            ← Back
-          </button>
-          <button type="button" onClick={handleNext} disabled={!isValid()}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
-            {q < TOTAL ? 'Continue →' : 'Review W-9 →'}
-          </button>
-        </div>
+        <NavFooter onBack={handleBack} onContinue={handleNext} continueLabel={q < TOTAL ? 'Continue →' : 'Review W-9 →'} continueDisabled={!isValid()} />
       </div>
     </div>
   );

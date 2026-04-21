@@ -3,6 +3,7 @@ import {
   CheckCircle, AlertCircle, Upload, Camera, FileText,
   Loader, ShieldCheck, ChevronDown, X
 } from 'lucide-react';
+import NavFooter from './shared/NavFooter';
 import { processLicenseOCR, verifyLicense } from '../utils/mockApi';
 
 /* ─── Mobile detection ───────────────────────────────────────────── */
@@ -56,7 +57,7 @@ const LicenseCard = ({ data }) => (
               {value}
             </span>
           ) : (
-            <p className="text-sm font-medium text-slate-800">{value}</p>
+            <p className="text-sm font-normal text-slate-800">{value}</p>
           )}
         </div>
       ))}
@@ -69,7 +70,7 @@ const ReviewFields = ({ ocrData, updateOcr }) => (
   <div className="space-y-4">
     <div className="grid grid-cols-2 gap-4">
       <div>
-        <label className="block text-xs font-medium text-slate-600 mb-1">State</label>
+        <label className="block text-sm font-normal text-slate-600 mb-1">State</label>
         <select value={ocrData.state} onChange={(e) => updateOcr('state', e.target.value)} className={inputCls}>
           <option value="">Select state...</option>
           {['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut',
@@ -83,7 +84,7 @@ const ReviewFields = ({ ocrData, updateOcr }) => (
         </select>
       </div>
       <div>
-        <label className="block text-xs font-medium text-slate-600 mb-1">License Type</label>
+        <label className="block text-sm font-normal text-slate-600 mb-1">License Type</label>
         <select value={ocrData.type} onChange={(e) => updateOcr('type', e.target.value)} className={inputCls}>
           <option value="">Select type...</option>
           {['Certified Residential','Certified General','Licensed Residential',
@@ -93,21 +94,21 @@ const ReviewFields = ({ ocrData, updateOcr }) => (
       </div>
     </div>
     <div>
-      <label className="block text-xs font-medium text-slate-600 mb-1">License Number</label>
+      <label className="block text-sm font-normal text-slate-600 mb-1">License Number</label>
       <input type="text" value={ocrData.number} onChange={(e) => updateOcr('number', e.target.value)} className={inputCls} />
     </div>
     <div className="grid grid-cols-2 gap-4">
       <div>
-        <label className="block text-xs font-medium text-slate-600 mb-1">Effective Date</label>
+        <label className="block text-sm font-normal text-slate-600 mb-1">Effective Date</label>
         <input type="date" value={ocrData.effectiveDate} onChange={(e) => updateOcr('effectiveDate', e.target.value)} className={inputCls} />
       </div>
       <div>
-        <label className="block text-xs font-medium text-slate-600 mb-1">Expiration Date</label>
+        <label className="block text-sm font-normal text-slate-600 mb-1">Expiration Date</label>
         <input type="date" value={ocrData.expirationDate} onChange={(e) => updateOcr('expirationDate', e.target.value)} className={inputCls} />
       </div>
     </div>
     <div>
-      <label className="block text-xs font-medium text-slate-600 mb-1">License Address</label>
+      <label className="block text-sm font-normal text-slate-600 mb-1">License Address</label>
       <input type="text" value={ocrData.address} onChange={(e) => updateOcr('address', e.target.value)} className={inputCls} />
     </div>
   </div>
@@ -260,7 +261,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
               <button
                 type="button"
                 onClick={handleConfirm}
-                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-exos transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase rounded-exos transition-colors flex items-center justify-center gap-2"
               >
                 <CheckCircle className="w-4 h-4" /> Yes, that's my license
               </button>
@@ -397,29 +398,16 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
               Fill in your license details below and we'll verify them with ASC.gov.
             </p>
             <ReviewFields ocrData={ocrData} updateOcr={updateOcr} />
-            <div className="flex gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => setStage('fallback')}
-                className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors"
-              >
-                ← Back
-              </button>
-              {verifying ? (
-                <div className="flex-1 py-3 bg-slate-50 border border-slate-200 rounded-exos-sm flex items-center justify-center gap-2 text-sm text-slate-500">
+            {verifying ? (
+              <div className="border-t border-exos-border-light mt-6 pt-4 flex items-center justify-between gap-3">
+                <button type="button" onClick={() => setStage('fallback')} className="min-w-[140px] px-6 py-3 border-2 border-slate-200 rounded-exos text-sm font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors">← Back</button>
+                <div className="min-w-[140px] py-3 bg-slate-50 border border-slate-200 rounded-exos flex items-center justify-center gap-2 text-sm text-slate-500">
                   <Loader className="w-4 h-4 animate-spin" /> Verifying...
                 </div>
-              ) : (
-                <button
-                  type="button"
-                  onClick={handleVerify}
-                  disabled={!manualFilled}
-                  className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors"
-                >
-                  Verify with ASC.gov →
-                </button>
-              )}
-            </div>
+              </div>
+            ) : (
+              <NavFooter onBack={() => setStage('fallback')} onContinue={handleVerify} continueLabel="Verify with ASC.gov →" continueDisabled={!manualFilled} className="pt-2" />
+            )}
           </div>
         )}
 
@@ -453,22 +441,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
 
             <ReviewFields ocrData={ocrData} updateOcr={updateOcr} />
 
-            <div className="flex gap-3 pt-2">
-              <button
-                type="button"
-                onClick={onBack}
-                className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors"
-              >
-                ← Back
-              </button>
-              <button
-                type="button"
-                onClick={onNext}
-                className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-exos transition-colors"
-              >
-                Continue →
-              </button>
-            </div>
+            <NavFooter onBack={onBack} onContinue={onNext} className="pt-2" />
           </div>
         )}
 

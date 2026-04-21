@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { Info, ChevronDown, PenLine, X, RotateCcw } from 'lucide-react';
+import NavFooter from './shared/NavFooter';
 
 const W9ReviewSign = ({ state, setState, onNext, onBack }) => {
   const canvasRef = useRef(null);
@@ -141,34 +142,34 @@ const W9ReviewSign = ({ state, setState, onNext, onBack }) => {
             <div className="p-4 sm:p-6 max-h-72 sm:max-h-80 overflow-y-auto bg-white">
               <div className="space-y-4 text-sm font-mono">
                 <div>
-                  <span className="text-xs font-sans font-medium text-slate-400 uppercase tracking-wide">Line 1 · Name</span>
+                  <span className="text-xs font-sans font-normal text-slate-400 uppercase tracking-wide">Line 1 · Name</span>
                   <p className="text-slate-900 mt-0.5">{basicInfo.firstName} {basicInfo.lastName}</p>
                 </div>
                 {w9Data.businessName && (
                   <div className="border-t border-slate-100 pt-4">
-                    <span className="text-xs font-sans font-medium text-slate-400 uppercase tracking-wide">Line 2 · Business Name</span>
+                    <span className="text-xs font-sans font-normal text-slate-400 uppercase tracking-wide">Line 2 · Business Name</span>
                     <p className="text-slate-900 mt-0.5">{w9Data.businessName}</p>
                   </div>
                 )}
                 <div className="border-t border-slate-100 pt-4">
-                  <span className="text-xs font-sans font-medium text-slate-400 uppercase tracking-wide">Line 3 · Tax Classification</span>
+                  <span className="text-xs font-sans font-normal text-slate-400 uppercase tracking-wide">Line 3 · Tax Classification</span>
                   <p className="text-slate-900 mt-0.5">☑ {classLabel()}</p>
                 </div>
                 {w9Data.foreignMembers !== null && (
                   <div className="border-t border-slate-100 pt-4">
-                    <span className="text-xs font-sans font-medium text-slate-400 uppercase tracking-wide">Line 3b · Foreign Members / Partners</span>
+                    <span className="text-xs font-sans font-normal text-slate-400 uppercase tracking-wide">Line 3b · Foreign Members / Partners</span>
                     <p className="text-slate-900 mt-0.5">{w9Data.foreignMembers ? '☑ Yes' : '☐ No'}</p>
                   </div>
                 )}
                 <div className="border-t border-slate-100 pt-4">
-                  <span className="text-xs font-sans font-medium text-slate-400 uppercase tracking-wide">Lines 5–6 · Address</span>
+                  <span className="text-xs font-sans font-normal text-slate-400 uppercase tracking-wide">Lines 5–6 · Address</span>
                   <p className="text-slate-900 mt-0.5">
                     {addr.street}<br />
                     {addr.city}{addr.city && ','} {addr.state || addr.stateCode} {addr.zip}
                   </p>
                 </div>
                 <div className="border-t border-slate-100 pt-4">
-                  <span className="text-xs font-sans font-medium text-slate-400 uppercase tracking-wide">Part I · Taxpayer Identification Number</span>
+                  <span className="text-xs font-sans font-normal text-slate-400 uppercase tracking-wide">Part I · Taxpayer Identification Number</span>
                   <p className="text-slate-900 mt-0.5">
                     {w9Data.taxIdType === 'ssn' ? 'SSN:' : 'EIN:'} {maskedId}
                   </p>
@@ -201,7 +202,7 @@ const W9ReviewSign = ({ state, setState, onNext, onBack }) => {
 
           {/* Signature section */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-slate-700 mb-3">Signature</label>
+            <label className="block text-sm font-normal text-slate-700 mb-3">Signature</label>
 
             {/* Preview — shows captured data URL as image, not a live canvas */}
             {signatureDataUrl && (
@@ -219,7 +220,7 @@ const W9ReviewSign = ({ state, setState, onNext, onBack }) => {
               <button
                 type="button"
                 onClick={() => setShowSignModal(true)}
-                className="flex items-center gap-2 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-exos transition-colors shadow-sm"
+                className="flex items-center gap-2 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold uppercase rounded-exos transition-colors shadow-sm"
               >
                 <PenLine className="w-4 h-4" />
                 {hasSignature ? 'Re-sign' : 'Sign W-9'}
@@ -242,16 +243,7 @@ const W9ReviewSign = ({ state, setState, onNext, onBack }) => {
             Date: <strong>{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</strong>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button type="button" onClick={onBack}
-              className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors text-sm sm:text-base">
-              ← Back to Edit
-            </button>
-            <button type="button" onClick={handleSubmit} disabled={!hasSignature}
-              className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors text-sm sm:text-base">
-              Sign &amp; Continue →
-            </button>
-          </div>
+          <NavFooter onBack={onBack} onContinue={handleSubmit} continueLabel="Sign & Continue →" continueDisabled={!hasSignature} />
         </div>
       </div>
 
@@ -311,11 +303,11 @@ const W9ReviewSign = ({ state, setState, onNext, onBack }) => {
           {/* Footer */}
           <div className="px-5 py-4 border-t border-slate-100 flex items-center gap-3 flex-shrink-0">
             <button type="button" onClick={clearCanvas}
-              className="px-4 py-2.5 border-2 border-slate-200 rounded-exos text-sm font-medium text-slate-600 hover:border-slate-300 transition-colors">
+              className="px-4 py-2.5 border-2 border-slate-200 rounded-exos text-sm font-bold uppercase text-slate-600 hover:border-slate-300 transition-colors">
               Clear
             </button>
             <button type="button" onClick={confirmSignature}
-              className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-exos text-sm transition-colors">
+              className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase rounded-exos text-sm transition-colors">
               Use this signature →
             </button>
           </div>

@@ -71,7 +71,7 @@ const ZipEditor = ({ zips, onAdd, onRemove }) => {
           type="button"
           onClick={add}
           disabled={input.length !== 5}
-          className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white text-xs font-semibold rounded-exos transition-colors"
+          className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white text-xs font-bold uppercase rounded-exos transition-colors"
         >
           <Plus className="w-3.5 h-3.5" /> Add
         </button>

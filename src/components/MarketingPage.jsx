@@ -27,7 +27,7 @@ const PrimaryBtn = ({ children, onClick, className = '' }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-exos transition-colors text-sm ${className}`}
+    className={`inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase px-6 py-3 rounded-exos transition-colors text-sm ${className}`}
   >
     {children}
   </button>
@@ -37,7 +37,7 @@ const OutlineBtn = ({ children, onClick, dark = false }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex items-center gap-2 border-2 font-semibold px-6 py-3 rounded-exos transition-colors text-sm
+    className={`inline-flex items-center gap-2 border-2 font-bold uppercase px-6 py-3 rounded-exos transition-colors text-sm
       ${dark
         ? 'border-white/40 text-white hover:bg-white/10'
         : 'border-blue-600 text-blue-600 hover:bg-blue-50'
@@ -116,7 +116,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
             </p>
             <div className="flex flex-wrap gap-3">
               <PrimaryBtn onClick={() => document.getElementById('partner-form').scrollIntoView({ behavior: 'smooth' })}>
-                Join our panel <ArrowRight className="w-4 h-4" />
+                Join our panel
               </PrimaryBtn>
               <OutlineBtn dark onClick={() => {}}>
                 Already a vendor?
@@ -179,7 +179,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               ))}
             </ul>
             <PrimaryBtn onClick={() => document.getElementById('partner-form').scrollIntoView({ behavior: 'smooth' })}>
-              Apply now <ArrowRight className="w-4 h-4" />
+              Apply now
             </PrimaryBtn>
           </div>
         </div>
@@ -207,7 +207,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               ))}
             </ul>
             <PrimaryBtn onClick={() => document.getElementById('partner-form').scrollIntoView({ behavior: 'smooth' })}>
-              Join the network <ArrowRight className="w-4 h-4" />
+              Join the network
             </PrimaryBtn>
           </div>
           <div className="h-72 hidden lg:block rounded-exos overflow-hidden">
@@ -240,7 +240,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               ))}
             </ul>
             <PrimaryBtn onClick={() => document.getElementById('partner-form').scrollIntoView({ behavior: 'smooth' })}>
-              Apply now <ArrowRight className="w-4 h-4" />
+              Apply now
             </PrimaryBtn>
           </div>
         </div>
@@ -267,7 +267,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               ))}
             </ul>
             <PrimaryBtn onClick={() => document.getElementById('partner-form').scrollIntoView({ behavior: 'smooth' })}>
-              Get started <ArrowRight className="w-4 h-4" />
+              Get started
             </PrimaryBtn>
           </div>
           <div className="h-72 hidden lg:block rounded-exos overflow-hidden">
@@ -286,7 +286,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
             <h3 className="text-xl font-bold text-slate-900 mb-2">Already a vendor partner?</h3>
             <p className="text-slate-500 text-sm mb-5">Sign in to your existing ServiceLink vendor portal account.</p>
             <OutlineBtn onClick={() => {}}>
-              Sign in to your account <ArrowRight className="w-4 h-4" />
+              Sign in to your account
             </OutlineBtn>
           </div>
         </div>
@@ -316,7 +316,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
               <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                 {/* Name */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Full Name</label>
+                  <label className="block text-sm font-normal text-slate-700 mb-1.5">Full Name</label>
                   <input
                     type="text"
                     value={formData.name}
@@ -329,7 +329,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
 
                 {/* Email */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">Email Address</label>
+                  <label className="block text-sm font-normal text-slate-700 mb-1.5">Email Address</label>
                   <input
                     type="email"
                     value={formData.email}
@@ -342,7 +342,7 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
 
                 {/* I'm interested in */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">I'm interested in</label>
+                  <label className="block text-sm font-normal text-slate-700 mb-1.5">I'm interested in</label>
                   <select
                     value={formData.interest}
                     onChange={(e) => setFormData((p) => ({ ...p, interest: e.target.value }))}
@@ -358,9 +358,9 @@ const MarketingPage = ({ state, setState, onNext, onDevSkip }) => {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 rounded-exos transition-colors flex items-center justify-center gap-2 mt-2 text-sm"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase py-3.5 rounded-exos transition-colors flex items-center justify-center gap-2 mt-2 text-sm"
                 >
-                  Get Started <ArrowRight className="w-4 h-4" />
+                  Get Started
                 </button>
               </form>
 

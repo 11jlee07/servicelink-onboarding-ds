@@ -34,7 +34,7 @@ const SubmissionConfirmation = ({ state, onSetupClick }) => {
                 }
               </div>
               <div>
-                <p className="font-medium text-slate-900 text-sm">{label}</p>
+                <p className="font-normal text-slate-900 text-sm">{label}</p>
                 <p className="text-xs text-slate-500 mt-0.5">{sub}</p>
               </div>
             </div>
@@ -93,7 +93,7 @@ const SubmissionConfirmation = ({ state, onSetupClick }) => {
                 <p className="text-xs text-slate-500 mt-0.5">{desc}</p>
               </div>
               {highlight && (
-                <span className="text-xs bg-blue-600 text-white font-semibold px-2.5 py-1 rounded-exos-pill self-center flex-shrink-0">
+                <span className="text-xs bg-blue-600 text-white font-bold uppercase px-2.5 py-1 rounded-exos-pill self-center flex-shrink-0">
                   Start →
                 </span>
               )}
@@ -107,7 +107,7 @@ const SubmissionConfirmation = ({ state, onSetupClick }) => {
 
       <button
         type="button"
-        className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-exos transition-colors"
+        className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase rounded-exos transition-colors"
       >
         Go to Dashboard →
       </button>

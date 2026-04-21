@@ -55,7 +55,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
         <form onSubmit={handleEmailSubmit} noValidate>
           {/* Email */}
           <div className="mb-5">
-            <label className="block text-sm font-medium text-slate-700 mb-1.5" htmlFor="email">
+            <label className="block text-sm font-normal text-slate-700 mb-1.5" htmlFor="email">
               Email Address
             </label>
             {emailLocked ? (
@@ -91,7 +91,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
 
           {/* Password */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-slate-700 mb-1.5" htmlFor="password">
+            <label className="block text-sm font-normal text-slate-700 mb-1.5" htmlFor="password">
               Create Password
             </label>
             <div className="relative">
@@ -143,7 +143,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
           <button
             type="submit"
             disabled={!isFormValid}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold py-3 rounded-exos transition-colors"
+            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase py-3 rounded-exos transition-colors"
           >
             Continue with Email →
           </button>
@@ -164,7 +164,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
           <button
             type="button"
             onClick={() => handleSSO('google')}
-            className="w-full flex items-center justify-center gap-3 border-2 border-slate-200 hover:border-slate-300 rounded-exos py-2.5 text-sm font-medium text-slate-700 transition-colors"
+            className="w-full flex items-center justify-center gap-3 border-2 border-slate-200 hover:border-slate-300 rounded-exos py-2.5 text-sm font-bold uppercase text-slate-700 transition-colors"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -178,7 +178,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
           <button
             type="button"
             onClick={() => handleSSO('microsoft')}
-            className="w-full flex items-center justify-center gap-3 border-2 border-slate-200 hover:border-slate-300 rounded-exos py-2.5 text-sm font-medium text-slate-700 transition-colors"
+            className="w-full flex items-center justify-center gap-3 border-2 border-slate-200 hover:border-slate-300 rounded-exos py-2.5 text-sm font-bold uppercase text-slate-700 transition-colors"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path fill="#F25022" d="M11 11H1V1h10z" />

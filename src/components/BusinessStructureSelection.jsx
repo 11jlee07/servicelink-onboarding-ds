@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Info } from 'lucide-react';
 import { ExosIllustration } from './shared/ExosIcon';
+import NavFooter from './shared/NavFooter';
 
 const STRUCTURES = [
   { id: 'sole_prop',    title: 'Individual / Sole Proprietor', illustration: 'Individual',        tooltip: "Just me working for myself — no LLC or corporation" },
@@ -103,7 +104,7 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
 
         {selected === 'other' && (
           <div className="mb-6">
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label className="block text-sm font-normal text-slate-700 mb-1.5">
               Please describe your entity type
             </label>
             <input
@@ -116,23 +117,7 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
           </div>
         )}
 
-        <div className="flex gap-3 mt-6">
-          <button
-            type="button"
-            onClick={onBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors"
-          >
-            ← Back
-          </button>
-          <button
-            type="button"
-            onClick={handleContinue}
-            disabled={!isValid}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors"
-          >
-            Continue →
-          </button>
-        </div>
+        <NavFooter onBack={onBack} onContinue={handleContinue} continueDisabled={!isValid} />
       </div>
     </div>
   );

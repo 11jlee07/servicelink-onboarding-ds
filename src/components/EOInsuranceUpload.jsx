@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Upload, CheckCircle, FileText, X, ShieldCheck, Sparkles } from 'lucide-react';
 import { parseEOInsurance } from '../utils/mockApi';
+import NavFooter from './shared/NavFooter';
 
 const FIELDS = [
   { key: 'underwriter',      label: 'Underwriter (Company)',  placeholder: 'e.g. Berkley One Insurance',   type: 'text' },
@@ -142,7 +143,7 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
                   <FileText className={`w-5 h-5 ${parseState === 'confirmed' ? 'text-emerald-600' : 'text-slate-500'}`} />
                 </div>
                 <div>
-                  <p className="font-medium text-slate-900 text-sm">{file.name}</p>
+                  <p className="font-normal text-slate-900 text-sm">{file.name}</p>
                   <p className="text-xs text-slate-500">{formatSize(file.size)}</p>
                 </div>
               </div>
@@ -199,7 +200,7 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
                       }}
                     >
                       <div className="flex items-center justify-between mb-1.5">
-                        <label className="text-sm font-medium text-slate-700">{field.label}</label>
+                        <label className="text-sm font-normal text-slate-700">{field.label}</label>
                         {visible && parseState !== 'confirmed' && (
                           <span className="flex items-center gap-1 text-xs text-blue-500 font-medium">
                             <Sparkles className="w-3 h-3" /> AI extracted
@@ -230,12 +231,12 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
                   <div className="pt-1 flex gap-2">
                     <button type="button"
                       onClick={() => document.getElementById('eoFileChange').click()}
-                      className="px-4 py-2.5 border-2 border-slate-200 hover:border-slate-300 rounded-exos text-sm font-medium text-slate-600 transition-colors">
+                      className="px-4 py-2.5 border-2 border-slate-200 hover:border-slate-300 rounded-exos text-sm font-normal text-slate-600 transition-colors">
                       Upload different file
                     </button>
                     <button type="button" onClick={handleConfirm}
                       disabled={!allFilled}
-                      className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos text-sm transition-colors">
+                      className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos text-sm transition-colors">
                       Confirm details →
                     </button>
                   </div>
@@ -256,17 +257,7 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
           </div>
         )}
 
-        <div className="flex gap-3 mt-8">
-          <button type="button" onClick={onBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
-            ← Back
-          </button>
-          <button type="button" onClick={onNext}
-            disabled={parseState !== 'confirmed'}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
-            Continue →
-          </button>
-        </div>
+        <NavFooter onBack={onBack} onContinue={onNext} continueDisabled={parseState !== 'confirmed'} className="mt-8" />
       </div>
     </div>
   );

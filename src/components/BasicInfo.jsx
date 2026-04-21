@@ -94,7 +94,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
           {/* Name row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5" htmlFor="firstName">
+              <label className="block text-sm font-normal text-slate-700 mb-1.5" htmlFor="firstName">
                 Legal First Name
               </label>
               <input
@@ -112,7 +112,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5" htmlFor="lastName">
+              <label className="block text-sm font-normal text-slate-700 mb-1.5" htmlFor="lastName">
                 Legal Last Name
               </label>
               <input
@@ -132,7 +132,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
 
           {/* Phone */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5" htmlFor="phone">
+            <label className="block text-sm font-normal text-slate-700 mb-1.5" htmlFor="phone">
               Phone Number
             </label>
             <input
@@ -151,7 +151,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
 
           {/* Address */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label className="block text-sm font-normal text-slate-700 mb-1.5">
               Office Address
             </label>
             <div className="space-y-3">
@@ -213,12 +213,14 @@ const BasicInfo = ({ state, setState, onNext }) => {
           </div>
 
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-exos transition-colors mt-2"
-          >
-            Continue →
-          </button>
+          <div className="border-t border-exos-border-light mt-6 pt-4 flex justify-end">
+            <button
+              type="submit"
+              className="min-w-[140px] px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold uppercase rounded-exos transition-colors"
+            >
+              Continue →
+            </button>
+          </div>
         </form>
       </div>
     </div>

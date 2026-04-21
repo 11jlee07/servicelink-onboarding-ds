@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Camera, Upload, CheckCircle, Edit2 } from 'lucide-react';
 import { parseDL } from '../utils/mockApi';
+import NavFooter from './shared/NavFooter';
 
 const inputCls = 'w-full border border-slate-200 rounded-exos-sm py-3 px-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm';
 
@@ -47,7 +48,7 @@ const DLUpload = ({ state, setState, onNext, onBack }) => {
 
   const field = (key, label, placeholder) => (
     <div>
-      <label className="block text-xs font-medium text-slate-500 mb-1">{label}</label>
+      <label className="block text-sm font-normal text-slate-500 mb-1">{label}</label>
       <input
         type="text"
         value={edited[key] || ''}
@@ -164,23 +165,7 @@ const DLUpload = ({ state, setState, onNext, onBack }) => {
             ))}
           </div>
 
-          <div className="space-y-3">
-            <button
-              type="button"
-              onClick={handleConfirm}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 rounded-exos transition-colors text-sm"
-            >
-              Yes, that's correct →
-            </button>
-            <button
-              type="button"
-              onClick={() => setStatus('editing')}
-              className="w-full flex items-center justify-center gap-2 border-2 border-slate-200 hover:border-slate-300 text-slate-700 font-semibold py-3 rounded-exos transition-colors text-sm"
-            >
-              <Edit2 className="w-4 h-4" />
-              No, let me update it
-            </button>
-          </div>
+          <NavFooter onBack={() => setStatus('editing')} onContinue={handleConfirm} continueLabel="Yes, that's correct →" />
         </>
       )}
 
@@ -203,13 +188,7 @@ const DLUpload = ({ state, setState, onNext, onBack }) => {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={handleConfirm}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 rounded-exos transition-colors text-sm"
-          >
-            Confirm & Continue →
-          </button>
+          <NavFooter onBack={() => setStatus('confirm')} onContinue={handleConfirm} continueLabel="Confirm & Continue →" />
         </>
       )}
     </div>

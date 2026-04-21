@@ -1,3 +1,4 @@
+import NavFooter from '../shared/NavFooter';
 import React, { useState } from 'react';
 import MailingAddressQuestion from './MailingAddressQuestion';
 import { formatEIN } from '../../utils/validation';
@@ -39,7 +40,7 @@ const W9Trust = ({ state, setState, onNext, onBack }) => {
           <div className="space-y-6">
             {/* Trust name */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Trust or Estate Legal Name</label>
+              <label className="block text-sm font-normal text-slate-700 mb-1.5">Trust or Estate Legal Name</label>
               <p className="text-xs text-slate-400 mb-2">As registered with the IRS or probate court.</p>
               <input
                 type="text"
@@ -52,7 +53,7 @@ const W9Trust = ({ state, setState, onNext, onBack }) => {
 
             {/* EIN */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Employer ID Number (EIN)</label>
+              <label className="block text-sm font-normal text-slate-700 mb-1.5">Employer ID Number (EIN)</label>
               <p className="text-xs text-slate-400 mb-2">Trusts and estates must provide an EIN, not a personal SSN.</p>
               <input
                 type="text"
@@ -73,16 +74,7 @@ const W9Trust = ({ state, setState, onNext, onBack }) => {
 
         {q === 2 && <MailingAddressQuestion basicInfo={state.basicInfo} w9Data={state.w9Data} onChange={update} />}
 
-        <div className="flex gap-3 mt-8">
-          <button type="button" onClick={handleBack}
-            className="px-6 py-3 border-2 border-slate-200 rounded-exos font-medium text-slate-700 hover:border-slate-300 transition-colors">
-            ← Back
-          </button>
-          <button type="button" onClick={handleNext} disabled={!isValid()}
-            className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-semibold rounded-exos transition-colors">
-            {q < TOTAL ? 'Continue →' : 'Review W-9 →'}
-          </button>
-        </div>
+        <NavFooter onBack={handleBack} onContinue={handleNext} continueLabel={q < TOTAL ? 'Continue →' : 'Review W-9 →'} continueDisabled={!isValid()} />
       </div>
     </div>
   );
