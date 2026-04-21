@@ -1,106 +1,49 @@
 import React, { useState } from 'react';
-import { Info } from 'lucide-react';
+import { ExosIllustration } from './shared/ExosIcon';
 
 const STRUCTURES = [
-  {
-    id: 'sole_prop',
-    title: 'Individual / Sole Proprietor',
-    icon: '👤',
-    tooltip: "Just me working for myself — no LLC or corporation",
-  },
-  {
-    id: 'single_llc',
-    title: 'Single-Member LLC',
-    icon: '🏢',
-    tooltip: "I have an LLC with only me as the owner",
-  },
-  {
-    id: 'multi_llc',
-    title: 'Multi-Member LLC',
-    icon: '🏗️',
-    tooltip: "I have an LLC with multiple owners or partners",
-  },
-  {
-    id: 'partnership',
-    title: 'Partnership',
-    icon: '🤝',
-    tooltip: "A business with 2+ partners (not an LLC)",
-  },
-  {
-    id: 'corporation',
-    title: 'Corporation',
-    icon: '🏛️',
-    tooltip: "Registered C-corp or S-corp",
-  },
-  {
-    id: 'trust',
-    title: 'Trust or Estate',
-    icon: '📜',
-    tooltip: "Operating as a trust or estate",
-  },
-  {
-    id: 'other',
-    title: 'Other',
-    icon: '❓',
-    tooltip: "None of the above — I'll describe my entity type",
-  },
+  { id: 'sole_prop',    title: 'Individual / Sole Proprietor', illustration: 'Individual',        tooltip: "Just me working for myself — no LLC or corporation" },
+  { id: 'single_llc',  title: 'Single-Member LLC',            illustration: 'Single Member LLC',  tooltip: "I have an LLC with only me as the owner" },
+  { id: 'multi_llc',   title: 'Multi-Member LLC',             illustration: 'Multi-Member LLC',   tooltip: "I have an LLC with multiple owners or partners" },
+  { id: 'partnership', title: 'Partnership',                  illustration: 'Partnership',        tooltip: "A business with 2+ partners (not an LLC)" },
+  { id: 'corporation', title: 'Corporation',                  illustration: 'Corporation',        tooltip: "Registered C-corp or S-corp" },
+  { id: 'trust',       title: 'Trust or Estate',              illustration: 'Trust or Estate',    tooltip: "Operating as a trust or estate" },
+  { id: 'other',       title: 'Other',                        illustration: 'Other',              tooltip: "None of the above — I'll describe my entity type" },
 ];
 
-const StructureCard = ({ id, title, icon, tooltip, selected, onSelect }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+const StructureCard = ({ id, title, illustration, selected, onSelect }) => (
+  <button
+    type="button"
+    onClick={() => onSelect(id)}
+    className={`relative flex flex-col items-center pt-8 pb-5 px-4 border-2 rounded-exos transition-all duration-150 focus:outline-none bg-white
+      ${selected
+        ? 'border-blue-500 shadow-lift'
+        : 'border-slate-200 hover:border-blue-300 hover:shadow-card'
+      }`}
+    aria-pressed={selected}
+  >
+    <div className="w-28 h-28 flex items-center justify-center mb-5">
+      <ExosIllustration name={illustration} size={112} />
+    </div>
+    <h3 className={`font-semibold text-sm text-center leading-snug ${selected ? 'text-blue-600' : 'text-slate-800'}`}>
+      {title}
+    </h3>
 
-  return (
-    <button
-      type="button"
-      onClick={() => onSelect(id)}
-      className={`relative p-5 border-2 rounded-exos text-left transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-blue-400
-        ${selected
-          ? 'border-blue-600 bg-blue-50 shadow-sm'
-          : 'border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50'
-        }`}
-      aria-pressed={selected}
-    >
-      {/* Info icon */}
-      <div
-        className="absolute top-3 right-3"
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <Info className="w-4 h-4 text-slate-400" />
-        {showTooltip && (
-          <div className="absolute right-0 top-6 w-52 p-2.5 bg-slate-900 text-white text-xs rounded-exos shadow-xl z-20 leading-relaxed">
-            {tooltip}
-          </div>
-        )}
+    {selected && (
+      <div className="absolute top-3 right-3 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+        <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth="2.5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+        </svg>
       </div>
-
-      <span className="text-2xl mb-3 block">{icon}</span>
-      <h3 className={`font-semibold text-sm leading-tight ${selected ? 'text-blue-900' : 'text-slate-800'}`}>
-        {title}
-      </h3>
-
-      {selected && (
-        <div className="absolute bottom-3 right-3 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
-          <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
-          </svg>
-        </div>
-      )}
-    </button>
-  );
-};
+    )}
+  </button>
+);
 
 const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
   const [selected, setSelected] = useState(state.businessStructure || null);
   const [otherDescription, setOtherDescription] = useState('');
 
-  const handleSelect = (id) => {
-    setSelected(id);
-  };
-
   const handleContinue = () => {
-    // Reset W9 data when structure changes
     setState((prev) => ({
       ...prev,
       businessStructure: selected,
@@ -121,12 +64,10 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="bg-white rounded-exos shadow-sm border border-slate-100 p-6">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 2 of 6 · W-9</p>
-            <h1 className="text-2xl font-bold text-slate-900">How is your appraisal business set up?</h1>
-            <p className="text-slate-500 text-sm mt-1">This determines your W-9 tax form requirements.</p>
-          </div>
+        <div className="mb-8 text-center">
+          <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Step 2 of 6 · W-9</p>
+          <h1 className="text-2xl font-bold text-slate-900">How is your business set up?</h1>
+          <p className="text-slate-500 text-sm mt-1">This determines your W-9 tax form requirements.</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
@@ -135,7 +76,7 @@ const BusinessStructureSelection = ({ state, setState, onNext, onBack }) => {
               key={s.id}
               {...s}
               selected={selected === s.id}
-              onSelect={handleSelect}
+              onSelect={setSelected}
             />
           ))}
         </div>
