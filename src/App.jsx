@@ -106,9 +106,9 @@ const App = () => {
       case 2:
         return <AccountCreation {...props} />;
       case 3:
-        return <BasicInfo {...props} />;
-      case 4:
         return <DLUpload {...props} />;
+      case 4:
+        return <BasicInfo {...props} />;
       case 5:
         return <BusinessStructureSelection {...props} />;
       case 6: {

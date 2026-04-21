@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { CheckCircle, MapPin, Loader, TrendingUp, Briefcase } from 'lucide-react';
+import { CheckCircle, MapPin, Loader, TrendingUp, Briefcase, ScanLine } from 'lucide-react';
 import { formatPhone, isValidPhone } from '../utils/validation';
 import { validateAddress } from '../utils/mockApi';
 
@@ -119,6 +119,16 @@ const BasicInfo = ({ state, setState, onNext }) => {
             <h1 className="text-2xl font-bold text-slate-900">Let's Get Started</h1>
           </div>
         </div>
+
+        {/* DL pre-fill banner */}
+        {(state.basicInfo.firstName || state.basicInfo.address?.street) && (
+          <div className="flex items-start gap-3 bg-emerald-50 border border-emerald-200 rounded-exos px-4 py-3 mb-6">
+            <ScanLine className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-emerald-800">
+              We pre-filled your info from your ID. Review and update anything that looks off.
+            </p>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} noValidate className="space-y-5">
           {/* Name row */}
