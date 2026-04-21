@@ -19,7 +19,7 @@ const StructureCard = ({ id, title, illustration, tooltip, selected, onSelect })
     <button
       type="button"
       onClick={() => onSelect(id)}
-      className={`relative flex flex-col items-center pt-8 pb-5 px-4 border-2 rounded-exos transition-all duration-150 focus:outline-none bg-white w-40
+      className={`relative flex flex-col items-center pt-8 pb-5 px-3 border-2 rounded-exos transition-all duration-150 focus:outline-none bg-white w-44
         ${selected
           ? 'border-blue-500 shadow-lift'
           : 'border-slate-200 hover:border-blue-300 hover:shadow-card'
@@ -41,8 +41,8 @@ const StructureCard = ({ id, title, illustration, tooltip, selected, onSelect })
         )}
       </div>
 
-      <div className="w-28 h-28 flex items-center justify-center mb-5">
-        <ExosIllustration name={illustration} size={112} />
+      <div className="w-full mb-5">
+        <ExosIllustration name={illustration} size={128} className="w-full h-auto" />
       </div>
       <h3 className={`font-semibold text-sm text-center leading-snug ${selected ? 'text-blue-600' : 'text-slate-800'}`}>
         {title}

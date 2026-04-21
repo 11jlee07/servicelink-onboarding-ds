@@ -53,8 +53,7 @@ export const ExosIllustration = ({ name, folder = 'core', size = 120, className 
       alt=""
       aria-hidden="true"
       width={size}
-      height={size}
-      className={`object-contain ${className}`}
+      className={`object-contain max-w-full h-auto ${className}`}
     />
   );
 };
