@@ -62,7 +62,7 @@ const DLUpload = ({ state, setState, onNext, onBack }) => {
   return (
     <div className="max-w-lg mx-auto px-4 py-10">
       <button type="button" onClick={onBack} className="text-sm text-slate-500 hover:text-slate-700 mb-6 flex items-center gap-1">
-        ← Back
+        Back
       </button>
 
       {/* ── IDLE ── */}
@@ -165,7 +165,7 @@ const DLUpload = ({ state, setState, onNext, onBack }) => {
             ))}
           </div>
 
-          <NavFooter onBack={() => setStatus('editing')} onContinue={handleConfirm} continueLabel="Yes, that's correct →" />
+          <NavFooter onBack={() => setStatus('editing')} onContinue={handleConfirm} continueLabel="Yes, that's correct" />
         </>
       )}
 
@@ -188,7 +188,7 @@ const DLUpload = ({ state, setState, onNext, onBack }) => {
             </div>
           </div>
 
-          <NavFooter onBack={() => setStatus('confirm')} onContinue={handleConfirm} continueLabel="Confirm & Continue →" />
+          <NavFooter onBack={() => setStatus('confirm')} onContinue={handleConfirm} continueLabel="Confirm & Continue" />
         </>
       )}
     </div>

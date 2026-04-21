@@ -59,7 +59,7 @@ export const ExosIllustration = ({ name, folder = 'core', size = 120, className 
 };
 
 /**
- * ExosHalo — the signature purple→blue radial halo circle used behind illustrations.
+ * ExosHalo — the signature purpleblue radial halo circle used behind illustrations.
  * Wrap any illustration in this for the EXOS "scene" treatment.
  */
 export const ExosHalo = ({ children, size = 160, className = '' }) => (

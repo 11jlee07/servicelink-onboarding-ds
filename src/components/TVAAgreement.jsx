@@ -138,7 +138,7 @@ const TVAAgreement = ({ state, setState, onNext, onBack }) => {
           </label>
         </div>
 
-        <NavFooter onBack={onBack} onContinue={handleSubmit} continueLabel="Submit →" continueDisabled={!agreed} />
+        <NavFooter onBack={onBack} onContinue={handleSubmit} continueLabel="Submit" continueDisabled={!agreed} />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ const ProductSetupLanding = ({ state, onQuick, onCustom, onBack }) => {
         onClick={onBack}
         className="absolute top-6 left-6 z-10 text-sm text-white/70 hover:text-white flex items-center gap-1.5 transition-colors"
       >
-        ← Back to application
+        Back to application
       </button>
 
       {/* Content */}

@@ -377,7 +377,7 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
               onClick={onBack}
               className="text-sm text-slate-400 hover:text-slate-600 transition-colors"
             >
-              ← Back
+              Back
             </button>
           </div>
         )}
@@ -400,13 +400,13 @@ const LicenseUpload = ({ state, setState, onNext, onBack }) => {
             <ReviewFields ocrData={ocrData} updateOcr={updateOcr} />
             {verifying ? (
               <div className="border-t border-exos-border-light mt-6 pt-4 flex items-center justify-between gap-3">
-                <button type="button" onClick={() => setStage('fallback')} className="min-w-[140px] px-6 py-3 border-2 border-slate-200 rounded-exos text-sm font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors">← Back</button>
+                <button type="button" onClick={() => setStage('fallback')} className="min-w-[140px] px-6 py-3 border-2 border-slate-200 rounded-exos text-sm font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors">Back</button>
                 <div className="min-w-[140px] py-3 bg-slate-50 border border-slate-200 rounded-exos flex items-center justify-center gap-2 text-sm text-slate-500">
                   <Loader className="w-4 h-4 animate-spin" /> Verifying...
                 </div>
               </div>
             ) : (
-              <NavFooter onBack={() => setStage('fallback')} onContinue={handleVerify} continueLabel="Verify with ASC.gov →" continueDisabled={!manualFilled} className="pt-2" />
+              <NavFooter onBack={() => setStage('fallback')} onContinue={handleVerify} continueLabel="Verify with ASC.gov" continueDisabled={!manualFilled} className="pt-2" />
             )}
           </div>
         )}

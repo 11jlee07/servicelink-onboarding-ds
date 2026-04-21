@@ -237,7 +237,7 @@ const EOInsuranceUpload = ({ state, setState, onNext, onBack }) => {
                     <button type="button" onClick={handleConfirm}
                       disabled={!allFilled}
                       className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos text-sm transition-colors">
-                      Confirm details →
+                      Confirm details
                     </button>
                   </div>
                 )}

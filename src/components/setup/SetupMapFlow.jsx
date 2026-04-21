@@ -525,7 +525,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
     }
   }, [removeAreaBoundaries, setZipBoundaryColor, showZipToast]);
 
-  /* ── Map click → add/remove ZIP when area panel is open ── */
+  /* ── Map click add/remove ZIP when area panel is open ── */
   useEffect(() => {
     const m = mapRef.current;
     if (!m) return;
@@ -597,7 +597,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
     if (m.getSource(`area-${areaId}`)) m.removeSource(`area-${areaId}`);
   }, []);
 
-  /* ── Shape → area ── */
+  /* ── Shape area ── */
   const finalizeShape = useCallback((shape) => {
     const allCoveredZips = areasRef.current.flatMap((a) => a.zips);
     const inShape = getZipsInShape(allZipsRef.current, shape);
@@ -676,7 +676,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
           <div className="absolute inset-0 bg-slate-900/55 z-10" />
           <button type="button" onClick={onBack}
             className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20 text-xs sm:text-sm text-white/70 hover:text-white flex items-center gap-1.5 transition-colors">
-            ← Back
+            Back
           </button>
           {/* Scrollable content wrapper so cards don't get cut on small phones */}
           <div className="absolute inset-0 z-20 overflow-y-auto flex flex-col items-center justify-start sm:justify-center px-4 sm:px-6 pt-16 sm:pt-0 pb-6">
@@ -786,11 +786,11 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
             <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-3 border-t border-slate-100 flex gap-2 sm:gap-3 flex-shrink-0">
               <button type="button" onClick={() => setMode('landing')}
                 className="px-3 sm:px-5 py-2.5 border-2 border-slate-200 rounded-exos font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors text-sm">
-                ← Back
+                Back
               </button>
               <button type="button" onClick={() => setMode('fees')} disabled={selectedProducts.size === 0}
                 className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos transition-colors text-sm">
-                Continue to Fees →
+                Continue to Fees
               </button>
             </div>
           </div>
@@ -823,12 +823,12 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
             <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-3 border-t border-slate-100 flex gap-2 sm:gap-3 flex-shrink-0">
               <button type="button" onClick={() => setMode('products')}
                 className="px-3 sm:px-5 py-2.5 border-2 border-slate-200 rounded-exos font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors text-sm">
-                ← Back
+                Back
               </button>
               <button type="button" onClick={() => setMode('map')}
                 disabled={[...selectedProducts].some((p) => !globalFees[p])}
                 className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos transition-colors text-sm">
-                Continue to Coverage Map →
+                Continue to Coverage Map
               </button>
             </div>
           </div>
@@ -844,7 +844,7 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
             <div className="pointer-events-auto flex items-center gap-2 sm:gap-3">
               <button type="button" onClick={() => setMode('fees')}
                 className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-slate-900 text-xs sm:text-sm font-medium px-2.5 sm:px-3 py-1.5 rounded-exos shadow-sm transition-colors">
-                ← Back
+                Back
               </button>
               {/* Breadcrumb — desktop only */}
               <div className="hidden sm:block bg-white/90 backdrop-blur-sm border border-slate-200 rounded-exos px-3 py-1.5 shadow-sm">
@@ -859,8 +859,8 @@ const SetupMapFlow = ({ state, setState, onQuick, onBack, onDone }) => {
               {areas.length > 0 && !drawMode && (
                 <button type="button" onClick={handleFinish} disabled={!canFinish}
                   className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-exos shadow-sm transition-colors whitespace-nowrap">
-                  <span className="hidden sm:inline">Save & Finish →</span>
-                  <span className="sm:hidden">Save →</span>
+                  <span className="hidden sm:inline">Save & Finish</span>
+                  <span className="sm:hidden">Save</span>
                 </button>
               )}
               {!drawMode && (

@@ -218,7 +218,7 @@ const BasicInfo = ({ state, setState, onNext }) => {
               type="submit"
               className="min-w-[140px] px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold uppercase rounded-exos transition-colors"
             >
-              Continue →
+              Continue
             </button>
           </div>
         </form>

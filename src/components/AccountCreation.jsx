@@ -145,7 +145,7 @@ const AccountCreation = ({ state, setState, onNext }) => {
             disabled={!isFormValid}
             className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase py-3 rounded-exos transition-colors"
           >
-            Continue with Email →
+            Continue with Email
           </button>
         </form>
 

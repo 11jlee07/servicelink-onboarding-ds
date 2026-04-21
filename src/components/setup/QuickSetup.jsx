@@ -123,7 +123,7 @@ const QuickSetup = ({ state, setState, onBack, onDone }) => {
         onClick={onBack}
         className="text-sm text-slate-500 hover:text-slate-700 mb-6 flex items-center gap-1.5 transition-colors"
       >
-        ← Back
+        Back
       </button>
 
       <div className="mb-7">
@@ -254,7 +254,7 @@ const QuickSetup = ({ state, setState, onBack, onDone }) => {
           disabled={!canSave}
           className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos transition-colors"
         >
-          Save & Finish →
+          Save & Finish
         </button>
         {!canSave && (
           <p className="text-center text-xs text-slate-400">

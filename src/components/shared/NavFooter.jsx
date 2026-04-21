@@ -3,7 +3,7 @@ import React from 'react';
 const NavFooter = ({
   onBack,
   onContinue,
-  continueLabel = 'Continue →',
+  continueLabel = 'Continue',
   continueDisabled = false,
   continueType = 'button',
   className = '',
@@ -14,7 +14,7 @@ const NavFooter = ({
       onClick={onBack}
       className="min-w-[140px] px-6 py-3 border-2 border-slate-200 rounded-exos text-sm font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors"
     >
-      ← Back
+      Back
     </button>
     <button
       type={continueType}

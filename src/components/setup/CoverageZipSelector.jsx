@@ -37,7 +37,7 @@ function getNearbyZips(baseZip, maxMi = 150) {
 }
 
 /* ─── OpenDataSoft boundary fetch (per-ZIP, no auth needed) ─────── */
-const boundaryCache = new Map(); // zip → GeoJSON Feature | null
+const boundaryCache = new Map(); // zip GeoJSON Feature | null
 
 async function fetchZipBoundary(zip) {
   if (boundaryCache.has(zip)) return boundaryCache.get(zip);

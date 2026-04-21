@@ -94,7 +94,7 @@ const SubmissionConfirmation = ({ state, onSetupClick }) => {
               </div>
               {highlight && (
                 <span className="text-xs bg-blue-600 text-white font-bold uppercase px-2.5 py-1 rounded-exos-pill self-center flex-shrink-0">
-                  Start →
+                  Start
                 </span>
               )}
               {state.setup && title.includes('Product') && (
@@ -109,7 +109,7 @@ const SubmissionConfirmation = ({ state, onSetupClick }) => {
         type="button"
         className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase rounded-exos transition-colors"
       >
-        Go to Dashboard →
+        Go to Dashboard
       </button>
 
       <p className="text-center text-xs text-slate-400 mt-4">

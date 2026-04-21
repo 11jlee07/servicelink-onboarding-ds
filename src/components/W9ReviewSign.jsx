@@ -243,7 +243,7 @@ const W9ReviewSign = ({ state, setState, onNext, onBack }) => {
             Date: <strong>{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</strong>
           </p>
 
-          <NavFooter onBack={onBack} onContinue={handleSubmit} continueLabel="Sign & Continue →" continueDisabled={!hasSignature} />
+          <NavFooter onBack={onBack} onContinue={handleSubmit} continueLabel="Sign & Continue" continueDisabled={!hasSignature} />
         </div>
       </div>
 
@@ -308,7 +308,7 @@ const W9ReviewSign = ({ state, setState, onNext, onBack }) => {
             </button>
             <button type="button" onClick={confirmSignature}
               className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase rounded-exos text-sm transition-colors">
-              Use this signature →
+              Use this signature
             </button>
           </div>
         </div>

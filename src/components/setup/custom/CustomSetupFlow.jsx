@@ -183,7 +183,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
   const baseInfo = useMemo(() => zipcodes.lookup(baseZip) || zipcodes.lookup('75009'), [baseZip]);
   const allZips = useMemo(() => getNearbyZips(baseZip, 150), [baseZip]);
 
-  // Stage: 'products' → 'fees' → 'map'
+  // Stage: 'products' 'fees' 'map'
   const [stage, setStage] = useState('products');
 
   // Global products + fees (set in products/fees stages)
@@ -425,7 +425,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
     if (m.getSource(`area-${areaId}`)) m.removeSource(`area-${areaId}`);
   }, []);
 
-  /* ── Finalize shape → create area (with overlap handling) ── */
+  /* ── Finalize shape create area (with overlap handling) ── */
   const finalizeShape = useCallback((shape) => {
     const allCoveredZips = areasRef.current.flatMap((a) => a.zips);
     const inShape = getZipsInShape(allZipsRef.current, shape);
@@ -447,7 +447,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
         : { type: 'pencil', polygon: shape.polygon }),
     };
 
-    // Check for significant overlap → show override prompt
+    // Check for significant overlap show override prompt
     const overlapRatio = inShape.length > 0 ? overlaps.length / inShape.length : 0;
     if (overlaps.length > 0 && overlapRatio > 0.25) {
       setOverridePrompt({ newArea, overlaps });
@@ -540,11 +540,11 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             <div className="px-6 pb-5 pt-3 border-t border-slate-100 flex gap-3">
               <button type="button" onClick={onBack}
                 className="px-5 py-2.5 border-2 border-slate-200 rounded-exos font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors text-sm">
-                ← Back
+                Back
               </button>
               <button type="button" onClick={() => setStage('fees')} disabled={!canContinue}
                 className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos transition-colors text-sm">
-                Continue to Fees →
+                Continue to Fees
               </button>
             </div>
           </div>
@@ -584,11 +584,11 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
             <div className="px-6 pb-5 pt-3 border-t border-slate-100 flex gap-3">
               <button type="button" onClick={() => setStage('products')}
                 className="px-5 py-2.5 border-2 border-slate-200 rounded-exos font-bold uppercase text-slate-700 hover:border-slate-300 transition-colors text-sm">
-                ← Back
+                Back
               </button>
               <button type="button" onClick={() => setStage('map')} disabled={!canContinue}
                 className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold uppercase rounded-exos transition-colors text-sm">
-                Continue to Coverage Map →
+                Continue to Coverage Map
               </button>
             </div>
           </div>
@@ -610,7 +610,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
         <div className="pointer-events-auto flex items-center gap-3">
           <button type="button" onClick={() => setStage('fees')}
             className="bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-600 hover:text-slate-900 text-sm font-medium px-3 py-1.5 rounded-exos shadow-sm transition-colors">
-            ← Back
+            Back
           </button>
           <div className="bg-white/90 backdrop-blur-sm border border-slate-200 rounded-exos px-3 py-1.5 shadow-sm">
             <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Custom Setup</span>
@@ -623,7 +623,7 @@ const CustomSetupFlow = ({ state, setState, onBack, onDone }) => {
           {areas.length > 0 && !drawMode && (
             <button type="button" onClick={handleFinish} disabled={!canFinish}
               className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white text-sm font-semibold px-4 py-2 rounded-exos shadow-sm transition-colors">
-              Save & Finish →
+              Save & Finish
             </button>
           )}
           {!drawMode && (

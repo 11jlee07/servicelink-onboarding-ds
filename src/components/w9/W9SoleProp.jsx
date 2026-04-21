@@ -130,7 +130,7 @@ const W9SoleProp = ({ state, setState, onNext, onBack }) => {
 
         {q === 2 && <MailingAddressQuestion basicInfo={state.basicInfo} w9Data={state.w9Data} onChange={update} />}
 
-        <NavFooter onBack={handleBack} onContinue={handleNext} continueLabel={q < TOTAL ? 'Continue →' : 'Review W-9 →'} continueDisabled={!isValid()} />
+        <NavFooter onBack={handleBack} onContinue={handleNext} continueLabel={q < TOTAL ? 'Continue' : 'Review W-9'} continueDisabled={!isValid()} />
       </div>
     </div>
   );
